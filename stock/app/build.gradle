@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         relese {
-            storeFile file('/home/astron/Projects/github/stock/keystore/relese.jks')
+            storeFile file('keystore/relese.jks')
             storePassword '123456'
             keyAlias 'test'
             keyPassword '123456'

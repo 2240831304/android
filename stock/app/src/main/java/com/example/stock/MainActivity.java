@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
 //                R.id.bottom_menu_news).build();
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.bottom_menu_news,R.id.bottom_menu_stockpick).build();
+                R.id.bottom_menu_news,R.id.bottom_menu_quotation,
+                R.id.bottom_menu_stockpick).build();
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
