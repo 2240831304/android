@@ -26,7 +26,7 @@ public class StockPickFrament extends Fragment {
         View root = inflater.inflate(R.layout.stockpick, container, false);
         final GridView gridView = root.findViewById(R.id.stockpick_gridview);
 
-        
+
         return root;
     }
 }
