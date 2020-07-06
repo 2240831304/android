@@ -4,4 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <GridView android:id="@+id/stockpick_gridview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="vertical"
+        android:fadingEdge="vertical"
+        android:numColumns="4" />
+
+
 </LinearLayout>

@@ -16,11 +16,5 @@ import com.example.stock.R;
 
 public class menunewsfragment extends Fragment {
 
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
-        View root = inflater.inflate(R.layout.stockpick, container, false);
 
-        return root;
-    }
 }
