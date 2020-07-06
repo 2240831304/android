@@ -40,6 +40,7 @@
 
     <fragment
         android:id="@+id/bottom_menu_stockpick"
+        android:name="com.example.stock.ui.menunews.menunewsfragment"
         android:label="@string/bottom_name_stockpick"
         tools:layout="@layout/stockpick" />
 </navigation>
