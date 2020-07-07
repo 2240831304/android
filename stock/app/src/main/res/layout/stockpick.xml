@@ -3,13 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ff0000"
-    android:orientation="vertical">
+    android:orientation="vertical" >
 
-    <GridView android:id="@+id/stockpick_gridview"
-        android:background="#00ff00"
+    <ScrollView android:id="@+id/stockpick_scrollview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:scrollbars="vertical"
-        android:numColumns="4" />
+        android:background="#ffffff"
+        android:orientation="vertical" >
+
+        <GridView android:id="@+id/stockpick_gridview"
+            android:background="#00ff00"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scrollbars="vertical"
+            android:numColumns="4" />
+
+    </ScrollView>
 
 </LinearLayout>
