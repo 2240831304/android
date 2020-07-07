@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,6 +36,13 @@ public class StockPickFrament extends Fragment {
 
         stockPickAdapter = new StockPickAdapter(this.content,this.NameList);
         gridView.setAdapter(stockPickAdapter);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getActivity(), "position:"+i, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return root;
     }
