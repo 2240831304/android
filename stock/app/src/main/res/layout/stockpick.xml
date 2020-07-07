@@ -6,15 +6,15 @@
     android:orientation="vertical" >
 
     <ScrollView android:id="@+id/stockpick_scrollview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFC0CB"
         android:orientation="vertical" >
 
         <GridView android:id="@+id/stockpick_gridview"
             android:background="#00ff00"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:scrollbars="vertical"
             android:numColumns="4" />
 
