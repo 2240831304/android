@@ -1,12 +1,12 @@
 package com.example.stock.ui.stockpick;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,15 +17,23 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.stock.R;
 
 public class StockPickFrament extends Fragment {
-    private Button button;
-    private String[] provinceNames = new String[]{"北京"};
+
+    private StockPickAdapter stockPickAdapter;
+    private Context content;
+
+    private String[] NameList = new String[]{"沪市","中小板","创业板","科创板",
+            "沪市","中小板","创业板","科创板"};
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
+        this.content = getActivity().getApplicationContext();
+
         View root = inflater.inflate(R.layout.stockpick, container, false);
         final GridView gridView = root.findViewById(R.id.stockpick_gridview);
 
+        stockPickAdapter = new StockPickAdapter(this.content,this.NameList);
+        gridView.setAdapter(stockPickAdapter);
 
         return root;
     }
