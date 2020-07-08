@@ -19,16 +19,20 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.stock.R;
 
+import java.io.IOException;
+
 public class StockPickFrament extends Fragment {
 
     private StockPickAdapter stockPickAdapter;
     private Context content;
+    private StockPickModel spickModel;
 
-    private String[] NameList = new String[]{"沪市","中小板","创业板","科创板",
-            "沪市","中小板","创业板","科创板"};
+    private String[] NameList = new String[]{};
 
-    public StockPickFrament(){
-
+    public StockPickFrament() throws IOException {
+        //spickModel = new StockPickModel();
+        //NameList = spickModel.getStockTypeList();
+        NameList = getActivity().getResources().getStringArray(R.array.stock_type_name);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,

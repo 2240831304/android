@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="stock_type_name">
+        <item>1</item>
+        <item>2</item>
+
+    </string-array>
+
+    <string name="ddedeijdeidjei">沪市A股</string>
+</resources>
