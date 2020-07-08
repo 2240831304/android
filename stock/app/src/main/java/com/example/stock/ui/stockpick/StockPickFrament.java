@@ -27,24 +27,26 @@ public class StockPickFrament extends Fragment {
     private Context content;
     private StockPickModel spickModel;
 
-    private String[] NameList = new String[]{};
+    private String[] NameList;
 
     public StockPickFrament() throws IOException {
         //spickModel = new StockPickModel();
         //NameList = spickModel.getStockTypeList();
-        NameList = getActivity().getResources().getStringArray(R.array.stock_type_name);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
         this.content = getActivity().getApplicationContext();
+        this.NameList = getActivity().getResources().getStringArray(R.array.stock_type_name);
+
+        System.out.println(this.NameList[0]);
 
         View root = inflater.inflate(R.layout.stockpick, container, false);
         stockPickAdapter = new StockPickAdapter(this.content,this.NameList);
 
-        //final GridView gridView = root.findViewById(R.id.stockpick_gridview);
-        //gridView.setAdapter(stockPickAdapter);
+        final GridView gridView = root.findViewById(R.id.stockpick_gridview);
+        gridView.setAdapter(stockPickAdapter);
 
         /*
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -55,12 +57,12 @@ public class StockPickFrament extends Fragment {
         });
         */
 
-        GridLayout addGridLayout = root.findViewById(R.id.stockpick_addgridlayout);
-        for (int i = 0;i < NameList.length;++i) {
-            Button nameBut = new Button(this.content);
-            nameBut.setText(NameList[i]);
-            addGridLayout.addView(nameBut);
-        }
+        //GridLayout addGridLayout = root.findViewById(R.id.stockpick_addgridlayout);
+        //for (int i = 0;i < NameList.length;++i) {
+        //    Button nameBut = new Button(this.content);
+        //    nameBut.setText(NameList[i]);
+        //    addGridLayout.addView(nameBut);
+        //}
 
         return root;
     }

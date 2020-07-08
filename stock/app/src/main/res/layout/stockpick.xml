@@ -5,43 +5,53 @@
     android:background="#ff0000"
     android:orientation="vertical" >
 
-    <ScrollView
-        android:id="@+id/stockpick_scrollview"
+    <ScrollView android:id="@+id/stockpick_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFC0CB"
-        android:orientation="vertical">
-        
-        <GridLayout android:id="@+id/stockpick_addgridlayout"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:columnCount="4"
-            android:orientation="horizontal"
-            android:background="#00ff00" >
-
-            <TextView
-                android:layout_columnSpan="4"
-                android:layout_gravity="fill"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="#ff0000"
-                android:text="添加股票"
-                android:textSize="25sp" />
-
-        </GridLayout>
+        android:orientation="vertical" >
 
         <!--
-        <GridView
-            android:id="@+id/stockpick_gridview"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="fill"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="#ff0000"
+            android:text="添加股票" />
+        -->
+
+        <GridView android:id="@+id/stockpick_gridview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#00ff00"
             android:numColumns="4"
             android:scrollbars="vertical" />
-        -->
 
     </ScrollView>
 
 </LinearLayout>
+
+<!--
+<GridLayout android:id="@+id/stockpick_addgridlayout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:columnCount="4"
+    android:orientation="horizontal"
+    android:background="#00ff00" >
+
+    <TextView
+        android:layout_columnSpan="4"
+        android:layout_gravity="fill"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="#ff0000"
+        android:text="添加股票"
+        android:textSize="25sp" />
+
+</GridLayout>
+-->
+

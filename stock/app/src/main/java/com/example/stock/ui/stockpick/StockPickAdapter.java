@@ -26,18 +26,24 @@ public class StockPickAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
 
+        String tmpStr = this.context.getResources().getString();
+
         if( view == null){
-            Button nameBut = new Button(context);
+            //Button nameBut = new Button(context);
+            //view = nameBut;
 
-            view = nameBut;
-
-            //view = LayoutInflater.from(this.context).inflate(R.layout.stockpickbutitem,viewGroup,false);
-            /*view.getLayoutParams().height = 100;
-            view.getLayoutParams().width = 100;*/
-            //this.button = (Button)view.findViewById(R.id.item_button);
-            //this.button.setText(this.nameList[position]);
+            view = LayoutInflater.from(this.context).inflate(R.layout.stockpickbutitem,viewGroup,false);
+            /*
+            view.getLayoutParams().height = 100;
+            view.getLayoutParams().width = 100;
+            */
+            this.button = (Button)view.findViewById(R.id.item_button);
+            this.button.setText(this.nameList[position]);
+        }else{
+            this.button = (Button)view.findViewById(R.id.item_button);
+            this.button.setText(this.nameList[position]);
         }
-        ((Button)view).setText(this.nameList[position]);
+
         return view;
     }
 
