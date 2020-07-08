@@ -38,8 +38,7 @@ public class StockPickFrament extends Fragment {
                              Bundle savedInstanceState)
     {
         this.content = getActivity().getApplicationContext();
-        this.NameList = getActivity().getResources().getStringArray(R.array.stock_type_name);
-
+        this.NameList = getActivity().getResources().getStringArray(R.array.stock_type_cn_name);
         System.out.println(this.NameList[0]);
 
         View root = inflater.inflate(R.layout.stockpick, container, false);
@@ -48,22 +47,25 @@ public class StockPickFrament extends Fragment {
         final GridView gridView = root.findViewById(R.id.stockpick_gridview);
         gridView.setAdapter(stockPickAdapter);
 
-        /*
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getActivity(), "position:"+i, Toast.LENGTH_SHORT).show();
-            }
-        });
-        */
-
-        //GridLayout addGridLayout = root.findViewById(R.id.stockpick_addgridlayout);
-        //for (int i = 0;i < NameList.length;++i) {
-        //    Button nameBut = new Button(this.content);
-        //    nameBut.setText(NameList[i]);
-        //    addGridLayout.addView(nameBut);
-        //}
-
         return root;
     }
+
 }
+
+
+
+/*
+gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Toast.makeText(getActivity(), "position:"+i, Toast.LENGTH_SHORT).show();
+    }
+});
+*/
+
+//GridLayout addGridLayout = root.findViewById(R.id.stockpick_addgridlayout);
+//for (int i = 0;i < NameList.length;++i) {
+//    Button nameBut = new Button(this.content);
+//    nameBut.setText(NameList[i]);
+//    addGridLayout.addView(nameBut);
+//}

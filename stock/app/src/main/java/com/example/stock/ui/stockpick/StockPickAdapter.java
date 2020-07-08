@@ -17,6 +17,7 @@ public class StockPickAdapter extends BaseAdapter{
     private Context context; //声明适配器中引用的上下文
     private String[] nameList = null;
     private Button button;
+    private String[] enNameList = null;
 
     public StockPickAdapter(Context context, String[] data){
         this.context = context;
@@ -25,8 +26,6 @@ public class StockPickAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-
-        String tmpStr = this.context.getResources().getString();
 
         if( view == null){
             //Button nameBut = new Button(context);

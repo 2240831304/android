@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="stock_type_name">
+    <string-array name="stock_type_en_name">
         <item>Shanghai</item>
         <item>smallboard</item>
         <item>chinext</item>
@@ -8,9 +8,12 @@
         <item>newthirdboard</item>
     </string-array>
 
-    <string name="Shanghai">沪市A股</string>
-    <string name="smallboard">中小板</string>
-    <string name="chinext">创业板</string>
-    <string name="scienceboard">科创板</string>
-    <string name="newthirdboard">新三板</string>
+    <string-array name="stock_type_cn_name">
+        <item>沪市A股</item>
+        <item>中小板</item>
+        <item>创业板</item>
+        <item>科创板</item>
+        <item>新三板</item>
+    </string-array>
+
 </resources>
