@@ -8,6 +8,10 @@
         <item>newthirdboard</item>
     </string-array>
 
+    <integer-array name="sss">
+        <item>@drawable/ic_dashboard_black_24dp</item>
+    </integer-array>
+
 
     <string-array name="stock_type_cn_name">
         <item>沪市A股</item>

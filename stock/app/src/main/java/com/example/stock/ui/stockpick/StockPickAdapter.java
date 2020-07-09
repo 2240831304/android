@@ -3,6 +3,7 @@ package com.example.stock.ui.stockpick;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.renderscript.Allocation;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,9 @@ public class StockPickAdapter extends BaseAdapter{
             */
             this.button = (Button)view.findViewById(R.id.item_button);
 
-            Drawable drawable = this.context.getResources().getDrawable(R.mipmap.ic_launcher);
+            int id = context.getResources().obtainTypedArray(R.array.sss).getResourceId(0,0);
+            Log.e("ssssss","id="+id);
+            Drawable drawable = this.context.getResources().getDrawable(id);
             // 这一步必须要做,否则不会显示.
             drawable.setBounds(0, 0, drawable.getMinimumWidth(),drawable.getMinimumHeight());
             this.button.setCompoundDrawables(null, drawable, null, null);
