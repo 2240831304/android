@@ -1,6 +1,8 @@
 package com.example.stock.ui.stockpick;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.renderscript.Allocation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +20,15 @@ public class StockPickAdapter extends BaseAdapter{
     private String[] nameList = null;
     private Button button;
     private String[] enNameList = null;
+    private String[] PictureList = null;
 
     public StockPickAdapter(Context context, String[] data){
         this.context = context;
         this.nameList = data;
+    }
+
+    public void setStockTypePic(String[] data){
+        this.PictureList = data;
     }
 
     @Override
@@ -37,7 +44,14 @@ public class StockPickAdapter extends BaseAdapter{
             view.getLayoutParams().width = 100;
             */
             this.button = (Button)view.findViewById(R.id.item_button);
+
+            Drawable drawable = this.context.getResources().getDrawable(R.mipmap.ic_launcher);
+            // 这一步必须要做,否则不会显示.
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(),drawable.getMinimumHeight());
+            this.button.setCompoundDrawables(null, drawable, null, null);
+
             this.button.setText(this.nameList[position]);
+
         }else{
             this.button = (Button)view.findViewById(R.id.item_button);
             this.button.setText(this.nameList[position]);

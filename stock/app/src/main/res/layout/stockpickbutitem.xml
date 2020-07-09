@@ -9,7 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="false"
-        android:drawableTop="@mipmap/ic_launcher"
         android:focusable="false"/>
 
 </LinearLayout>
+
+
+<!--
+android:drawableTop="@mipmap/ic_launcher"
+-->

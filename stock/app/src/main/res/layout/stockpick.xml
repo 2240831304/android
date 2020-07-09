@@ -25,7 +25,7 @@
                 android:layout_marginRight="5dp"
                 android:background="#ff0000"
                 android:text="添加股票"
-                android:textSize="14pt" />
+                android:textSize="28sp" />
 
             <com.example.stock.ui.stockpick.MyGridView
                 android:id="@+id/stockpick_gridview_add"
@@ -43,7 +43,7 @@
                 android:layout_marginTop="12dp"
                 android:background="#ff0000"
                 android:text="策略选股"
-                android:textSize="14pt" />
+                android:textSize="28sp" />
 
             <com.example.stock.ui.stockpick.MyGridView
                 android:id="@+id/stockpick_gridview_select"

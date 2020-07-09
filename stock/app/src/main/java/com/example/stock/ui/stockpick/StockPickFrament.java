@@ -28,6 +28,7 @@ public class StockPickFrament extends Fragment {
     private StockPickModel spickModel;
 
     private String[] NameList;
+    private int img_grid[];
 
     public StockPickFrament() throws IOException {
         //spickModel = new StockPickModel();
