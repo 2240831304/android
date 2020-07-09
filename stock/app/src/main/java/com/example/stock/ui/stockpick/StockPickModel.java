@@ -23,8 +23,6 @@ public class StockPickModel extends ViewModel {
     public StockPickModel() throws IOException {
         stockTypeList = new String[]{};
 
-        
-
         //stockTypeList = tmpStr.split(",");
 
     }

@@ -44,7 +44,7 @@ public class StockPickFrament extends Fragment {
         View root = inflater.inflate(R.layout.stockpick, container, false);
         stockPickAdapter = new StockPickAdapter(this.content,this.NameList);
 
-        final GridView gridView = root.findViewById(R.id.stockpick_gridview);
+        final GridView gridView = root.findViewById(R.id.stockpick_gridview_add);
         gridView.setAdapter(stockPickAdapter);
 
         return root;
