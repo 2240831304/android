@@ -50,9 +50,10 @@ public class StockPickAdapter extends BaseAdapter{
             //Log.e("ssssss","id="+id);
             //Drawable drawable = this.context.getResources().getDrawable(id);
 
-            // 这一步必须要做,否则不会显示.
-            //drawable.setBounds(0, 0, drawable.getMinimumWidth(),drawable.getMinimumHeight());
-            //this.button.setCompoundDrawables(null, drawable, null, null);
+            Drawable drawable = this.context.getResources().getDrawable(R.drawable.test);
+            // 这一步必须要做,否则不会显示
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(),drawable.getMinimumHeight());
+            this.button.setCompoundDrawables(null, drawable, null, null);
 
             this.button.setText(this.nameList[position]);
 
