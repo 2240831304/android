@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="stock_type_en_name">
-        <item>Shanghai</item>
+        <item>shanghai</item>
         <item>smallboard</item>
         <item>chinext</item>
         <item>scienceboard</item>
