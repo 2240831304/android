@@ -8,8 +8,12 @@
         <item>newthirdboard</item>
     </string-array>
 
-    <integer-array name="sss">
-        <item>@drawable/ic_dashboard_black_24dp</item>
+    <integer-array name="stock_type_pic">
+        <item>@drawable/test</item>
+        <item>@drawable/test</item>
+        <item>@drawable/test</item>
+        <item>@drawable/test</item>
+        <item>@drawable/test</item>
     </integer-array>
 
 

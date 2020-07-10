@@ -1,6 +1,7 @@
 package com.example.stock.ui.stockpick;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,33 +24,36 @@ import java.io.IOException;
 
 public class StockPickFrament extends Fragment {
 
-    private StockPickAdapter stockPickAdapter;
+    private StockPickAdapter stockTypeAdapter;
     private Context content;
     private StockPickModel spickModel;
 
-    private String[] NameList;
-    private int img_grid[];
+    private String[] stockTypeNameList;
+    private TypedArray stockTypeIconList;
+
 
     public StockPickFrament() throws IOException {
         //spickModel = new StockPickModel();
-        //NameList = spickModel.getStockTypeList();
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
         this.content = getActivity().getApplicationContext();
-        this.NameList = getActivity().getResources().getStringArray(R.array.stock_type_cn_name);
-        System.out.println(this.NameList[0]);
+        this.stockTypeNameList = getActivity().getResources().getStringArray(R.array.stock_type_cn_name);
+        //System.out.println(this.stockTypeNameList[0]);
+        stockTypeIconList = getActivity().getResources().obtainTypedArray(R.array.stock_type_pic);
 
         View root = inflater.inflate(R.layout.stockpick, container, false);
-        stockPickAdapter = new StockPickAdapter(this.content,this.NameList);
+        stockTypeAdapter = new StockPickAdapter(this.content,this.stockTypeNameList);
+        stockTypeAdapter.setStockTypePic(stockTypeIconList);
 
-        final GridView gridView = root.findViewById(R.id.stockpick_gridview_add);
-        gridView.setAdapter(stockPickAdapter);
+        final GridView stockAddGridView = root.findViewById(R.id.stockpick_gridview_add);
+        stockAddGridView.setAdapter(stockTypeAdapter);
 
         return root;
     }
+
 
 }
 

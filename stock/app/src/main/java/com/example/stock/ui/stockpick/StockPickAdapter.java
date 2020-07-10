@@ -1,6 +1,7 @@
 package com.example.stock.ui.stockpick;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.renderscript.Allocation;
 import android.util.Log;
@@ -21,14 +22,14 @@ public class StockPickAdapter extends BaseAdapter{
     private String[] nameList = null;
     private Button button;
     private String[] enNameList = null;
-    private String[] PictureList = null;
+    private TypedArray PictureList = null;
 
     public StockPickAdapter(Context context, String[] data){
         this.context = context;
         this.nameList = data;
     }
 
-    public void setStockTypePic(String[] data){
+    public void setStockTypePic(TypedArray data){
         this.PictureList = data;
     }
 
@@ -46,11 +47,12 @@ public class StockPickAdapter extends BaseAdapter{
             */
             this.button = (Button)view.findViewById(R.id.item_button);
 
-            //int id = context.getResources().obtainTypedArray(R.array.sss).getResourceId(0,0);
+            //int picId = context.getResources().obtainTypedArray(R.array.stock_type_pic).getResourceId(0,0);
             //Log.e("ssssss","id="+id);
-            //Drawable drawable = this.context.getResources().getDrawable(id);
+            //Drawable drawable = this.context.getResources().getDrawable(picId);
 
-            Drawable drawable = this.context.getResources().getDrawable(R.drawable.test);
+            int picId = this.PictureList.getResourceId(position,-1);
+            Drawable drawable = this.context.getResources().getDrawable(picId);
             // 这一步必须要做,否则不会显示
             drawable.setBounds(0, 0, drawable.getMinimumWidth(),drawable.getMinimumHeight());
             this.button.setCompoundDrawables(null, drawable, null, null);
