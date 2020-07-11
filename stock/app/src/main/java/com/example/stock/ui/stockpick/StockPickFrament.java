@@ -6,19 +6,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.stock.R;
+import com.example.stock.eink.pioneer.stockadd.StockAddHandle;
 
 import java.io.IOException;
 
@@ -45,11 +42,21 @@ public class StockPickFrament extends Fragment {
         stockTypeIconList = getActivity().getResources().obtainTypedArray(R.array.stock_type_pic);
 
         View root = inflater.inflate(R.layout.stockpick, container, false);
+
         stockTypeAdapter = new StockPickAdapter(this.content,this.stockTypeNameList);
         stockTypeAdapter.setStockTypePic(stockTypeIconList);
-
         final GridView stockAddGridView = root.findViewById(R.id.stockpick_gridview_add);
         stockAddGridView.setAdapter(stockTypeAdapter);
+
+        stockAddGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Button button = (Button)view.findViewById(R.id.item_button);
+                StockAddHandle handle = new StockAddHandle(button.getText().toString());
+                handle.execute(content);
+
+            }
+        });
 
         return root;
     }

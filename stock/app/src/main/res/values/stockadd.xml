@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="shanghaistock_get_id">600000</integer>
+    <integer name="smallboardstock_get_id">000000</integer>
+</resources>
