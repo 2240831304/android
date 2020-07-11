@@ -44,7 +44,14 @@ public class StockAddActivity extends AppCompatActivity {
     private class ObtainStockButListener implements View.OnClickListener{
         @Override
         public void onClick(View view) {
-            obtainStockBut.setText("停止获取");
+            if(obtainStockState){
+                obtainStockBut.setText("停止获取");
+                obtainStockState = false;
+            }else{
+                obtainStockBut.setText("开始添加");
+                obtainStockState = true;
+            }
+
         }
     }
 
@@ -52,7 +59,14 @@ public class StockAddActivity extends AppCompatActivity {
     private class ObtainStockYearMaxMinButListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            obtainStockYearMaxMinBut.setText("停止获取");
+            if(obtainStockYearMaxMinState){
+                obtainStockYearMaxMinState = false;
+                obtainStockYearMaxMinBut.setText("停止获取");
+            }else {
+                obtainStockYearMaxMinState = true;
+                obtainStockYearMaxMinBut.setText("开始获取");
+            }
+
         }
     };
 
@@ -64,13 +78,13 @@ public class StockAddActivity extends AppCompatActivity {
             StockAddActivity.this.finish();
         }
     };
-    
+
 
     //@退出界面
     private class ListenerQuit implements View.OnClickListener{
         @Override
         public void onClick(View view) {
-
+            StockAddActivity.this.finish();
         }
     }
 
