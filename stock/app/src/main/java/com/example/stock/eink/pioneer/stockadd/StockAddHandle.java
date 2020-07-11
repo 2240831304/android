@@ -17,10 +17,9 @@ public class StockAddHandle  {
     }
 
     public void execute(Context context){
-        aContext = context;
-
         Intent intent = new Intent(context,StockAddActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("stockTypeName",stockTypeName);
         context.startActivity(intent);
     }
 }
