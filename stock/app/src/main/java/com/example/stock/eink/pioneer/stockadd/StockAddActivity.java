@@ -3,12 +3,15 @@ package com.example.stock.eink.pioneer.stockadd;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.stock.R;
+
+import java.io.File;
 
 public class StockAddActivity extends AppCompatActivity {
     private Button obtainStockBut;
@@ -40,13 +43,19 @@ public class StockAddActivity extends AppCompatActivity {
 
     }
 
-    //@停止获取股票信息
+    //@获取股票信息
     private class ObtainStockButListener implements View.OnClickListener{
         @Override
         public void onClick(View view) {
             if(obtainStockState){
                 obtainStockBut.setText("停止获取");
                 obtainStockState = false;
+                System.out.println(Environment.getExternalStorageDirectory().getPath());
+                String filepath = Environment.getExternalStorageDirectory().getPath() + "/" + "huibao";
+                File file = new File(filepath);
+                if (!file.exists()) {
+                    file.mkdirs();
+                }
             }else{
                 obtainStockBut.setText("开始添加");
                 obtainStockState = true;
@@ -55,7 +64,7 @@ public class StockAddActivity extends AppCompatActivity {
         }
     }
 
-    //@停止获取股票一年最大最小价
+    //@获取股票一年最大最小价
     private class ObtainStockYearMaxMinButListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
