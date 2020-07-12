@@ -1,5 +1,7 @@
 package com.example.stock.eink.lib.sqlite;
 
+import android.os.Environment;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -8,43 +10,41 @@ import java.sql.Statement;
 
 
 public class SqliteStockInit {
-    private Connection connecter;
-    private Statement statement;
+
     private static String Drivde = "org.sqlite.JDBC";
 
     public SqliteStockInit(){
+    }
+
+    public void startInit(){
         Init();
     }
 
     private void Init(){
+        startInitStockDatabase();
+    }
+
+
+    private void startInitStockDatabase(){
         try{
             Class.forName(Drivde);
-            //连接数据库zhou.db,不存在则创建
-            connecter = DriverManager.getConnection("jdbc:sqlite:");
+            String stockfilepath = Environment.getExternalStorageDirectory().getPath() + "/" + "huibao";
+            stockfilepath = stockfilepath + "/sqlite/stock.db";
+            String srcPath = "jdbc:sqlite:" + stockfilepath;
 
+            System.out.println(srcPath);
+
+            //连接数据库,不存在则创建
+            Connection connecter = DriverManager.getConnection(srcPath);
             //创建连接对象，是Java的一个操作数据库的重要接口
-            statement = connecter.createStatement();
-
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
+            Statement statement = connecter.createStatement();
 
 
-    public void closeSqlite(){
-
-        try {
             connecter.close();
+
         } catch (Exception e){
             e.printStackTrace();
         }
-
-    }
-
-
-    public void startInitStockDatabase(){
-
-        closeSqlite();
     }
 
 

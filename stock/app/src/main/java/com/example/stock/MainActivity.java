@@ -2,6 +2,8 @@ package com.example.stock;
 
 import android.os.Bundle;
 
+import com.example.stock.eink.lib.filesystem.FileSystemInit;
+import com.example.stock.eink.lib.sqlite.SqliteStockInit;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +13,14 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
+
+    public MainActivity(){
+        FileSystemInit fileInit = new FileSystemInit();
+        fileInit.startInit();
+
+        SqliteStockInit sqliteInit = new SqliteStockInit();
+        sqliteInit.startInit();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

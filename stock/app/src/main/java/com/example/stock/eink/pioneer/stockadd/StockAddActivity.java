@@ -55,15 +55,6 @@ public class StockAddActivity extends AppCompatActivity {
                 obtainStockBut.setText("停止获取");
                 obtainStockState = false;
 
-
-                System.out.println(Environment.getExternalStorageDirectory().getPath());
-                String filepath = Environment.getExternalStorageDirectory().getPath() + "/" + "huibao";
-                File file = new File(filepath);
-                if (!file.exists()) {
-                    file.mkdirs();
-                }
-
-
             }else{
                 obtainStockBut.setText("开始添加");
                 obtainStockState = true;
