@@ -16,12 +16,27 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
     //创建数据库时,调用此方法
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "create table stock if ";
+        String sql = "create table if not exists shanghai(name varchar(15),code varchar(10),means TEXT," +
+                "minprice integer,maxprice integer,curprice integer,state integer,calprice integer)";
+        db.execSQL(sql);
+
+        sql = null;
+        sql = "create table if not exists smallboard(name varchar(15),code varchar(10),means TEXT," +
+                "minprice integer,maxprice integer,curprice integer,state integer,calprice integer)";
+        db.execSQL(sql);
+
+        sql = null;
+        sql = "create table if not exists chinext(name varchar(15),code varchar(10),means TEXT," +
+                "minprice integer,maxprice integer,curprice integer,state integer,calprice integer)";
+        db.execSQL(sql);
+
+        sql = null;
+        sql = "create table if not exists money(name varchar(15),code varchar(10)," +
+                "one integer,two integer,three integer,fore integer,five integer,totle integer)";
+        db.execSQL(sql);
 
         Log.d("stock database:", "数据库创建成功");
 
-        //创建一个学生表
-        //db.execSQL("create table student(_id integer primary key autoincrement, name char(10), age integer, no integer, cpp float, math float, english float)");
     }
 
     //数据库升级时调用此方法
