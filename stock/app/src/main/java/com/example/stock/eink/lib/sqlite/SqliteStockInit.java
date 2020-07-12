@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
+
 public class SqliteStockInit {
 
     private static String Drivde = "org.sqlite.JDBC";
@@ -27,18 +28,18 @@ public class SqliteStockInit {
 
     private void startInitStockDatabase(){
         try{
-            Class.forName(Drivde);
+
             String stockfilepath = Environment.getExternalStorageDirectory().getPath() + "/" + "huibao";
             stockfilepath = stockfilepath + "/sqlite/stock.db";
             String srcPath = "jdbc:sqlite:" + stockfilepath;
 
             System.out.println(srcPath);
 
+            Class.forName(Drivde);
             //连接数据库,不存在则创建
             Connection connecter = DriverManager.getConnection(srcPath);
             //创建连接对象，是Java的一个操作数据库的重要接口
             Statement statement = connecter.createStatement();
-
 
             connecter.close();
 
