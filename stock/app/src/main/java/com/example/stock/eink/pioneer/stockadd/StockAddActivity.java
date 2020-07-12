@@ -1,7 +1,11 @@
 package com.example.stock.eink.pioneer.stockadd;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -50,6 +54,7 @@ public class StockAddActivity extends AppCompatActivity {
             if(obtainStockState){
                 obtainStockBut.setText("停止获取");
                 obtainStockState = false;
+
 
                 System.out.println(Environment.getExternalStorageDirectory().getPath());
                 String filepath = Environment.getExternalStorageDirectory().getPath() + "/" + "huibao";
