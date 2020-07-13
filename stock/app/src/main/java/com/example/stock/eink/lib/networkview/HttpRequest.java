@@ -96,6 +96,8 @@ public abstract class HttpRequest {
     public abstract void fillHead(HttpURLConnection connecter);
     public abstract void addData(String data);
     public abstract void parseData();
+    public abstract void startReq();
+    public abstract void stopReq();
 
 
     public String getErrorMeg(){
