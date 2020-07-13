@@ -21,9 +21,13 @@ public class StockAddActivity extends AppCompatActivity {
     private Button obtainStockBut;
     private Button obtainStockYearMaxMinBut;
     private ImageView quitImageView;
-    private boolean obtainStockState = true;
-    private boolean obtainStockYearMaxMinState = true;
+    private boolean obtainStockState = false;
+    private boolean obtainStockYearMaxMinState = false;
     private String stockTypeName = null;
+
+    private StockAddRequest stockAddRequest;
+    private TextView addStockHintTextView;
+    private TextView yearMinMaxHintTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,11 @@ public class StockAddActivity extends AppCompatActivity {
         quitImageView = (ImageView)findViewById(R.id.imageView_title_quit);
         quitImageView.setOnClickListener(listenerQuit);
 
+        addStockHintTextView = (TextView)findViewById(R.id.textView2);
+        yearMinMaxHintTextView = (TextView)findViewById(R.id.textView5);
+
+        stockAddRequest = new StockAddRequest(stockTypeName,addStockHintTextView,600000);
+
     }
 
     //@获取股票信息
@@ -53,14 +62,14 @@ public class StockAddActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             if(obtainStockState){
-                obtainStockBut.setText("停止获取");
-                obtainStockState = false;
-
-            }else{
+                stockAddRequest.setRequestState(false);
                 obtainStockBut.setText("开始添加");
+                obtainStockState = false;
+            }else{
+                obtainStockBut.setText("停止获取");
                 obtainStockState = true;
+                stockAddRequest.startRequest();
             }
-
         }
     }
 
@@ -70,10 +79,10 @@ public class StockAddActivity extends AppCompatActivity {
         public void onClick(View view) {
             if(obtainStockYearMaxMinState){
                 obtainStockYearMaxMinState = false;
-                obtainStockYearMaxMinBut.setText("停止获取");
+                obtainStockYearMaxMinBut.setText("开始获取");
             }else {
                 obtainStockYearMaxMinState = true;
-                obtainStockYearMaxMinBut.setText("开始获取");
+                obtainStockYearMaxMinBut.setText("停止获取");
             }
 
         }

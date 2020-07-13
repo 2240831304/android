@@ -11,10 +11,13 @@ public class StockAddRequest extends HttpRequest {
     private String ResultData;
     private String stockType = null;
     private TextView addStockCode = null;
+    private int executeCode = 0;
+    private boolean isRequestState = false;
 
-    public StockAddRequest(String stockTypeData ,TextView viewPt){
+
+    public StockAddRequest(String stockTypeEnName ,TextView viewPt,int codeNum){
         addStockCode = viewPt;
-
+        executeCode = codeNum;
     }
 
     public void fillHead(HttpURLConnection connecter)
@@ -30,6 +33,20 @@ public class StockAddRequest extends HttpRequest {
     public void parseData()
     {
         System.out.println(ResultData);
+    }
+
+    public int getExecuteCode(){
+        return executeCode;
+    }
+
+
+    public void startRequest() {
+        isRequestState = true;
+    }
+
+
+    public void setRequestState(boolean state){
+        isRequestState = state;
     }
 
 }
