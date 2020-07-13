@@ -20,7 +20,7 @@ public abstract class HttpRequest {
     private RequestType type = RequestType.GET;
     private String errorMeg;
     private String resultData;
-    private String param;
+    private String param = null;
 
     public void setReqUrl(String urlData){
         url = urlData;

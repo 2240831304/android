@@ -1,5 +1,7 @@
 package com.example.stock.eink.pioneer.stockadd;
 
+import android.content.Context;
+import android.print.PrinterId;
 import android.widget.TextView;
 
 import com.example.stock.eink.lib.networkview.HttpRequest;
@@ -8,16 +10,22 @@ import java.net.HttpURLConnection;
 
 public class StockAddRequest extends HttpRequest {
 
-    private String ResultData;
-    private String stockType = null;
-    private TextView addStockCode = null;
-    private int executeCode = 0;
+    private static final String shanghaiurl = "http://qt.gtimg.cn/q=s_sh";
+    private static final String shenzhenurl = "http://qt.gtimg.cn/q=s_sz";
+
+    private String ResultData; //请求网络返回的数据
+
+    private String stockType = null;  //股票类型中文名字
+    private String stockTypeEnName = null;  //股票类型英文名字
+
+    private TextView addStockTextViewHint = null; //提示正在执行股票代码
+    private int executeCodeId = 0;   //正在执行的股票编号
     private boolean isRequestState = false;
+    private Context context;
 
 
-    public StockAddRequest(String stockTypeEnName ,TextView viewPt,int codeNum){
-        addStockCode = viewPt;
-        executeCode = codeNum;
+    public StockAddRequest(String stockTypeCnName){
+        stockType = stockTypeCnName;
     }
 
     public void fillHead(HttpURLConnection connecter)
@@ -36,7 +44,7 @@ public class StockAddRequest extends HttpRequest {
     }
 
     public int getExecuteCode(){
-        return executeCode;
+        return executeCodeId;
     }
 
 
@@ -47,6 +55,10 @@ public class StockAddRequest extends HttpRequest {
 
     public void setRequestState(boolean state){
         isRequestState = state;
+    }
+
+    private void obtainStockTypeEnName(){
+
     }
 
 }

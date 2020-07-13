@@ -46,14 +46,13 @@ public class StockAddActivity extends AppCompatActivity {
         obtainStockYearMaxMinBut.setText("开始获取");
         obtainStockYearMaxMinBut.setOnClickListener(new ObtainStockYearMaxMinButListener());
 
-
         quitImageView = (ImageView)findViewById(R.id.imageView_title_quit);
         quitImageView.setOnClickListener(listenerQuit);
 
         addStockHintTextView = (TextView)findViewById(R.id.textView2);
         yearMinMaxHintTextView = (TextView)findViewById(R.id.textView5);
 
-        stockAddRequest = new StockAddRequest(stockTypeName,addStockHintTextView,600000);
+        stockAddRequest = new StockAddRequest(stockTypeName);
 
     }
 
