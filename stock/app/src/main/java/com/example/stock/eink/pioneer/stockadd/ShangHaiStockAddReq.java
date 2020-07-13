@@ -41,7 +41,7 @@ public class ShangHaiStockAddReq extends HttpRequest {
         requestState = true;
 
         while (requestState){
-            if(reqStockCodeId >= 610000) {
+            if(reqStockCodeId >= 610024) {
                 reqStockCodeHint.setText("请求完成");
                 break;
             }

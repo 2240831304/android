@@ -12,7 +12,7 @@ public class StockAddRequest {
     private String stockBoardCnName = null;
     private TextView hintTextView;
 
-    private HttpRequest requestPt = null;
+    private HttpRequest requestPt;
 
 
     public StockAddRequest(Context data,String stockTypeCnName,TextView view){
@@ -22,8 +22,11 @@ public class StockAddRequest {
     }
 
     private void Init(){
-        if(stockBoardCnName == ""){
-
+        System.out.println("1111111111111111="+stockBoardCnName);
+        stockBoardCnName = "沪市A股";
+        if(stockBoardCnName == "沪市A股"){
+            System.out.println("22222222222222222222="+stockBoardCnName);
+            requestPt = new ShangHaiStockAddReq(hintTextView,600023);
         }
     }
 
@@ -31,7 +34,7 @@ public class StockAddRequest {
         Init();
 
         if(requestPt == null){
-            System.out.println("StockAddRequest error,request instance not have!!");
+            System.out.println("StockAddRequest start error,request instance not have!!");
             return;
         }
         requestPt.startReq();
@@ -39,7 +42,7 @@ public class StockAddRequest {
 
     public void stop(){
         if(requestPt == null){
-            System.out.println("StockAddRequest error,request instance not have!!");
+            System.out.println("StockAddRequest stop error,request instance not have!!");
             return;
         }
 
