@@ -15,13 +15,16 @@ public class StockAddRequest {
     private HttpRequest requestPt = null;
 
 
-    public StockAddRequest(Context data,String stockTypeCnName){
+    public StockAddRequest(Context data,String stockTypeCnName,TextView view){
         context = data;
         stockBoardCnName = stockTypeCnName;
+        hintTextView = view;
     }
 
     private void Init(){
+        if(stockBoardCnName == ""){
 
+        }
     }
 
     public void start(){

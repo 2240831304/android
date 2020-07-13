@@ -52,7 +52,7 @@ public class StockAddActivity extends AppCompatActivity {
         addStockHintTextView = (TextView)findViewById(R.id.textView2);
         yearMinMaxHintTextView = (TextView)findViewById(R.id.textView5);
 
-        stockAddRequest = new StockAddRequest(this,stockTypeName);
+        stockAddRequest = new StockAddRequest(this,stockTypeName,addStockHintTextView);
 
     }
 
