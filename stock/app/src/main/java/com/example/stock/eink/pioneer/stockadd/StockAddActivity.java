@@ -23,6 +23,7 @@ public class StockAddActivity extends AppCompatActivity {
     private ImageView quitImageView;
     private boolean obtainStockState = true;
     private boolean obtainStockYearMaxMinState = true;
+    private String stockTypeName = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class StockAddActivity extends AppCompatActivity {
         setContentView(R.layout.stock_add_activity);
 
         TextView titleView = (TextView)findViewById(R.id.textview_title_stocktype);
-        String stockTypeName = getIntent().getStringExtra("stockTypeName");
+        stockTypeName = getIntent().getStringExtra("stockTypeName");
         titleView.setText(stockTypeName);
 
         obtainStockBut = (Button)findViewById(R.id.button_get_stock);
