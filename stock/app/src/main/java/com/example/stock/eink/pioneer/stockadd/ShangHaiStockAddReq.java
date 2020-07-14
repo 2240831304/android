@@ -14,9 +14,11 @@ public class ShangHaiStockAddReq extends HttpRequest {
     private String ResultData; //请求网络返回的数据
     private int reqStockCodeId = 0;
     private boolean requestState = false;
+    private StockAddDataParse parser;
 
     public ShangHaiStockAddReq(int id){
         reqStockCodeId = id;
+        parser = new StockAddDataParse();
     }
 
     public void fillHead(HttpURLConnection connecter)
@@ -33,6 +35,8 @@ public class ShangHaiStockAddReq extends HttpRequest {
     {
         System.out.println("ShangHaiStockAddReq start  parse data!!!");
         System.out.println(ResultData);
+        parser.parse(ResultData);
+
         ResultData = null;
     }
 
