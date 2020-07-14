@@ -20,4 +20,13 @@ public class StockAddDataSave {
         databaseFilePath = fileManeger.getStockFilePath() + databaseName;
 
     }
+
+    public void save(){
+
+    }
+
+    public void close(){
+
+    }
+
 }

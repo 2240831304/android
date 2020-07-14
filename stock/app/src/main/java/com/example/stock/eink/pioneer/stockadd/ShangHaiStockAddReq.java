@@ -1,7 +1,5 @@
 package com.example.stock.eink.pioneer.stockadd;
 
-import android.widget.TextView;
-
 import com.example.stock.eink.lib.networkview.HttpRequest;
 
 import java.net.HttpURLConnection;
@@ -16,9 +14,12 @@ public class ShangHaiStockAddReq extends HttpRequest {
     private boolean requestState = false;
     private StockAddDataParse parser;
 
+    private StockAddDataSave dataSaver;
+
     public ShangHaiStockAddReq(int id){
         reqStockCodeId = id;
         parser = new StockAddDataParse();
+        dataSaver = new StockAddDataSave("shanghai");
     }
 
     public void fillHead(HttpURLConnection connecter)
@@ -36,6 +37,8 @@ public class ShangHaiStockAddReq extends HttpRequest {
         System.out.println("ShangHaiStockAddReq start  parse data!!!");
         //System.out.println(ResultData);
         parser.parse(ResultData);
+
+        dataSaver.save();
 
         ResultData = null;
     }
@@ -57,6 +60,8 @@ public class ShangHaiStockAddReq extends HttpRequest {
 
             reqStockCodeId += 1;
         }
+
+        dataSaver.close();
     }
 
     public void stopReq() {
