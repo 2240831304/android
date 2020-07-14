@@ -53,7 +53,6 @@ public class StockAddActivity extends AppCompatActivity {
         yearMinMaxHintTextView = (TextView)findViewById(R.id.textView5);
 
         stockAddRequest = new StockAddRequest(this,stockTypeName);
-
     }
 
     //@获取股票信息

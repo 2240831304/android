@@ -53,7 +53,7 @@ public abstract class HttpRequest {
                 conn.setDoInput(true);
             }
             //conn.setConnectTimeout(30000);
-            //conn.setReadTimeout(10000);
+            //conn.setReadTimeout(4);
             //conn.setRequestProperty("Accept", "application/json");
             //下面函数设置头部
             fillHead(conn);
