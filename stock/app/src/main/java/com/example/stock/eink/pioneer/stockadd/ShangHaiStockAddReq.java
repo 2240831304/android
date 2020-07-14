@@ -12,12 +12,10 @@ public class ShangHaiStockAddReq extends HttpRequest {
     private static final String shenzhenurl = "http://qt.gtimg.cn/q=s_sz";
 
     private String ResultData; //请求网络返回的数据
-    private TextView reqStockCodeHint;
     private int reqStockCodeId = 0;
     private boolean requestState = false;
 
-    public ShangHaiStockAddReq(TextView view ,int id){
-        reqStockCodeHint =  view;
+    public ShangHaiStockAddReq(int id){
         reqStockCodeId = id;
     }
 
@@ -33,7 +31,9 @@ public class ShangHaiStockAddReq extends HttpRequest {
 
     public void parseData()
     {
+        System.out.println("ShangHaiStockAddReq start  parse data!!!");
         System.out.println(ResultData);
+        ResultData = null;
     }
 
 
@@ -41,14 +41,12 @@ public class ShangHaiStockAddReq extends HttpRequest {
         requestState = true;
 
         while (requestState){
-            if(reqStockCodeId >= 610024) {
-                reqStockCodeHint.setText("请求完成");
+            if(reqStockCodeId >= 600025) {
                 break;
             }
 
             String url = shanghaiurl + Integer.toString(reqStockCodeId);
             System.out.println("ShangHaiStockAddReq code id=" + url);
-            reqStockCodeHint.setText(Integer.toString(reqStockCodeId));
 
             setReqUrl(url);
             execute();
@@ -59,7 +57,6 @@ public class ShangHaiStockAddReq extends HttpRequest {
 
     public  void stopReq() {
         requestState = false;
-        reqStockCodeHint.setText("暂停请求");
     }
 
 

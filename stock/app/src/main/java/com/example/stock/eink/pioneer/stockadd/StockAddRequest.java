@@ -8,17 +8,14 @@ import com.example.stock.eink.lib.networkview.HttpRequest;
 
 public class StockAddRequest {
 
-    private Context context;
     private String stockBoardCnName = null;
-    private TextView hintTextView;
 
     private HttpRequest requestPt;
 
 
-    public StockAddRequest(Context data,String stockTypeCnName,TextView view){
-        context = data;
+    public StockAddRequest(String stockTypeCnName){
+
         stockBoardCnName = stockTypeCnName;
-        hintTextView = view;
     }
 
     private void Init(){
@@ -26,18 +23,24 @@ public class StockAddRequest {
         stockBoardCnName = "沪市A股";
         if(stockBoardCnName == "沪市A股"){
             System.out.println("22222222222222222222="+stockBoardCnName);
-            requestPt = new ShangHaiStockAddReq(hintTextView,600023);
+            requestPt = new ShangHaiStockAddReq(600023);
         }
     }
 
     public void start(){
         Init();
-
         if(requestPt == null){
             System.out.println("StockAddRequest start error,request instance not have!!");
             return;
         }
-        requestPt.startReq();
+
+        new Thread(new Runnable(){
+            @Override
+            public void run() {
+                requestPt.startReq();
+            }
+        }).start();
+
     }
 
     public void stop(){
