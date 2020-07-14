@@ -62,8 +62,9 @@ public abstract class HttpRequest {
             conn.connect();
             //通过conn取得输入流，并使用Reader读取
             if (200 == conn.getResponseCode()){
+                //System.out.println("1222=="+conn.getHeaderFields());
                 is = conn.getInputStream();
-                br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+                br = new BufferedReader(new InputStreamReader(is, "GBK"));
                 String line;
                 while ((line = br.readLine()) != null){
                     addData(line);

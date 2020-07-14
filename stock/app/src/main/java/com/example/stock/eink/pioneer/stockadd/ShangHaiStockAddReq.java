@@ -34,7 +34,7 @@ public class ShangHaiStockAddReq extends HttpRequest {
     public void parseData()
     {
         System.out.println("ShangHaiStockAddReq start  parse data!!!");
-        System.out.println(ResultData);
+        //System.out.println(ResultData);
         parser.parse(ResultData);
 
         ResultData = null;
@@ -45,7 +45,7 @@ public class ShangHaiStockAddReq extends HttpRequest {
         requestState = true;
 
         while (requestState){
-            if(reqStockCodeId >= 600025) {
+            if(reqStockCodeId >= 600010) {
                 break;
             }
 
