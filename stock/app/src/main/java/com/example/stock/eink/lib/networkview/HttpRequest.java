@@ -19,7 +19,6 @@ public abstract class HttpRequest {
     private String url;
     private RequestType type = RequestType.GET;
     private String errorMeg;
-    private String resultData;
     private String param = null;
 
     public void setReqUrl(String urlData){
@@ -39,6 +38,7 @@ public abstract class HttpRequest {
         HttpURLConnection conn = null;
         InputStream is = null;
         BufferedReader br = null;
+        errorMeg = null;
 
         try {
             String reqUrl = url + "?" + param;
@@ -69,10 +69,12 @@ public abstract class HttpRequest {
                     addData(line);
                 }
             }else{
+                errorMeg = "请求网络出错";
                 System.out.println("ResponseCode is an error code:" + conn.getResponseCode());
             }
 
         }catch (Exception e) {
+            errorMeg = "请求网络出错";
             System.out.println("发送请求出现异常:" + e);
             e.printStackTrace();
         }finally{
@@ -102,10 +104,6 @@ public abstract class HttpRequest {
 
     public String getErrorMeg(){
         return errorMeg;
-    }
-
-    public String getResultData(){
-        return resultData;
     }
 
 

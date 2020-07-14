@@ -1,9 +1,9 @@
 package com.example.stock.eink.pioneer.stockadd;
 
 import android.content.Context;
-import android.widget.TextView;
 
 import com.example.stock.eink.lib.networkview.HttpRequest;
+import com.example.stock.R;
 
 
 public class StockAddRequest {
@@ -11,20 +11,24 @@ public class StockAddRequest {
     private String stockBoardCnName = null;
 
     private HttpRequest requestPt;
+    private Context context;
 
 
-    public StockAddRequest(String stockTypeCnName){
-
+    public StockAddRequest(Context contextPt,String stockTypeCnName){
+        context = contextPt;
         stockBoardCnName = stockTypeCnName;
     }
 
     private void Init(){
-        System.out.println("1111111111111111="+stockBoardCnName);
-        stockBoardCnName = "沪市A股";
-        if(stockBoardCnName == "沪市A股"){
-            System.out.println("22222222222222222222="+stockBoardCnName);
-            requestPt = new ShangHaiStockAddReq(600023);
+        System.out.println("StockAddRequest stock type name=="+stockBoardCnName);
+        int startStockCodeID = 0;
+
+        if( stockBoardCnName.equals("沪市A股") ){
+            startStockCodeID = context.getResources().getInteger(R.integer.shanghaistock_get_id);
+            System.out.println("2222222222222222222222222="+startStockCodeID);
+            requestPt = new ShangHaiStockAddReq(startStockCodeID);
         }
+
     }
 
     public void start(){

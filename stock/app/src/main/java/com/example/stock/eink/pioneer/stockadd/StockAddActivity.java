@@ -52,7 +52,7 @@ public class StockAddActivity extends AppCompatActivity {
         addStockHintTextView = (TextView)findViewById(R.id.textView2);
         yearMinMaxHintTextView = (TextView)findViewById(R.id.textView5);
 
-        stockAddRequest = new StockAddRequest(stockTypeName);
+        stockAddRequest = new StockAddRequest(this,stockTypeName);
 
     }
 
@@ -92,6 +92,9 @@ public class StockAddActivity extends AppCompatActivity {
     private View.OnClickListener listenerQuit = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            if(obtainStockState){
+                stockAddRequest.stop();
+            }
             StockAddActivity.this.finish();
         }
     };

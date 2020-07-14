@@ -55,7 +55,7 @@ public class ShangHaiStockAddReq extends HttpRequest {
         }
     }
 
-    public  void stopReq() {
+    public void stopReq() {
         requestState = false;
     }
 
