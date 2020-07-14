@@ -7,7 +7,6 @@ import android.os.Environment;
 import com.example.stock.eink.lib.filesystem.ConfigParameter;
 import com.example.stock.eink.lib.filesystem.FileSystemInit;
 import com.example.stock.eink.lib.sqlite.MySqliteOpenHelper;
-import com.example.stock.eink.lib.sqlite.SqliteStockInit;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
