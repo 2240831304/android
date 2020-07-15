@@ -20,10 +20,11 @@ public class YearMaxMinPriceReq {
     private void Init(){
         System.out.println("YearMaxMinPriceReq stock board=="+stockBoardCnName);
         int startStockCodeID = 0;
+        String startDate = context.getResources().getString(R.string.yearmaxminprice_startdate);
 
         if( stockBoardCnName.equals("沪市A股") ){
             startStockCodeID = context.getResources().getInteger(R.integer.shanghai_yearmaxmin_price_id);
-            requestPt = new ShanghaiYearMaxMinReq(startStockCodeID);
+            requestPt = new ShanghaiYearMaxMinReq(startStockCodeID,startDate);
         }
     }
 
