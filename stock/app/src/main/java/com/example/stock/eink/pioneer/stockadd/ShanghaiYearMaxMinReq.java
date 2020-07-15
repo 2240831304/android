@@ -4,7 +4,13 @@ import com.example.stock.eink.lib.networkview.HttpRequest;
 
 import java.net.HttpURLConnection;
 
-public class shanghaiYearMaxMinReq extends HttpRequest {
+public class ShanghaiYearMaxMinReq extends HttpRequest {
+
+    private int startReqId;
+
+    public ShanghaiYearMaxMinReq(int startCode){
+        startReqId = startCode;
+    }
 
     public void fillHead(HttpURLConnection connecter)
     {
@@ -27,4 +33,5 @@ public class shanghaiYearMaxMinReq extends HttpRequest {
     {
 
     }
+
 }

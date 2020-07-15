@@ -25,6 +25,8 @@ public class StockAddActivity extends AppCompatActivity {
     private TextView addStockHintTextView;
     private TextView yearMinMaxHintTextView;
 
+    private YearMaxMinPriceReq yearMaxMinPriceRequest;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +51,7 @@ public class StockAddActivity extends AppCompatActivity {
         yearMinMaxHintTextView = (TextView)findViewById(R.id.textView5);
 
         stockAddRequest = new StockAddRequest(this,stockTypeName);
+        yearMaxMinPriceRequest = new YearMaxMinPriceReq(this,stockTypeName);
     }
 
     //@获取股票信息
@@ -72,9 +75,11 @@ public class StockAddActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             if(obtainStockYearMaxMinState){
+                yearMaxMinPriceRequest.stop();
                 obtainStockYearMaxMinState = false;
                 obtainStockYearMaxMinBut.setText("开始获取");
             }else {
+                yearMaxMinPriceRequest.start();
                 obtainStockYearMaxMinState = true;
                 obtainStockYearMaxMinBut.setText("停止获取");
             }
@@ -89,6 +94,9 @@ public class StockAddActivity extends AppCompatActivity {
         public void onClick(View view) {
             if(obtainStockState){
                 stockAddRequest.stop();
+            }
+            if(obtainStockYearMaxMinState){
+                yearMaxMinPriceRequest.stop();
             }
             StockAddActivity.this.finish();
         }
