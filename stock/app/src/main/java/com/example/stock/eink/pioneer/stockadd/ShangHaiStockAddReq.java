@@ -34,11 +34,12 @@ public class ShangHaiStockAddReq extends HttpRequest {
 
     public void parseData()
     {
-        System.out.println("ShangHaiStockAddReq start  parse data!!!");
+        //System.out.println("ShangHaiStockAddReq start  parse data!!!");
         //System.out.println(ResultData);
         parser.parse(ResultData);
 
-        dataSaver.save();
+        String strTmp = "sh" + Integer.toString(reqStockCodeId);
+        dataSaver.save(parser.getParseData(),strTmp);
 
         ResultData = null;
     }

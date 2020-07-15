@@ -1,0 +1,105 @@
+# python
+http://q.stock.sohu.com/hisHq?code=cn_601058&start=20180501&end=20200520
+
+http://q.stock.sohu.com/hisHq?code=cn_600009&start=20180716&end=20180720&stat=1&order=D&period=d&callback=historySearchHandler&rt=jsonp
+
+
+http://q.stock.sohu.com/hisHq?code=cn_600009&start=20180716&end=20180720&stat=1&order=D&period=d
+
+
+参考网站：：https://blog.csdn.net/leijia_xing/article/details/81139005
+
+搜狐接口获取历史数据：：
+http://q.stock.sohu.com/hisHq?code=cn_000021&start=20180716&end=20200514&stat=0&order=D&period=m
+
+各参数的含义为：code：股票代码，以cn_开头，start:起始时间，end：截止时间，stat:统计信息，为0的时候就不返回stat对应的值了，order：排序方法（D表示降序排，A表示升序排），period：数据周期（d表示日线，m表示月线，w表示周线）。
+
+返回的数据以这条为例
+"2018-07-20","61.22","61.83","0.61","1.00%","61.22","62.69","57637","35856.55","0.53%"
+日期，开盘，收盘，涨跌，涨幅，最低，最高，成交量，成交额，换手。
+
+
+update stock set money= where codename="";
+select name,codename,money from stock where money>0;
+
+select name,money from stock where money LIKE "106%";
+
+例如：
+http://qt.gtimg.cn/q=sz000858  实时数据
+
+关注这个网站：https://www.cnblogs.com/ilovecpp/p/12717697.html
+https://blog.csdn.net/Cupedy/article/details/53261697
+
+腾讯还有一个获取资金流向的接口，这让我们很方便的看出主力的操作
+
+接口地址
+1
+http://qt.gtimg.cn/q=ff_sz300658
+获取的数据结果如下
+
+1
+v_ff_sz300658="sz300658~5918.75~6913.40~-994.66~-4.97~14088.73
+~13094.08~994.65~4.97~20007.48~49843.378~46441.413~延江股份~20170616~
+20170615^12366.07^10534.77~20170614^9722.16^8610.57~
+20170613^12193.90^8315.81~20170612^9642.50^12066.86";
+以~分割字符串，得到的结果以及含义如下
+
+0: 股票代码
+1: 主力流入
+2: 主力流出
+3: 主力净流入
+4: 主力净流入/资金流入流出总和
+5: 散户流入
+6: 散户流出
+7: 散户净流入
+8: 散户净流入/资金流入流出总和
+9: 资金流入流出总和1+2+5+6
+10: 未知
+11: 未知
+12: 名字
+13: 日期
+
+
+
+历史数据验证
+设定好了阈值，就可以进行历史数据回测了，通过历史数据来验证我们的程序到底是不是准确。
+
+获取历史数据我们选用凤凰财经的接口，code表示股票的代码。
+
+1
+http://api.finance.ifeng.com/akdaily/?code=sz002307&type=last
+这个接口可以一次性获取股票的历史数据，其中每个数组里面的数据如下所示
+
+1
+["2017-06-16","18.180","19.290","18.300","17.400","1000574.62",
+"0.420","2.35","16.614","16.121","16.023","644,057.57",
+"537,300.99","490,775.52","17.95"]
+0  日期
+1  开盘价
+2  最高价
+3  收盘价
+4  最低价
+5  成交量
+6  涨跌额
+7  涨跌幅
+8  5日均价
+9  10日均价
+10 20日均价
+11 5日均量
+12 10日均量
+13 20日均量
+14 换手率
+
+<br>涨跌家数<br>https://hq.sinajs.cn/rn=1587089097462&list=sh000002_zdp,sz399107_zdp,sh000003_zdp,sz399108_zdp,sz399102_zdp<br><br>返回
+var hq_str_sh000002_zdp="961,427,113";
+var hq_str_sz399107_zdp="1432,633,138";
+var hq_str_sh000003_zdp="26,12,11";
+var hq_str_sz399108_zdp="24,13,9";
+var hq_str_sz399102_zdp="561,203,36";
+sh000002　＝　沪A
+sz399107　＝　深A
+sh000003 = 全B
+sz399102 = 创业
+961是上涨家数
+427是平家数
+113是下跌家数

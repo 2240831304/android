@@ -25,7 +25,6 @@ public class StockAddRequest {
 
         if( stockBoardCnName.equals("沪市A股") ){
             startStockCodeID = context.getResources().getInteger(R.integer.shanghaistock_get_id);
-            System.out.println("2222222222222222222222222="+startStockCodeID);
             requestPt = new ShangHaiStockAddReq(startStockCodeID);
         }
 

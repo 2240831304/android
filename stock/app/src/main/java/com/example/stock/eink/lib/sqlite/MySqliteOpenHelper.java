@@ -17,22 +17,22 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql = "create table if not exists shanghai(name varchar(15),code varchar(10),means TEXT," +
-                "grap integer,minprice integer,maxprice integer,curprice integer,state integer,calprice integer)";
+                "curprice integer,grap integer,minprice integer,maxprice integer,state integer,calprice integer)";
         db.execSQL(sql);
 
         sql = null;
         sql = "create table if not exists smallboard(name varchar(15),code varchar(10),means TEXT," +
-                "grap integer,minprice integer,maxprice integer,curprice integer,state integer,calprice integer)";
+                "curprice integer,grap integer,minprice integer,maxprice integer,state integer,calprice integer)";
         db.execSQL(sql);
 
         sql = null;
         sql = "create table if not exists chinext(name varchar(15),code varchar(10),means TEXT," +
-                "grap integer,minprice integer,maxprice integer,curprice integer,state integer,calprice integer)";
+                "curprice integer,grap integer,minprice integer,maxprice integer,state integer,calprice integer)";
         db.execSQL(sql);
 
         sql = null;
         sql = "create table if not exists money(name varchar(15),code varchar(10)," +
-                "date DATE,inmoney integer,outmoney integer,gapmoney integer,totle integer)";
+                "date DATE,zhuli integer,sanhu integer, totle integer)";
         db.execSQL(sql);
 
         Log.d("stock database:", "数据库创建成功");
