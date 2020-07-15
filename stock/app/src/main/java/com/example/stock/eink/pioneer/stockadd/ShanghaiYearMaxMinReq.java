@@ -16,7 +16,7 @@ import java.util.Date;
 public class ShanghaiYearMaxMinReq extends HttpRequest {
 
     private static final String requesturl =
-            "http://q.stock.sohu.com/hisHq?code=cn_%1&start=%2&end=%3&stat=0&order=D&period=m";
+            "https://q.stock.sohu.com/hisHq?code=cn_%1&start=%2&end=%3&stat=0&order=D&period=m";
 
     private int startReqCode = 0;
     private int executeIndexId = 0;
@@ -25,7 +25,7 @@ public class ShanghaiYearMaxMinReq extends HttpRequest {
     private String StartDate = null;
     private String EndData = null;
 
-    private String resultData = null;
+    private String resultData ;
     private boolean requestState = false;
 
     private String databaseName = "stock.db";
@@ -33,7 +33,8 @@ public class ShanghaiYearMaxMinReq extends HttpRequest {
     private MyApplication normalActivity;
     private SQLiteDatabase db;
 
-
+    private YearMaxMinPriceDataParse parser;
+    private YearMaxMinPriceDataSave  saver;
 
     public ShanghaiYearMaxMinReq(int startCode,String startDatePt){
         startReqCode = startCode;
@@ -46,6 +47,9 @@ public class ShanghaiYearMaxMinReq extends HttpRequest {
         MySqliteOpenHelper oh = new MySqliteOpenHelper(normalActivity.getContext(), databaseFilePath,
                 null, stockVersion);
         db = oh.getWritableDatabase();
+
+        parser = new YearMaxMinPriceDataParse();
+        saver = new YearMaxMinPriceDataSave(db,"shanghai");
     }
 
     public void fillHead(HttpURLConnection connecter)
@@ -60,6 +64,13 @@ public class ShanghaiYearMaxMinReq extends HttpRequest {
     public void parseData(){
 
         System.out.println(resultData);
+
+        if(getErrorMeg() == null){
+            parser.parse(resultData);
+            saver.save(executeIndexId,parser.getMinprice(),parser.getMaxprice());
+        }
+
+        saver.save(5,12,18);
 
         resultData = null;
 

@@ -55,14 +55,16 @@ public abstract class HttpRequest {
             //conn.setConnectTimeout(30000);
             //conn.setReadTimeout(4);
             //conn.setRequestProperty("Accept", "application/json");
+
             //下面函数设置头部
             fillHead(conn);
 
             //发送请求
             conn.connect();
+
+            System.out.println("1222=="+conn.getHeaderFields());
             //通过conn取得输入流，并使用Reader读取
             if (200 == conn.getResponseCode()){
-                //System.out.println("1222=="+conn.getHeaderFields());
                 is = conn.getInputStream();
                 br = new BufferedReader(new InputStreamReader(is, "GBK"));
                 String line;
