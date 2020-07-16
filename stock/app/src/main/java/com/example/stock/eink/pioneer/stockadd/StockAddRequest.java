@@ -26,6 +26,9 @@ public class StockAddRequest {
         if( stockBoardCnName.equals("沪市A股") ){
             startStockCodeID = context.getResources().getInteger(R.integer.shanghaistock_get_id);
             requestPt = new ShangHaiStockAddReq(startStockCodeID);
+        }else if(stockBoardCnName.equals("中小板") ){
+            startStockCodeID = context.getResources().getInteger(R.integer.smallboardstock_get_id);
+            requestPt = new SmallBoardStockAddReq(startStockCodeID);
         }
 
     }
