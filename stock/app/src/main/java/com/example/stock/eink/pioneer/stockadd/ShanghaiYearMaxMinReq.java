@@ -25,7 +25,7 @@ public class ShanghaiYearMaxMinReq extends HttpRequest {
     private String StartDate = null;
     private String EndData = null;
 
-    private String resultData ;
+    private String resultData = "";
     private boolean requestState = false;
 
     private String databaseName = "stock.db";
@@ -63,16 +63,14 @@ public class ShanghaiYearMaxMinReq extends HttpRequest {
 
     public void parseData(){
 
-        System.out.println(resultData);
+        System.out.println("ShanghaiYearMaxMinReq data"+resultData);
 
-        if(getErrorMeg() == null){
+        if(getErrorMeg().isEmpty()){
             parser.parse(resultData);
             saver.save(executeIndexId,parser.getMinprice(),parser.getMaxprice());
         }
 
-        saver.save(5,12,18);
-
-        resultData = null;
+        resultData = "";
 
     }
 

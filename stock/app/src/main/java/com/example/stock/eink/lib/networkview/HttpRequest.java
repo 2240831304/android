@@ -19,7 +19,7 @@ public abstract class HttpRequest {
     private String url;
     private RequestType type = RequestType.GET;
     private String errorMeg;
-    private String param = null;
+    private String param;
 
     public void setReqUrl(String urlData){
         url = urlData;
@@ -38,20 +38,26 @@ public abstract class HttpRequest {
         HttpURLConnection conn = null;
         InputStream is = null;
         BufferedReader br = null;
-        errorMeg = null;
+        errorMeg = "";
 
         try {
-            String reqUrl = url + "?" + param;
-            URL urlTemp = new URL(reqUrl);
+            URL urlTemp = new URL(url);
+            System.out.println("HttpRequest execute url ="+urlTemp);
+
             //通过远程url连接对象打开一个连接，强转成HTTPURLConnection类
             conn = (HttpURLConnection)urlTemp.openConnection();
             if (type == RequestType.GET){
                 conn.setRequestMethod("GET");
+                //conn.setDoOutput(true);
+                //conn.setDoInput(true);
+
             }else {
                 conn.setRequestMethod("POST");
                 conn.setDoOutput(true);
                 conn.setDoInput(true);
             }
+            //conn.setRequestProperty("Content-type", "application/x-www-form-urlencoded");
+            conn.setUseCaches(false);
             //conn.setConnectTimeout(30000);
             //conn.setReadTimeout(4);
             //conn.setRequestProperty("Accept", "application/json");
@@ -62,7 +68,7 @@ public abstract class HttpRequest {
             //发送请求
             conn.connect();
 
-            System.out.println("1222=="+conn.getHeaderFields());
+            //System.out.println("1222=="+conn.getHeaderFields());
             //通过conn取得输入流，并使用Reader读取
             if (200 == conn.getResponseCode()){
                 is = conn.getInputStream();

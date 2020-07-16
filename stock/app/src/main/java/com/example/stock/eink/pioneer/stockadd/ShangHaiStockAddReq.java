@@ -9,7 +9,7 @@ public class ShangHaiStockAddReq extends HttpRequest {
     private static final String shanghaiurl = "http://qt.gtimg.cn/q=s_sh";
     private static final String shenzhenurl = "http://qt.gtimg.cn/q=s_sz";
 
-    private String ResultData; //请求网络返回的数据
+    private String ResultData = ""; //请求网络返回的数据
     private int reqStockCodeId = 0;
     private boolean requestState = false;
     private StockAddDataParse parser;
@@ -35,13 +35,16 @@ public class ShangHaiStockAddReq extends HttpRequest {
     public void parseData()
     {
         //System.out.println("ShangHaiStockAddReq start  parse data!!!");
-        //System.out.println(ResultData);
-        parser.parse(ResultData);
+        System.out.println("ShangHaiStockAddReq data="+ResultData);
 
-        String strTmp = "sh" + Integer.toString(reqStockCodeId);
-        dataSaver.save(parser.getParseData(),strTmp);
+        if(getErrorMeg().isEmpty()){
+            parser.parse(ResultData);
 
-        ResultData = null;
+            String strTmp = "sh" + Integer.toString(reqStockCodeId);
+            dataSaver.save(parser.getParseData(),strTmp);
+        }
+
+        ResultData = "";
     }
 
 
