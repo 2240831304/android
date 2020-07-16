@@ -3,6 +3,7 @@ package com.example.stock.eink.pioneer.stockadd;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -61,10 +62,12 @@ public class StockAddActivity extends AppCompatActivity {
             if(obtainStockState){
                 stockAddRequest.stop();
                 obtainStockBut.setText("开始添加");
+                obtainStockBut.setBackgroundColor(Color.parseColor("#D7A6B7"));
                 obtainStockState = false;
             }else{
                 stockAddRequest.start();
                 obtainStockBut.setText("停止获取");
+                obtainStockBut.setBackgroundColor(Color.parseColor("#FF0000"));
                 obtainStockState = true;
             }
         }
@@ -74,14 +77,21 @@ public class StockAddActivity extends AppCompatActivity {
     private class ObtainStockYearMaxMinButListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            if(obtainStockState){
+                addStockHintTextView.setText("正在获取股票信息,等会再试");
+                return;
+            }
+
             if(obtainStockYearMaxMinState){
                 yearMaxMinPriceRequest.stop();
                 obtainStockYearMaxMinState = false;
                 obtainStockYearMaxMinBut.setText("开始获取");
+                obtainStockYearMaxMinBut.setBackgroundColor(Color.parseColor("#D7A6B7"));
             }else {
                 yearMaxMinPriceRequest.start();
                 obtainStockYearMaxMinState = true;
                 obtainStockYearMaxMinBut.setText("停止获取");
+                obtainStockYearMaxMinBut.setBackgroundColor(Color.parseColor("#FF0000"));
             }
 
         }
