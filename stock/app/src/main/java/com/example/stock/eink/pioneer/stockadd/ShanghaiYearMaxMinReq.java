@@ -63,11 +63,13 @@ public class ShanghaiYearMaxMinReq extends HttpRequest {
 
     public void parseData(){
 
-        System.out.println("ShanghaiYearMaxMinReq data"+resultData);
+        //System.out.println("ShanghaiYearMaxMinReq data="+resultData);
 
         if(getErrorMeg().isEmpty()){
-            parser.parse(resultData);
-            saver.save(executeIndexId,parser.getMinprice(),parser.getMaxprice());
+            if(resultData.contains("hq")){
+                parser.parse(resultData);
+                saver.save(executeIndexId,parser.getMinprice(),parser.getMaxprice());
+            }
         }
 
         resultData = "";
@@ -96,7 +98,7 @@ public class ShanghaiYearMaxMinReq extends HttpRequest {
             url = url.replace("%1",executeReqCode);
 
             System.out.println("ShanghaiYearMaxMinReq executeIndexId="+Integer.toString(executeIndexId));
-            System.out.println("ShanghaiYearMaxMinReq url=" + url);
+            //System.out.println("ShanghaiYearMaxMinReq url=" + url);
 
             setReqUrl(url);
             execute();

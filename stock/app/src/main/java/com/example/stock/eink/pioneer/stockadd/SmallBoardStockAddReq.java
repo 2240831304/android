@@ -34,7 +34,7 @@ public class SmallBoardStockAddReq extends HttpRequest {
 
     public void parseData()
     {
-        System.out.println("SmallBoardStockAddReq data="+ResultData);
+        //System.out.println("SmallBoardStockAddReq data="+ResultData);
 
         if(getErrorMeg().isEmpty()){
             parser.parse(ResultData);
