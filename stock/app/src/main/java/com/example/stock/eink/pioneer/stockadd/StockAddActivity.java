@@ -29,6 +29,7 @@ public class StockAddActivity extends AppCompatActivity {
 
     private YearMaxMinPriceReq yearMaxMinPriceRequest;
 
+    //handler+message处理添加股票时时信息更新
     private Handler stockAddhandler = new Handler(){
 
         public void handleMessage(Message msg) {
