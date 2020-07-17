@@ -29,7 +29,7 @@ public class StockAddActivity extends AppCompatActivity {
 
     private YearMaxMinPriceReq yearMaxMinPriceRequest;
 
-    private Handler handler = new Handler(){
+    private Handler stockAddhandler = new Handler(){
 
         public void handleMessage(Message msg) {
             String msgStr = (String)msg.obj;
@@ -71,7 +71,7 @@ public class StockAddActivity extends AppCompatActivity {
         addStockHintTextView = (TextView)findViewById(R.id.textView2);
         yearMinMaxHintTextView = (TextView)findViewById(R.id.textView5);
 
-        stockAddRequest = new StockAddRequest(this,stockTypeName,handler);
+        stockAddRequest = new StockAddRequest(this,stockTypeName,stockAddhandler);
         yearMaxMinPriceRequest = new YearMaxMinPriceReq(this,stockTypeName);
     }
 
