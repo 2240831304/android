@@ -11,7 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.stock.R;
-
+import android.os.Handler;
+import android.os.Message;
 
 
 public class StockAddActivity extends AppCompatActivity {
@@ -27,6 +28,25 @@ public class StockAddActivity extends AppCompatActivity {
     private TextView yearMinMaxHintTextView;
 
     private YearMaxMinPriceReq yearMaxMinPriceRequest;
+
+    private Handler handler = new Handler(){
+
+        public void handleMessage(Message msg) {
+            String msgStr = (String)msg.obj;
+            switch (msgStr){
+                case "finished":
+                    obtainStockBut.setText("开始添加");
+                    obtainStockBut.setBackgroundColor(Color.parseColor("#D7A6B7"));
+                    obtainStockState = false;
+                    addStockHintTextView.setText("点击 开始添加");
+                    break;
+
+                default:
+                    addStockHintTextView.setText(msgStr);
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +71,7 @@ public class StockAddActivity extends AppCompatActivity {
         addStockHintTextView = (TextView)findViewById(R.id.textView2);
         yearMinMaxHintTextView = (TextView)findViewById(R.id.textView5);
 
-        stockAddRequest = new StockAddRequest(this,stockTypeName);
+        stockAddRequest = new StockAddRequest(this,stockTypeName,handler);
         yearMaxMinPriceRequest = new YearMaxMinPriceReq(this,stockTypeName);
     }
 

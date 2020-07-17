@@ -1,5 +1,8 @@
 package com.example.stock.eink.pioneer.stockadd;
 
+import android.os.Handler;
+import android.os.Message;
+
 import com.example.stock.eink.lib.networkview.HttpRequest;
 
 import java.net.HttpURLConnection;
@@ -16,10 +19,13 @@ public class SmallBoardStockAddReq extends HttpRequest {
 
     private StockAddDataSave dataSaver;
 
-    public SmallBoardStockAddReq(int id){
+    private Handler handlerOb;
+
+    public SmallBoardStockAddReq(int id, Handler handlerPt){
         reqStockCodeId = id;
         parser = new StockAddDataParse();
         dataSaver = new StockAddDataSave("smallboard");
+        handlerOb = handlerPt;
     }
 
     public void fillHead(HttpURLConnection connecter)
@@ -58,6 +64,10 @@ public class SmallBoardStockAddReq extends HttpRequest {
             String url = shenzhenurl + getFullStockCode();
             System.out.println("SmallBoardStockAddReq code url=" + url);
 
+            Message message = new Message();
+            message.obj=getFullStockCode();
+            handlerOb.sendMessage(message);
+
             setReqUrl(url);
             execute();
 
@@ -65,6 +75,10 @@ public class SmallBoardStockAddReq extends HttpRequest {
         }
 
         dataSaver.close();
+
+        Message message = new Message();
+        message.obj="finished";
+        handlerOb.sendMessage(message);
     }
 
     public void stopReq() {
