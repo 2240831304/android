@@ -3,6 +3,10 @@ package com.example.stock.eink.pioneer.stockadd;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -11,11 +15,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.stock.R;
+import com.example.stock.eink.liabrary.broadcast.StockAddServer;
+
 import android.os.Handler;
 import android.os.Message;
 
 
 public class StockAddActivity extends AppCompatActivity {
+    public static final String ACTION_UPDATEUI = "action.updateUI";
+
     private Button obtainStockBut;
     private Button obtainStockYearMaxMinBut;
     private ImageView quitImageView;
@@ -28,6 +36,9 @@ public class StockAddActivity extends AppCompatActivity {
     private TextView yearMinMaxHintTextView;
 
     private YearMaxMinPriceReq yearMaxMinPriceRequest;
+
+    private MaxMinPriceReceiver yearMaxMinPriReceiver;
+    private StockAddServer stockAddServerOb;
 
     //handler+message处理添加股票时时信息更新
     private Handler stockAddhandler = new Handler(){
@@ -71,6 +82,18 @@ public class StockAddActivity extends AppCompatActivity {
 
         addStockHintTextView = (TextView)findViewById(R.id.textView2);
         yearMinMaxHintTextView = (TextView)findViewById(R.id.textView5);
+
+
+        // 动态注册广播
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ACTION_UPDATEUI);
+        yearMaxMinPriReceiver = new MaxMinPriceReceiver();
+        registerReceiver(yearMaxMinPriReceiver, filter);
+
+        // 启动服务
+        //stockAddServerOb = new StockAddServer();
+        Intent intent = new Intent(this, StockAddServer.class);
+        startService(intent);
 
         stockAddRequest = new StockAddRequest(this,stockTypeName,stockAddhandler);
         yearMaxMinPriceRequest = new YearMaxMinPriceReq(this,stockTypeName);
@@ -129,12 +152,34 @@ public class StockAddActivity extends AppCompatActivity {
             if(obtainStockYearMaxMinState){
                 yearMaxMinPriceRequest.stop();
             }
+
+            //注销广播
+            yearMaxMinPriReceiver.onDestroy();
+
             StockAddActivity.this.finish();
         }
     };
 
 
-    //@退出界面
+    //通过广播更新请求股票最大最小价的状态
+    private class MaxMinPriceReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            System.out.println("StockAddActivity MaxMinPriceReceiver 5555555555555");
+        }
+
+        protected void onDestroy(){
+            System.out.println("StockAddActivity MaxMinPriceReceiver 666666666666666");
+            // 注销广播
+            unregisterReceiver(yearMaxMinPriReceiver);
+
+        }
+
+    }
+
+
+
+        //@退出界面
     private class ListenerQuit implements View.OnClickListener{
         @Override
         public void onClick(View view) {

@@ -1,5 +1,6 @@
 package com.example.stock.eink.pioneer.stockadd;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -107,6 +108,11 @@ public class ShanghaiYearMaxMinReq extends HttpRequest {
         }
 
         db.close();
+
+        Intent intent = new Intent();
+        intent.setAction("action.updateUI");
+        intent.putExtra("count", 1);
+        MyApplication.getContext().sendBroadcast(intent);
     }
 
 
