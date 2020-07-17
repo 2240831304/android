@@ -46,7 +46,25 @@
                 android:textSize="28sp" />
 
             <com.example.stock.ui.stockpick.MyGridView
-                android:id="@+id/stockpick_gridview_select"
+                android:id="@+id/stockpick_gridview_lookup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00ff00"
+                android:numColumns="4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="12dp"
+                android:background="#ff0000"
+                android:text="获取股票资金流入流出状态"
+                android:textSize="28sp" />
+
+            <com.example.stock.ui.stockpick.MyGridView
+                android:id="@+id/stockpick_gridview_money"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#00ff00"

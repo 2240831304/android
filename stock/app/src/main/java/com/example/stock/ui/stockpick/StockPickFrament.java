@@ -45,6 +45,7 @@ public class StockPickFrament extends Fragment {
 
         stockTypeAdapter = new StockPickAdapter(this.content,this.stockTypeNameList);
         stockTypeAdapter.setStockTypePic(stockTypeIconList);
+
         final GridView stockAddGridView = root.findViewById(R.id.stockpick_gridview_add);
         stockAddGridView.setAdapter(stockTypeAdapter);
 
@@ -57,6 +58,12 @@ public class StockPickFrament extends Fragment {
 
             }
         });
+
+        final GridView stockLookUpGriView = root.findViewById(R.id.stockpick_gridview_lookup);
+        stockLookUpGriView.setAdapter(stockTypeAdapter);
+
+        final GridView stockMoneyGridView = root.findViewById(R.id.stockpick_gridview_money);
+        stockMoneyGridView.setAdapter(stockTypeAdapter);
 
         return root;
     }
