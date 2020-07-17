@@ -19,18 +19,18 @@ public class StockAddServer extends Service {
     public void onCreate(){
         super.onCreate();
 
-        final Intent intent = new Intent();
-        intent.setAction(ACTION_UPDATEUI);
-        intent.putExtra("count", 1);
-        sendBroadcast(intent);
+//        final Intent intent = new Intent();
+//        intent.setAction(ACTION_UPDATEUI);
+//        intent.putExtra("count", 1);
+//        sendBroadcast(intent);
 
-        System.out.println("StockAddServer onCreate33333333333333333");
+//        System.out.println("StockAddServer onCreate33333333333333333");
     }
 
     @Override
     public void onDestroy(){
         super.onDestroy();
-        System.out.println("StockAddServer onDestroy 55555555555555555555");
+        //System.out.println("StockAddServer onDestroy 55555555555555555555");
     }
 
 }

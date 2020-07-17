@@ -81,6 +81,9 @@ public class ShanghaiYearMaxMinReq extends HttpRequest {
         InitReqStockCode();
         requestState = true;
 
+        Intent intent = new Intent();
+        intent.setAction("action.updateUI");
+
         while (requestState){
             if(executeIndexId > tableMaxIndex){
                 break;
@@ -93,6 +96,9 @@ public class ShanghaiYearMaxMinReq extends HttpRequest {
             }
 
             executeReqCode = executeReqCode.replace("sh","");
+
+            intent.putExtra("name", executeReqCode);
+            MyApplication.getContext().sendBroadcast(intent);
 
             String url = requesturl.replace("%2",StartDate);
             url = url.replace("%3",EndData);
@@ -109,10 +115,9 @@ public class ShanghaiYearMaxMinReq extends HttpRequest {
 
         db.close();
 
-        Intent intent = new Intent();
-        intent.setAction("action.updateUI");
-        intent.putExtra("count", 1);
+        intent.putExtra("name", "finished");
         MyApplication.getContext().sendBroadcast(intent);
+
     }
 
 

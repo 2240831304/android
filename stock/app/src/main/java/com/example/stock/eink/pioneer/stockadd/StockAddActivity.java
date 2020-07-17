@@ -165,11 +165,20 @@ public class StockAddActivity extends AppCompatActivity {
     private class MaxMinPriceReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            System.out.println("StockAddActivity MaxMinPriceReceiver 5555555555555");
+            //System.out.println("StockAddActivity MaxMinPriceReceiver 5555555555555");
+            final String name = intent.getStringExtra("name");
+            if(name.equals("finished")){
+                obtainStockYearMaxMinState = false;
+                obtainStockYearMaxMinBut.setText("开始获取");
+                yearMinMaxHintTextView.setText("点击 开始获取");
+                obtainStockYearMaxMinBut.setBackgroundColor(Color.parseColor("#D7A6B7"));
+            }else {
+                yearMinMaxHintTextView.setText(name);
+            }
         }
 
         protected void onDestroy(){
-            System.out.println("StockAddActivity MaxMinPriceReceiver 666666666666666");
+            //System.out.println("StockAddActivity MaxMinPriceReceiver 666666666666666");
             // 注销广播
             unregisterReceiver(yearMaxMinPriReceiver);
 

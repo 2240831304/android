@@ -1,5 +1,6 @@
 package com.example.stock.eink.pioneer.stockadd;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -78,6 +79,9 @@ public class SmallBoardMaxMinReq extends HttpRequest {
         InitReqStockCode();
         requestState = true;
 
+        Intent intent = new Intent();
+        intent.setAction("action.updateUI");
+
         while (requestState){
             if(executeIndexId > tableMaxIndex){
                 break;
@@ -90,6 +94,9 @@ public class SmallBoardMaxMinReq extends HttpRequest {
             }
 
             executeReqCode = executeReqCode.replace("sz","");
+
+            intent.putExtra("name", executeReqCode);
+            MyApplication.getContext().sendBroadcast(intent);
 
             String url = requesturl.replace("%2",StartDate);
             url = url.replace("%3",EndData);
@@ -104,6 +111,9 @@ public class SmallBoardMaxMinReq extends HttpRequest {
         }
 
         db.close();
+
+        intent.putExtra("name", "finished");
+        MyApplication.getContext().sendBroadcast(intent);
     }
 
 
