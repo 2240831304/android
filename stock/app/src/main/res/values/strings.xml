@@ -5,7 +5,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="bottom_name_news">资讯</string>
     <string name="bottom_name_quotation">行情</string>
-    <string name="bottom_name_stockpick">选股</string>
+    <string name="bottom_name_stockpick">数据</string>
     <string name="title_activity_stock_add">StockAddActivity</string>
     <string name="hello_world">Hello Square World!</string>
 </resources>
