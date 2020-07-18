@@ -18,7 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".eink.pioneer.stocklookup.StockLookupActivity"></activity>
+        <activity android:name=".eink.pioneer.stocklookup.StockLookupActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+
         <activity
             android:name=".eink.pioneer.stockadd.StockAddActivity"
             android:label="@string/title_activity_stock_add"
