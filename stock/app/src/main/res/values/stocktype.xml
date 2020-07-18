@@ -25,4 +25,15 @@
         <item>新三板</item>
     </string-array>
 
+
+    <integer-array name="stock_class_icon">
+        <item>@drawable/test</item>
+        <item>@drawable/test</item>
+    </integer-array>
+
+    <string-array name="stock_classify_cn_name">
+        <item>功能分类</item>
+        <item>概念分类</item>
+    </string-array>
+
 </resources>
