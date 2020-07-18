@@ -40,7 +40,7 @@ public class StockAddDataSave {
             String name = null;
             float minprice = 0;
             float maxprice = 0;
-            int state = 0;
+            int state = 1;
             Cursor cursor = db.query(tablename, new String[] {"name", "minprice",
                     "maxprice","state" },"code=?", new String[] { stockCode }, null, null, null);
             // 将光标移动到下一行，从而判断该结果集是否还有下一条数据，如果有则返回true，没有则返回false
@@ -57,6 +57,7 @@ public class StockAddDataSave {
                 values.put("code",stockCode);
                 values.put("curprice", list[3]);
                 values.put("grap", list[4]);
+                values.put("state","1");
                 db.insert(tablename,null,values);
 
                 values.put("board",tablename);
@@ -64,7 +65,7 @@ public class StockAddDataSave {
             }else {
                 System.out.println("StockAddDataSave stock have exist in local database!!");
 
-                if( (state < 6) && (minprice > 0)){
+                if( (state > 0) && (state < 6) && (minprice > 0)){
                     float grapPrice = (maxprice - minprice) / 5;
                     float curPriceTemp = Float.parseFloat(list[3]);
                     float oneGrade = minprice + grapPrice;
