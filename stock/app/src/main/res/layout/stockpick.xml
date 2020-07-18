@@ -24,7 +24,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:background="#ff0000"
-                android:text="添加股票数据"
+                android:text="获取股票保存本地"
                 android:textSize="28sp" />
 
             <com.example.stock.ui.stockpick.MyGridView
@@ -42,7 +42,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="12dp"
                 android:background="#ff0000"
-                android:text="查看股票"
+                android:text="获取股票当前价格"
                 android:textSize="28sp" />
 
             <com.example.stock.ui.stockpick.MyGridView
@@ -60,7 +60,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="12dp"
                 android:background="#ff0000"
-                android:text="获取股票资金流入流出状态"
+                android:text="获取股票资金状态"
                 android:textSize="28sp" />
 
             <com.example.stock.ui.stockpick.MyGridView
@@ -75,25 +75,4 @@
     </ScrollView>
 </LinearLayout>
 
-<!--
-<GridLayout android:id="@+id/stockpick_addgridlayout"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    android:columnCount="4"
-    android:orientation="horizontal"
-    android:background="#00ff00" >
-
-    <TextView
-        android:layout_columnSpan="4"
-        android:layout_gravity="fill"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:background="#ff0000"
-        android:text="添加股票"
-        android:textSize="25sp" />
-
-</GridLayout>
--->
 
