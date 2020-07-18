@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/bottom_menu_news"
-        android:name="com.example.stock.ui.stockpick.StockPickFrament"
+        android:name="com.example.stock.ui.realtimenews.RealtimeNewsFragment"
         android:label="@string/bottom_name_news"
         tools:layout="@layout/fragment_notifications" />
 
 
     <fragment
         android:id="@+id/bottom_menu_quotation"
-        android:name="com.example.stock.ui.stockpick.StockPickFrament"
+        android:name="com.example.stock.ui.quotation.QuotationFrament"
         android:label="@string/bottom_name_quotation"
         tools:layout="@layout/fragment_notifications" />
 
