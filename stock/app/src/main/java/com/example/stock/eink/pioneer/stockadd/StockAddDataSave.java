@@ -58,6 +58,9 @@ public class StockAddDataSave {
                 values.put("curprice", list[3]);
                 values.put("grap", list[4]);
                 db.insert(tablename,null,values);
+
+                values.put("board",tablename);
+                db.insert("totalstock",null,values);
             }else {
                 System.out.println("StockAddDataSave stock have exist in local database!!");
 
@@ -87,6 +90,8 @@ public class StockAddDataSave {
                 values.put("grap", list[4]);
                 values.put("state", state);
                 db.update(tablename,values,"code=?",new String[] { stockCode });
+
+                db.update("totalstock",values,"code=?",new String[] { stockCode });
             }
 
         }catch (Exception e){

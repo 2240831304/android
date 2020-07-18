@@ -60,7 +60,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="12dp"
                 android:background="#ff0000"
-                android:text="获取股票资金状态"
+                android:text="获取股票资金流通数据"
                 android:textSize="28sp" />
 
             <com.example.stock.ui.stockpick.MyGridView

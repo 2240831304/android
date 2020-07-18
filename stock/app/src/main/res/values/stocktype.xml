@@ -25,6 +25,22 @@
         <item>新三板</item>
     </string-array>
 
+    <string-array name="stock_current_price">
+        <item>获取数据</item>
+        <item>full</item>
+        <item>full</item>
+        <item>full</item>
+        <item>full</item>
+    </string-array>
+
+    <integer-array name="stock_current_price_icon">
+        <item>@drawable/test</item>
+        <item>@drawable/test</item>
+        <item>@drawable/test</item>
+        <item>@drawable/test</item>
+        <item>@drawable/test</item>
+    </integer-array>
+
 
     <integer-array name="stock_class_icon">
         <item>@drawable/test</item>

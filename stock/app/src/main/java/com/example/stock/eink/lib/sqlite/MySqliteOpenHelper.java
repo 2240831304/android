@@ -35,6 +35,12 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
                 "date DATE,zhuli integer,sanhu integer, totle integer)";
         db.execSQL(sql);
 
+        sql = null;
+        sql = "create table if not exists totalstock(id INTEGER PRIMARY KEY  AUTOINCREMENT,name varchar(15),code varchar(10),means TEXT," +
+                "curprice integer,grap integer,minprice integer,maxprice integer,state integer,calprice integer,board varchar(15)," +
+                "classify varchar(20),notion varchar(20))";
+        db.execSQL(sql);
+
         Log.d("stock database:", "数据库创建成功");
 
     }

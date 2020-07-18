@@ -29,6 +29,11 @@ public class StockPickFrament extends Fragment {
     private TypedArray stockTypeIconList;
 
 
+    private StockPickAdapter stockCurPriceAdapter;
+    private String[] stockCurPriceNameList;
+    private TypedArray stockCurPriceIconList;
+
+
     public StockPickFrament() throws IOException {
         //spickModel = new StockPickModel();
     }
@@ -59,11 +64,15 @@ public class StockPickFrament extends Fragment {
             }
         });
 
+        stockCurPriceNameList = getActivity().getResources().getStringArray(R.array.stock_current_price);
+        stockCurPriceIconList = getActivity().getResources().obtainTypedArray(R.array.stock_current_price_icon);
+        stockCurPriceAdapter = new  StockPickAdapter(this.content,stockCurPriceNameList);
+        stockCurPriceAdapter.setStockTypePic(stockCurPriceIconList);
         final GridView stockLookUpGriView = root.findViewById(R.id.stockpick_gridview_lookup);
-        stockLookUpGriView.setAdapter(stockTypeAdapter);
+        stockLookUpGriView.setAdapter(stockCurPriceAdapter);
 
         final GridView stockMoneyGridView = root.findViewById(R.id.stockpick_gridview_money);
-        stockMoneyGridView.setAdapter(stockTypeAdapter);
+        stockMoneyGridView.setAdapter(stockCurPriceAdapter);
 
         return root;
     }

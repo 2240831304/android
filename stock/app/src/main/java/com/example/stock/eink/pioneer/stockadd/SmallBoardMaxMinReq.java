@@ -67,7 +67,8 @@ public class SmallBoardMaxMinReq extends HttpRequest {
         if(getErrorMeg().isEmpty()){
             if(resultData.contains("hq")){
                 parser.parse(resultData);
-                saver.save(executeIndexId,parser.getMinprice(),parser.getMaxprice());
+                String stockCodeTmp = "sz" + executeReqCode;
+                saver.save(executeIndexId,parser.getMinprice(),parser.getMaxprice(),stockCodeTmp);
             }
         }
 

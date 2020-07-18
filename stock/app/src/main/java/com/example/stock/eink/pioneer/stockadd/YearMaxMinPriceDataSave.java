@@ -13,12 +13,14 @@ public class YearMaxMinPriceDataSave {
         tableName = name;
     }
 
-    public void save(int indexId,int minPrice,int maxPrice){
+    public void save(int indexId,int minPrice,int maxPrice,String stockCode){
         ContentValues values = new ContentValues();
         values.put("minprice", minPrice);
         //values.put("maxprice", Integer.toString(maxPrice));
         values.put("maxprice", maxPrice);
         db.update(tableName,values,"id=?",new String[] { Integer.toString(indexId) });
+
+        db.update("totalstock",values,"code=?",new String[] {stockCode});
     }
 
 
