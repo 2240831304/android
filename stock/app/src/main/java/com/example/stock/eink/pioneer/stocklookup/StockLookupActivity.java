@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.example.stock.R;
 
+import java.util.ArrayList;
+
 
 public class StockLookupActivity extends AppCompatActivity {
 
@@ -25,6 +27,8 @@ public class StockLookupActivity extends AppCompatActivity {
     private TextView gradeEdittext;
 
     private StockLookupAdapter stcokListviewAdapter;
+
+    private StockLookupDataHandle dataHandlePt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,8 @@ public class StockLookupActivity extends AppCompatActivity {
         stcokListview.setAdapter(stcokListviewAdapter);
         stcokListview.setOnItemClickListener(stcokListviewListener);
 
+        dataHandlePt = new StockLookupDataHandle(this);
+
     }
 
 
@@ -68,8 +74,13 @@ public class StockLookupActivity extends AppCompatActivity {
         public void onClick(View view) {
             //System.out.println("StockLookupActivity SelectButListner is start!!!");
             String gradestr = gradeEdittext.getText().toString();
-
+            dataHandlePt.selectData(stockTypeName,gradestr);
         }
+    }
+
+    public void selectCallback(ArrayList<StockData> dataList){
+        System.out.println("StockLookupActivity selectCallback 333333333333");
+        stcokListviewAdapter.setData(dataList);
     }
 
 
@@ -77,6 +88,7 @@ public class StockLookupActivity extends AppCompatActivity {
     private View.OnClickListener listenerQuit = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            dataHandlePt.quit();
             StockLookupActivity.this.finish();
         }
     };

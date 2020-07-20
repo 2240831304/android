@@ -5,12 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.example.stock.R;
+
+import java.util.ArrayList;
 
 public class StockLookupAdapter extends BaseAdapter {
 
     private Context context;
+
+    private ArrayList<StockData> dataList;
 
     public StockLookupAdapter(Context contextpt){
         context = contextpt;
@@ -18,9 +23,18 @@ public class StockLookupAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
+        StockData data = dataList.get(position);
+
         if(view == null){
             view = LayoutInflater.from(this.context).inflate(R.layout.stock_lookup_listviewitem,
                     viewGroup,false);
+
+            TextView textview = (TextView)view.findViewById(R.id.stock_cn_name);
+            textview.setText(data.name);
+
+            textview = (TextView)view.findViewById(R.id.stock_code);
+            textview.setText(data.code);
+
         }
 
 
@@ -29,7 +43,7 @@ public class StockLookupAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 15;
+        return dataList.size();
     }
 
     @Override
@@ -40,6 +54,11 @@ public class StockLookupAdapter extends BaseAdapter {
     @Override
     public long getItemId(int position) {
         return position;
+    }
+
+    public void setData(ArrayList<StockData> data){
+        dataList.clear();
+        dataList = data;
     }
 
 }
