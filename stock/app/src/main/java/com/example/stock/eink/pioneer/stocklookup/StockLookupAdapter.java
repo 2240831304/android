@@ -15,7 +15,7 @@ public class StockLookupAdapter extends BaseAdapter {
 
     private Context context;
 
-    private ArrayList<StockData> dataList;
+    private ArrayList<StockData> dataList ;
 
     public StockLookupAdapter(Context contextpt){
         context = contextpt;
@@ -43,7 +43,11 @@ public class StockLookupAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return dataList.size();
+        if(dataList == null){
+            return 0;
+        } else {
+            return dataList.size();
+        }
     }
 
     @Override
@@ -57,7 +61,10 @@ public class StockLookupAdapter extends BaseAdapter {
     }
 
     public void setData(ArrayList<StockData> data){
-        dataList.clear();
+
+        if (dataList != null){
+            dataList.clear();
+        }
         dataList = data;
     }
 

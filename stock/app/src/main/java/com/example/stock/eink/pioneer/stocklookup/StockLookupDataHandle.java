@@ -41,7 +41,7 @@ public class StockLookupDataHandle {
     public void selectData(String stockBoard,String stockGrade){
         //System.out.println("StockLookupDataHandle selectData 44444444444444");
         String boardName = "";
-        final ArrayList<StockData> dataList =  new ArrayList<>();;
+        final ArrayList<StockData> dataList =  new ArrayList<>();
 
         if( stockBoard.equals("沪市A股") ){
             boardName = "shanghai";
