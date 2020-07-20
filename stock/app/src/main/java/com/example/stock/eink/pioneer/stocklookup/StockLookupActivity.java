@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.stock.R;
-import com.example.stock.eink.pioneer.stockadd.StockAddActivity;
+
 
 public class StockLookupActivity extends AppCompatActivity {
 
@@ -62,12 +62,16 @@ public class StockLookupActivity extends AppCompatActivity {
         }
     };
 
+
     private class SelectButListner implements View.OnClickListener{
         @Override
         public void onClick(View view) {
             //System.out.println("StockLookupActivity SelectButListner is start!!!");
+            String gradestr = gradeEdittext.getText().toString();
+
         }
     }
+
 
     //@退出界面
     private View.OnClickListener listenerQuit = new View.OnClickListener() {
