@@ -25,7 +25,10 @@ public class StockLookUpHandle {
 
 
     public void createStockDetailsUI(){
-
+        Intent intent = new Intent(context, StockDetailsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("name",name);
+        context.startActivity(intent);
     }
 
 }
