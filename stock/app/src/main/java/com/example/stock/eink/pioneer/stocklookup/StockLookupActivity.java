@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.stock.R;
@@ -14,6 +15,8 @@ public class StockLookupActivity extends AppCompatActivity {
 
     private String stockTypeName;
     private ImageView quitImageView;
+
+    private StockLookupAdapter stcokListviewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,9 @@ public class StockLookupActivity extends AppCompatActivity {
         quitImageView.setOnClickListener(listenerQuit);
 
 
+        stcokListviewAdapter = new StockLookupAdapter(this);
+        final ListView stcokListview = (ListView)findViewById(R.id.stock_lookup_listview);
+        stcokListview.setAdapter(stcokListviewAdapter);
 
     }
 

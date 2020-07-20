@@ -23,4 +23,9 @@ public class StockLookUpHandle {
         context.startActivity(intent);
     }
 
+
+    public void createStockDetailsUI(){
+
+    }
+
 }
