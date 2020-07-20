@@ -66,6 +66,7 @@ public class StockLookupDataHandle {
             data.yearMaxPrice = cursor.getString(cursor.getColumnIndex("maxprice"));
             data.calPrice = cursor.getString(cursor.getColumnIndex("calprice"));
 
+            //System.out.println("333333333333333333="+data.name);
             dataList.add(data);
         }
 

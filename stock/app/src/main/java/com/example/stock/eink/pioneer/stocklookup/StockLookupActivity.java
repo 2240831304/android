@@ -79,7 +79,7 @@ public class StockLookupActivity extends AppCompatActivity {
     }
 
     public void selectCallback(ArrayList<StockData> dataList){
-        System.out.println("StockLookupActivity selectCallback 333333333333");
+        //System.out.println("StockLookupActivity selectCallback 333333333333");
         stcokListviewAdapter.setData(dataList);
     }
 
@@ -89,6 +89,7 @@ public class StockLookupActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             dataHandlePt.quit();
+
             StockLookupActivity.this.finish();
         }
     };

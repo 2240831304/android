@@ -37,7 +37,6 @@ public class StockLookupAdapter extends BaseAdapter {
 
         }
 
-
         return view;
     }
 
@@ -66,6 +65,12 @@ public class StockLookupAdapter extends BaseAdapter {
             dataList.clear();
         }
         dataList = data;
+        for (int i =0;i<dataList.size();i++){
+            StockData data12 = dataList.get(i);
+            System.out.println("2222222222222222="+data12.name);
+        }
+        //System.out.println("2222222222222222="+data.size());
+        notifyDataSetChanged();
     }
 
 }
