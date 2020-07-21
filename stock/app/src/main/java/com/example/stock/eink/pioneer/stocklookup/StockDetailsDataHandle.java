@@ -71,6 +71,19 @@ public class StockDetailsDataHandle {
 
     }
 
+    public void saveMeans(String stockCode,String means){
+        ContentValues values = new ContentValues();
+        values.put("means", means);
+        db.update("totalstock",values,"code=?",new String[] { stockCode });
+
+        if(stockCode.contains("sh60")){
+            db.update("shanghai",values,"code=?",new String[] { stockCode });
+        }else if(stockCode.contains("sz00")){
+            db.update("smallboard",values,"code=?",new String[] { stockCode });
+        }
+
+    }
+
     public void quit(){
         db.close();
     }

@@ -42,7 +42,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="12dp"
                 android:background="#ff0000"
-                android:text="获取股票当前价格"
+                android:text="获取股票最新价格"
                 android:textSize="28sp" />
 
             <com.example.stock.ui.stockpick.MyGridView

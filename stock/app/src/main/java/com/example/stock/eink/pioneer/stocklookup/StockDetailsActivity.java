@@ -21,6 +21,14 @@ public class StockDetailsActivity extends AppCompatActivity {
 
     private EditText calpricEdittext;
     private EditText gradeEdittext;
+    private EditText meansEdittext;
+
+    private TextView curpriceTextview;
+    private TextView grapTextview;
+    private TextView yearMinpriceTextview;
+    private TextView yearMaxpriceTextview;
+    private TextView calpriceTextview;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +44,18 @@ public class StockDetailsActivity extends AppCompatActivity {
 
         stockCodeTextView = (TextView)findViewById(R.id.textview_title_stockcode);
 
+        curpriceTextview = (TextView)findViewById(R.id.stock_curprice_text);;
+        grapTextview = (TextView)findViewById(R.id.stock_upanddown_text);;
+        yearMinpriceTextview = (TextView)findViewById(R.id.stock_yearminprice);;
+        yearMaxpriceTextview = (TextView)findViewById(R.id.stock_yearmaxprice);;
+        calpriceTextview = (TextView)findViewById(R.id.stock_calprice);;
+
+        //保存简介
+        meansEdittext = (EditText)findViewById(R.id.stock_means_editview);
+        Button saveMeansBut = (Button)findViewById(R.id.stock_savemeans_button);
+        saveMeansBut.setOnClickListener(saveMeansListner);
+
+        //保存预测价
         calpricEdittext = (EditText)findViewById(R.id.stock_calprice_editview);
         gradeEdittext = (EditText)findViewById(R.id.stock_grade_edit);
         Button saveCalpriceBut = (Button)findViewById(R.id.stock_savemcalpri_button);
@@ -49,6 +69,13 @@ public class StockDetailsActivity extends AppCompatActivity {
     public void InitData(StockData data){
         stockCodeTextView.setText(data.code);
         calpricEdittext.setText(data.calPrice);
+        meansEdittext.setText(data.means);
+
+        curpriceTextview.setText(data.curprice);
+        grapTextview.setText(data.grap);
+        yearMinpriceTextview.setText(data.yearMinPrice);
+        yearMaxpriceTextview.setText(data.yearMaxPrice);
+        calpriceTextview.setText(data.calPrice);
     }
 
 
@@ -67,6 +94,14 @@ public class StockDetailsActivity extends AppCompatActivity {
         public void onClick(View view) {
             dataHandler.saveCalprice(stockCodeTextView.getText().toString(),
                     calpricEdittext.getText().toString(),gradeEdittext.getText().toString());
+        }
+    };
+
+    //保存简介
+    private View.OnClickListener saveMeansListner = new View.OnClickListener(){
+        @Override
+        public void onClick(View view) {
+            dataHandler.saveMeans(stockCodeTextView.getText().toString(),meansEdittext.getText().toString());
         }
     };
 
