@@ -35,6 +35,50 @@ public class StockLookupAdapter extends BaseAdapter {
             textview = (TextView)view.findViewById(R.id.stock_code);
             textview.setText(data.code);
 
+            //@price
+            textview = (TextView)view.findViewById(R.id.stock_cur_price);
+            textview.setText(data.curprice);
+
+            textview = (TextView)view.findViewById(R.id.stock_graprice);
+            textview.setText(data.grap);
+
+            textview = (TextView)view.findViewById(R.id.stock_minprice);
+            textview.setText(data.yearMinPrice);
+
+            textview = (TextView)view.findViewById(R.id.stock_maxprice);
+            textview.setText(data.yearMaxPrice);
+
+            textview = (TextView)view.findViewById(R.id.stock_calprice);
+            textview.setText(data.calPrice);
+
+            textview = (TextView)view.findViewById(R.id.stock_means);
+            textview.setText(data.means);
+
+        }else{
+            TextView textview = (TextView)view.findViewById(R.id.stock_cn_name);
+            textview.setText(data.name);
+
+            textview = (TextView)view.findViewById(R.id.stock_code);
+            textview.setText(data.code);
+
+            //@price
+            textview = (TextView)view.findViewById(R.id.stock_cur_price);
+            textview.setText(data.curprice);
+
+            textview = (TextView)view.findViewById(R.id.stock_graprice);
+            textview.setText(data.grap);
+
+            textview = (TextView)view.findViewById(R.id.stock_minprice);
+            textview.setText(data.yearMinPrice);
+
+            textview = (TextView)view.findViewById(R.id.stock_maxprice);
+            textview.setText(data.yearMaxPrice);
+
+            textview = (TextView)view.findViewById(R.id.stock_calprice);
+            textview.setText(data.calPrice);
+
+            textview = (TextView)view.findViewById(R.id.stock_means);
+            textview.setText(data.means);
         }
 
         return view;
