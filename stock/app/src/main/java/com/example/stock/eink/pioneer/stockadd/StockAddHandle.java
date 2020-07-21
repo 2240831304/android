@@ -22,4 +22,12 @@ public class StockAddHandle  {
         intent.putExtra("stockTypeName",stockTypeName);
         context.startActivity(intent);
     }
+
+
+    public void createCurpriceUI(Context context){
+        Intent intent = new Intent(context,StockNewestDataActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("newestprice",stockTypeName);
+        context.startActivity(intent);
+    }
 }

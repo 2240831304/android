@@ -68,14 +68,26 @@ public class StockPickFrament extends Fragment {
         stockCurPriceIconList = getActivity().getResources().obtainTypedArray(R.array.stock_current_price_icon);
         stockCurPriceAdapter = new  StockPickAdapter(this.content,stockCurPriceNameList);
         stockCurPriceAdapter.setStockTypePic(stockCurPriceIconList);
-        final GridView stockLookUpGriView = root.findViewById(R.id.stockpick_gridview_lookup);
-        stockLookUpGriView.setAdapter(stockCurPriceAdapter);
+        final GridView newestGriView = root.findViewById(R.id.stockpick_gridview_newest);
+        newestGriView.setAdapter(stockCurPriceAdapter);
+        newestGriView.setOnItemClickListener(stockCurPriceListner);
 
         final GridView stockMoneyGridView = root.findViewById(R.id.stockpick_gridview_money);
         stockMoneyGridView.setAdapter(stockCurPriceAdapter);
 
         return root;
     }
+
+
+
+    private AdapterView.OnItemClickListener stockCurPriceListner = new AdapterView.OnItemClickListener(){
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            Button button = (Button)view.findViewById(R.id.item_button);
+            StockAddHandle handle = new StockAddHandle(button.getText().toString());
+            handle.createCurpriceUI(content);
+        }
+    };
 
 
 }
