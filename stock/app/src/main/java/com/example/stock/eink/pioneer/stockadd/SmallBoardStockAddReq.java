@@ -57,7 +57,7 @@ public class SmallBoardStockAddReq extends HttpRequest {
         requestState = true;
 
         while (requestState){
-            if(reqStockCodeId >= 20) {
+            if(reqStockCodeId >= 10000) {
                 break;
             }
 

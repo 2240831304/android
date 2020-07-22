@@ -17,6 +17,10 @@ public class StockNewestDataSave {
     private MyApplication normalActivity;
     private SQLiteDatabase db;
 
+    private int minId;
+    private int maxId;
+
+
     public StockNewestDataSave(){
         FileSystemManager fileManeger = new FileSystemManager();
         databaseFilePath = fileManeger.getStockFilePath() + databaseName;
@@ -67,14 +71,14 @@ public class StockNewestDataSave {
                 }else if(curPriceTemp > foreGrap){
                     state = 5;
                 }
-
-                ContentValues values = new ContentValues();
-                values.put("curprice", list[3]);
-                values.put("grap", list[4]);
-                values.put("state", state);
-
-                db.update("totalstock",values,"code=?",new String[] { stockCode });
             }
+
+            ContentValues values = new ContentValues();
+            values.put("curprice", list[3]);
+            values.put("grap", list[4]);
+            values.put("state", state);
+
+            db.update("totalstock",values,"code=?",new String[] { stockCode });
 
         }catch (Exception e){
             System.out.println("StockNewestDataSave error::" + e);
@@ -86,6 +90,40 @@ public class StockNewestDataSave {
     public void close(){
         db.close();
         System.out.println("StockNewestDataSave is finished,close stock database!!!");
+    }
+
+    public void setId(){
+
+        Cursor cursor = db.query("totalstock", new String[] {"MIN(id)","MAX(id)"},null,
+                null, null, null, null);
+
+        // 将光标移动到下一行，从而判断该结果集是否还有下一条数据，如果有则返回true，没有则返回false
+        while (cursor.moveToNext()) {
+            minId = cursor.getInt(cursor.getColumnIndex("MIN(id)"));
+            maxId = cursor.getInt(cursor.getColumnIndex("MAX(id)"));
+        }
+    }
+
+    public int getMinId(){
+        return minId;
+    }
+
+    public int getMaxId(){
+        return maxId;
+    }
+
+    public String getStockCode(int id){
+        Cursor cursor = db.query("totalstock", new String[] {"code"},"id=?",
+                new String[] { Integer.toString(id) }, null, null, null);
+
+        String code = "";
+        // 将光标移动到下一行，从而判断该结果集是否还有下一条数据，如果有则返回true，没有则返回false
+        while (cursor.moveToNext()) {
+            code = cursor.getString(cursor.getColumnIndex("code"));
+        }
+
+        return code;
+
     }
 
 
