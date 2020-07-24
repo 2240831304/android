@@ -52,6 +52,11 @@ public class StockNewestDataSave {
                 state = cursor.getInt(cursor.getColumnIndex("state"));
             }
 
+            String name = list[1];
+            if( (name.contains("*")) || name.contains("ST") || name.contains("st")){
+                state = 0;
+            }
+
             if( (state > 0) && (state < 6) && (minprice > 0)){
                 float grapPrice = (maxprice - minprice) / 5;
                 float curPriceTemp = Float.parseFloat(list[3]);
@@ -72,6 +77,7 @@ public class StockNewestDataSave {
                     state = 5;
                 }
             }
+
 
             ContentValues values = new ContentValues();
             values.put("curprice", list[3]);
