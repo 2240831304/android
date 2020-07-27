@@ -8,20 +8,29 @@
     <fragment
         android:id="@+id/bottom_menu_news"
         android:name="com.example.stock.ui.realtimenews.RealtimeNewsFragment"
-        android:label="@string/bottom_name_news"
-        tools:layout="@layout/fragment_notifications" />
+        />
 
 
     <fragment
         android:id="@+id/bottom_menu_quotation"
         android:name="com.example.stock.ui.quotation.QuotationFrament"
-        android:label="@string/bottom_name_quotation"
-        tools:layout="@layout/fragment_notifications" />
+        />
 
     <fragment
         android:id="@+id/bottom_menu_stockpick"
         android:name="com.example.stock.ui.stockpick.StockPickFrament"
-        android:label="@string/bottom_name_stockpick"
-        tools:layout="@layout/stockpick" />
+        />
+
 </navigation>
 
+
+<!--
+tools:layout="@layout/fragment_notifications"
+tools:layout="@layout/fragment_notifications"
+tools:layout="@layout/stockpick"
+
+android:label="@string/bottom_name_news"
+android:label="@string/bottom_name_quotation"
+android:label="@string/bottom_name_stockpick"
+
+-->

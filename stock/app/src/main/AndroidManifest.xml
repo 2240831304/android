@@ -29,6 +29,7 @@
             android:name=".eink.pioneer.stockadd.StockAddActivity"
             android:label="@string/title_activity_stock_add"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
