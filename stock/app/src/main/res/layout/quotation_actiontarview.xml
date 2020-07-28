@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/searchname_edit"
+        android:layout_width="0.0px"
+        android:layout_height="match_parent"
+        android:layout_weight="3.0"
+        android:gravity="center"
+        android:text="" />
+
+    <Button
+        android:id="@+id/searchname_button"
+        android:layout_width="0.0px"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0"
+        android:gravity="center"
+        android:text="搜索" />
+
+</LinearLayout>
