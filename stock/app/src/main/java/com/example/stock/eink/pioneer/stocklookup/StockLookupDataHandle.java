@@ -1,6 +1,7 @@
 package com.example.stock.eink.pioneer.stocklookup;
 
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -13,6 +14,7 @@ import com.example.stock.eink.pioneer.stockadd.ShangHaiStockAddReq;
 import com.example.stock.eink.pioneer.stockadd.SmallBoardStockAddReq;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class StockLookupDataHandle {
 
@@ -22,6 +24,16 @@ public class StockLookupDataHandle {
     private String databaseName = "stock.db";
     private String databasePath;
     private SQLiteDatabase db;
+
+    private ClassifyActivity classifyActivityPt;
+
+    public StockLookupDataHandle(){
+
+    }
+
+    public void setclassifyActivity(ClassifyActivity pt){
+        classifyActivityPt = pt;
+    }
 
 
     public StockLookupDataHandle(StockLookupActivity pt){
@@ -76,6 +88,57 @@ public class StockLookupDataHandle {
     public void quit(){
         db.close();
     }
+
+
+    public void saveclassifyname(String name){
+        try{
+            String nametmp = null;
+            Cursor cursor = db.query("board", new String[] {"classify"},"classify=?", new String[] { name }, null, null, null);
+            // 将光标移动到下一行，从而判断该结果集是否还有下一条数据，如果有则返回true，没有则返回false
+            while (cursor.moveToNext()) {
+                nametmp = cursor.getString(cursor.getColumnIndex("classify"));
+            }
+
+            if (nametmp == null) {
+                ContentValues values = new ContentValues();
+                values.put("classify", name);
+
+                db.insert("board", null, values);
+            }
+
+        }catch (Exception e){
+            System.out.println("StockLookupDataHandle error::" + e);
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public void InitClassifyName(){
+
+        try{
+            Hashtable<Integer,String> nameMap = new Hashtable<Integer,String>();
+
+            int idtmp;
+            String nametmp = null;
+
+            Cursor cursor = db.query("board", new String[] {"id","classify"},"id>?", new String[] {"0"},
+                    null, null, null);
+            // 将光标移动到下一行，从而判断该结果集是否还有下一条数据，如果有则返回true，没有则返回false
+            while (cursor.moveToNext()) {
+                idtmp = cursor.getInt(cursor.getColumnIndex("id"));
+                nametmp = cursor.getString(cursor.getColumnIndex("classify"));
+                nameMap.put(idtmp,nametmp);
+            }
+
+            classifyActivityPt.InitClassifyName(nameMap);
+
+        }catch (Exception e){
+            System.out.println("StockLookupDataHandle error::" + e);
+            e.printStackTrace();
+        }
+    }
+
 
 
 }
