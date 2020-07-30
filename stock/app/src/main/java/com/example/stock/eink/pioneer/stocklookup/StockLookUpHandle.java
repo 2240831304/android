@@ -31,4 +31,11 @@ public class StockLookUpHandle {
         context.startActivity(intent);
     }
 
+    public void createClassifyUI(){
+        Intent intent = new Intent(context, ClassifyActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("name",name);
+        context.startActivity(intent);
+    }
+
 }

@@ -58,6 +58,7 @@ public class QuotationFrament extends Fragment {
 
         final GridView classifyGridview = root.findViewById(R.id.board_classification);
         classifyGridview.setAdapter(classifyAdapter);
+        classifyGridview.setOnItemClickListener(classifyListener);
 
         return root;
     }
@@ -69,6 +70,16 @@ public class QuotationFrament extends Fragment {
             TextView tmp = (TextView)view.findViewById(R.id.item_text);
             StockLookUpHandle handle = new StockLookUpHandle(content,tmp.getText().toString());
             handle.createBoardLookupUI();
+        }
+    };
+
+
+    private AdapterView.OnItemClickListener classifyListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            TextView tmp = (TextView)view.findViewById(R.id.item_text);
+            StockLookUpHandle handle = new StockLookUpHandle(content,tmp.getText().toString());
+            handle.createClassifyUI();
         }
     };
 

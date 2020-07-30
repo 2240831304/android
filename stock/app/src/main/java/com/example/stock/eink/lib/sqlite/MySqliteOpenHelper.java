@@ -41,6 +41,11 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
                 "classify varchar(20),notion varchar(20))";
         db.execSQL(sql);
 
+        sql = null;
+        sql = "create table if not exists board(id INTEGER PRIMARY KEY  AUTOINCREMENT,board varchar(15)," +
+                "classify varchar(20),notion varchar(20))";
+        db.execSQL(sql);
+
         Log.d("stock database:", "数据库创建成功");
 
     }
@@ -49,6 +54,9 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+        String sql = "create table if not exists board(id INTEGER PRIMARY KEY  AUTOINCREMENT,board varchar(15)," +
+                "classify varchar(20),notion varchar(20))";
+        db.execSQL(sql);
         Log.d("MainActivity", "数据库升级成功");
     }
 
