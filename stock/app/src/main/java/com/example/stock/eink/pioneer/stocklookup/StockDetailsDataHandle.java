@@ -9,6 +9,8 @@ import com.example.stock.eink.lib.filesystem.ConfigParameter;
 import com.example.stock.eink.lib.filesystem.FileSystemManager;
 import com.example.stock.eink.lib.sqlite.MySqliteOpenHelper;
 
+import java.util.Hashtable;
+
 public class StockDetailsDataHandle {
 
     private MyApplication normalActivity;
@@ -86,6 +88,31 @@ public class StockDetailsDataHandle {
 
     public void quit(){
         db.close();
+    }
+
+
+    public Hashtable<String,Integer> getStockClassifyNames(){
+        Hashtable<String,Integer> nameMap = new Hashtable<String,Integer>();
+        try{
+
+            int idtmp = 0;
+            String nametmp = null;
+
+            Cursor cursor = db.query("board", new String[] {"id","classify"},"id>?", new String[] {"0"},
+                    null, null, null);
+            // 将光标移动到下一行，从而判断该结果集是否还有下一条数据，如果有则返回true，没有则返回false
+            while (cursor.moveToNext()) {
+                idtmp = cursor.getInt(cursor.getColumnIndex("id"));
+                nametmp = cursor.getString(cursor.getColumnIndex("classify"));
+                nameMap.put(nametmp,idtmp);
+            }
+
+        }catch (Exception e){
+            System.out.println("StockLookupDataHandle error::" + e);
+            e.printStackTrace();
+        }
+
+        return nameMap;
     }
 
 

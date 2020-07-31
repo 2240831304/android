@@ -98,6 +98,10 @@ public class StockLookupDataHandle {
 
 
     public void saveclassifyname(String name){
+        if(name.isEmpty()){
+            return;
+        }
+
         try{
             String nametmp = null;
             Cursor cursor = db.query("board", new String[] {"classify"},"classify=?", new String[] { name }, null, null, null);

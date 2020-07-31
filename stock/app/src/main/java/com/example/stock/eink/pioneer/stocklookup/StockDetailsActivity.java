@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import com.example.stock.R;
 
+import java.util.Enumeration;
+import java.util.Hashtable;
+
 public class StockDetailsActivity extends AppCompatActivity {
 
     private StockDetailsDataHandle dataHandler;
@@ -112,7 +115,20 @@ public class StockDetailsActivity extends AppCompatActivity {
     private View.OnClickListener addClassifyListner = new View.OnClickListener(){
         @Override
         public void onClick(View view) {
-            System.out.println("addClassifyListner is ####33333333333333333333");
+            Hashtable<String,Integer> classifyNameMap = dataHandler.getStockClassifyNames();
+            if(classifyNameMap.isEmpty()){
+                return;
+            }
+            Enumeration enu = classifyNameMap.keys();
+            while(enu.hasMoreElements()) {
+                System.out.println(enu.nextElement());
+            }
+
+            //Enumeration enuvalue = classifyNameMap.elements();
+            //while(enuvalue.hasMoreElements()) {
+            //    System.out.println(enuvalue.nextElement());
+            //}
+
         }
     };
 
