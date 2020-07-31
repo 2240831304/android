@@ -28,7 +28,14 @@ public class StockLookupDataHandle {
     private ClassifyActivity classifyActivityPt;
 
     public StockLookupDataHandle(){
+        FileSystemManager fileManeger = new FileSystemManager();
+        databasePath = fileManeger.getStockFilePath() + databaseName;
+        normalActivity = new MyApplication();
 
+        int stockVersion = ConfigParameter.StockDatabaseVersion;
+        MySqliteOpenHelper oh = new MySqliteOpenHelper(normalActivity.getContext(), databasePath,
+                null, stockVersion);
+        db = oh.getWritableDatabase();
     }
 
     public void setclassifyActivity(ClassifyActivity pt){
@@ -119,16 +126,16 @@ public class StockLookupDataHandle {
         try{
             Hashtable<Integer,String> nameMap = new Hashtable<Integer,String>();
 
-            int idtmp;
+            int idtmp = 0;
             String nametmp = null;
 
-            Cursor cursor = db.query("board", new String[] {"id","classify"},"id>?", new String[] {"0"},
+            Cursor cursor = db.query("board", new String[] {"classify"},"id>?", new String[] {"0"},
                     null, null, null);
             // 将光标移动到下一行，从而判断该结果集是否还有下一条数据，如果有则返回true，没有则返回false
             while (cursor.moveToNext()) {
-                idtmp = cursor.getInt(cursor.getColumnIndex("id"));
                 nametmp = cursor.getString(cursor.getColumnIndex("classify"));
                 nameMap.put(idtmp,nametmp);
+                idtmp += 1;
             }
 
             classifyActivityPt.InitClassifyName(nameMap);

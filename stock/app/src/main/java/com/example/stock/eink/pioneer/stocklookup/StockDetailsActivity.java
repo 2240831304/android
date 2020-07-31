@@ -61,6 +61,9 @@ public class StockDetailsActivity extends AppCompatActivity {
         Button saveCalpriceBut = (Button)findViewById(R.id.stock_savemcalpri_button);
         saveCalpriceBut.setOnClickListener(saveCalPriceListner);
 
+        //添加分类
+        Button addClassify = (Button)findViewById(R.id.add_classify_but);
+        addClassify.setOnClickListener(addClassifyListner);
 
         dataHandler = new StockDetailsDataHandle(this);
         dataHandler.ObatinStockInfo(stockName);
@@ -102,6 +105,14 @@ public class StockDetailsActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             dataHandler.saveMeans(stockCodeTextView.getText().toString(),meansEdittext.getText().toString());
+        }
+    };
+
+    //添加分类
+    private View.OnClickListener addClassifyListner = new View.OnClickListener(){
+        @Override
+        public void onClick(View view) {
+            System.out.println("addClassifyListner is ####33333333333333333333");
         }
     };
 

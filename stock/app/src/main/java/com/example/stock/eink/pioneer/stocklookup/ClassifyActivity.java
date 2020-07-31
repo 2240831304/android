@@ -84,16 +84,17 @@ public class ClassifyActivity extends AppCompatActivity {
         }
     };
 
-    //@分类名字监听
+    //@分类监听
     private AdapterView.OnItemClickListener nameListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            //TextView tmp = (TextView)view.findViewById(R.id.stock_cn_name);
+            Button tmp = (Button)view;
+            System.out.println("ClassifyActivity nameListener is 22222222222222"+tmp.getText().toString());
 
         }
     };
 
-    //@分类名字监听
+    //@分类成员监听
     private AdapterView.OnItemClickListener memberListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

@@ -56,7 +56,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3.0"
                 android:gravity="center"
-                android:text="9" />
+                android:text="" />
 
             <Button
                 android:id="@+id/saveclassifyname_button"
