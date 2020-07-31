@@ -45,6 +45,8 @@ public class StockLookupActivity extends AppCompatActivity {
         quitImageView.setOnClickListener(listenerQuit);
 
         gradeEdittext = (EditText)findViewById(R.id.stock_grade_edittext);
+        gradeEdittext.setFocusable(false);
+        gradeEdittext.setOnClickListener(listenerEdit);
 
         selectBut = (Button)findViewById(R.id.stock_select_button);
         selectBut.setOnClickListener(new SelectButListner());
@@ -91,6 +93,15 @@ public class StockLookupActivity extends AppCompatActivity {
             dataHandlePt.quit();
 
             StockLookupActivity.this.finish();
+        }
+    };
+
+    //@退出界面
+    private View.OnClickListener listenerEdit = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            System.out.println("3333333333333333333333333333");
+            gradeEdittext.setFocusable(true);
         }
     };
 
