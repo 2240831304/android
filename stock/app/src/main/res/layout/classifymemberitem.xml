@@ -63,6 +63,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:textColor="#FF0000"
         android:text="哪位就能得奖农村的几次年间才能精彩的下次司机相似"  >
     </TextView>
 

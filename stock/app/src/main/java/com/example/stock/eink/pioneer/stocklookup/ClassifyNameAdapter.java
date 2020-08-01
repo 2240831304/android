@@ -21,6 +21,8 @@ public class ClassifyNameAdapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup viewGroup) {
         if(view == null){
             Button nameBut = new Button(contextpt);
+            nameBut.setFocusable(false);
+            nameBut.setClickable(false);
             nameBut.setText(classifyNameMap.get(position));
 
             view = nameBut;

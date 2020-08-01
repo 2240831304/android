@@ -151,5 +151,41 @@ public class StockLookupDataHandle {
     }
 
 
+    public void searchClassifyStock(String classifyName){
+
+        Cursor cursor = db.query("board", new String[] {"id"},"classify=?", new String[] {classifyName},
+                null, null, null);
+
+        String classifyID = "";
+        while (cursor.moveToNext()) {
+            classifyID = cursor.getString(cursor.getColumnIndex("id"));
+        }
+        System.out.println("StockLookupDataHandle 222222222="+classifyID);
+
+        cursor = db.query("totalstock", new String[] {"name", "code","means","curprice",
+                        "minprice","maxprice"},"classify=?", new String[] { classifyID },
+                null, null, null);
+
+        final ArrayList<StockData> dataList =  new ArrayList<>();
+        // 将光标移动到下一行，从而判断该结果集是否还有下一条数据，如果有则返回true，没有则返回false
+        while (cursor.moveToNext()) {
+            //System.out.println("StockLookupDataHandle selectData result 444444444444444");
+            StockData data = new StockData();
+            data.name = cursor.getString(cursor.getColumnIndex("name"));
+            data.code = cursor.getString(cursor.getColumnIndex("code"));
+            data.means = cursor.getString(cursor.getColumnIndex("means"));
+            data.curprice = cursor.getString(cursor.getColumnIndex("curprice"));
+            data.yearMinPrice = cursor.getString(cursor.getColumnIndex("minprice"));
+            data.yearMaxPrice = cursor.getString(cursor.getColumnIndex("maxprice"));
+
+            //System.out.println("333333333333333333="+data.name);
+            dataList.add(data);
+        }
+
+        classifyActivityPt.setClassifyMember(dataList);
+
+    }
+
+
 
 }

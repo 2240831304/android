@@ -2,6 +2,7 @@ package com.example.stock.eink.pioneer.stocklookup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.stock.R;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class ClassifyActivity extends AppCompatActivity {
@@ -54,7 +56,7 @@ public class ClassifyActivity extends AppCompatActivity {
 
 
         ListView memberListview = (ListView)findViewById(R.id.classifymember_listview);
-        memberAdapter = new ClassifyMemberAdapter();
+        memberAdapter = new ClassifyMemberAdapter(this);
         memberListview.setAdapter(memberAdapter);
         memberListview.setOnItemClickListener(memberListener);
 
@@ -88,9 +90,9 @@ public class ClassifyActivity extends AppCompatActivity {
     private AdapterView.OnItemClickListener nameListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Button tmp = (Button)view;
-            System.out.println("ClassifyActivity nameListener is 22222222222222"+tmp.getText().toString());
-
+            Button tmpbut = (Button)view;
+            //System.out.println("ClassifyActivity nameListener is 22222222222222"+tmpbut.getText().toString());
+            dataHandlePt.searchClassifyStock(tmpbut.getText().toString());
         }
     };
 
@@ -98,10 +100,26 @@ public class ClassifyActivity extends AppCompatActivity {
     private AdapterView.OnItemClickListener memberListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            //TextView tmp = (TextView)view.findViewById(R.id.stock_cn_name);
+            TextView tmp = (TextView)view.findViewById(R.id.stock_cn_name);
 
+            Intent intent = new Intent(ClassifyActivity.this, StockDetailsActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("name",tmp.getText().toString());
+            ClassifyActivity.this.startActivity(intent);
         }
     };
+
+
+    public void setClassifyMember(ArrayList<StockData> dataList){
+        //System.out.println(dataList.size());
+        if(dataList.isEmpty()){
+            System.out.println("ClassifyActivity classify no member!!!!!!!!!!");
+        } else {
+            System.out.println("ClassifyActivity $$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        }
+        memberAdapter.setStockList(dataList);
+
+    }
 
 
 }
