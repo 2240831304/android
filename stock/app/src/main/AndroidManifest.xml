@@ -18,16 +18,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".eink.pioneer.stocklookup.ClassifyActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".eink.pioneer.stockadd.StockNewestDataActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".eink.pioneer.stocklookup.StockDetailsActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".eink.pioneer.stocklookup.StockLookupActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".eink.pioneer.stockadd.StockAddActivity"
             android:label="@string/title_activity_stock_add"

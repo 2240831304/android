@@ -45,7 +45,6 @@ public class StockLookupActivity extends AppCompatActivity {
         quitImageView.setOnClickListener(listenerQuit);
 
         gradeEdittext = (EditText)findViewById(R.id.stock_grade_edittext);
-        gradeEdittext.setFocusable(false);
         gradeEdittext.setOnClickListener(listenerEdit);
 
         selectBut = (Button)findViewById(R.id.stock_select_button);
@@ -96,7 +95,7 @@ public class StockLookupActivity extends AppCompatActivity {
         }
     };
 
-    //@退出界面
+    //@改变焦点
     private View.OnClickListener listenerEdit = new View.OnClickListener() {
         @Override
         public void onClick(View view) {

@@ -21,6 +21,18 @@ public class StockDetailsDataHandle {
 
     private StockDetailsActivity StockDetailsPt;
 
+
+    public StockDetailsDataHandle(){
+        FileSystemManager fileManeger = new FileSystemManager();
+        databasePath = fileManeger.getStockFilePath() + databaseName;
+        normalActivity = new MyApplication();
+
+        int stockVersion = ConfigParameter.StockDatabaseVersion;
+        MySqliteOpenHelper oh = new MySqliteOpenHelper(normalActivity.getContext(), databasePath,
+                null, stockVersion);
+        db = oh.getWritableDatabase();
+    }
+
     public StockDetailsDataHandle(StockDetailsActivity pt) {
         StockDetailsPt = pt;
 

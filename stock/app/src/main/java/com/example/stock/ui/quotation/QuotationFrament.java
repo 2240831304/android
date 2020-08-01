@@ -1,6 +1,7 @@
 package com.example.stock.ui.quotation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 
@@ -10,10 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
 
 import com.example.stock.R;
+import com.example.stock.eink.pioneer.stocklookup.StockDetailsActivity;
 import com.example.stock.eink.pioneer.stocklookup.StockLookUpHandle;
 
 public class QuotationFrament extends Fragment {
@@ -29,6 +33,9 @@ public class QuotationFrament extends Fragment {
     private QuotationAdapter classifyAdapter;
     private String[] classifyNameList;
     private TypedArray classifyIconList;
+
+    //搜索功能
+    private EditText searchNameEdit;
 
 
     @Override
@@ -60,6 +67,10 @@ public class QuotationFrament extends Fragment {
         classifyGridview.setAdapter(classifyAdapter);
         classifyGridview.setOnItemClickListener(classifyListener);
 
+        searchNameEdit = root.findViewById(R.id.quotation_searchname_edit);
+        Button searchBut = root.findViewById(R.id.quotion_search_but);
+        searchBut.setOnClickListener(searchListner);
+
         return root;
     }
 
@@ -80,6 +91,19 @@ public class QuotationFrament extends Fragment {
             TextView tmp = (TextView)view.findViewById(R.id.item_text);
             StockLookUpHandle handle = new StockLookUpHandle(content,tmp.getText().toString());
             handle.createClassifyUI();
+        }
+    };
+
+    private View.OnClickListener searchListner = new View.OnClickListener(){
+        @Override
+        public void onClick(View view) {
+            String name = searchNameEdit.getText().toString();
+            System.out.println("33333333333333333333+"+name);
+
+            Intent intent = new Intent(content, StockDetailsActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("name",name);
+            content.startActivity(intent);
         }
     };
 
