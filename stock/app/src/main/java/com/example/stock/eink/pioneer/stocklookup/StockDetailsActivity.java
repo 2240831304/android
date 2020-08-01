@@ -2,8 +2,14 @@ package com.example.stock.eink.pioneer.stocklookup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.view.Display;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -128,6 +134,27 @@ public class StockDetailsActivity extends AppCompatActivity {
             //while(enuvalue.hasMoreElements()) {
             //    System.out.println(enuvalue.nextElement());
             //}
+
+            LayoutInflater inflater = LayoutInflater.from(StockDetailsActivity.this);
+            View view12 = inflater.inflate(R.layout.stock_classify_dialog, null);
+            final Dialog dialog = new Dialog(StockDetailsActivity.this);
+
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCanceledOnTouchOutside(false);
+
+            WindowManager windowManager = StockDetailsActivity.this.getWindowManager();
+            Display display = windowManager.getDefaultDisplay();
+            System.out.println(display.getWidth());
+
+            // 设置宽度为屏宽, 靠近屏幕底部
+            final WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+            lp.gravity = Gravity.BOTTOM; // 紧贴底部
+            lp.width = display.getWidth();
+            lp.height = display.getHeight();
+            dialog.getWindow().setAttributes(lp);
+            dialog.getWindow().setContentView(view12);
+
+            dialog.show();
 
         }
     };
