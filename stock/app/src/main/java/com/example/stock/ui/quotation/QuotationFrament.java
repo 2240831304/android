@@ -98,7 +98,8 @@ public class QuotationFrament extends Fragment {
         @Override
         public void onClick(View view) {
             String name = searchNameEdit.getText().toString();
-            System.out.println("33333333333333333333+"+name);
+            searchNameEdit.setText("");
+            //System.out.println("33333333333333333333+"+name);
 
             Intent intent = new Intent(content, StockDetailsActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
