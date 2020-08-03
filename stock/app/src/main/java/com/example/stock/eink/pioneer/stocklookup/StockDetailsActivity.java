@@ -127,69 +127,10 @@ public class StockDetailsActivity extends AppCompatActivity {
     private View.OnClickListener addClassifyListner = new View.OnClickListener(){
         @Override
         public void onClick(View view) {
-            Hashtable<String,Integer> classifyNameMap = dataHandler.getStockClassifyNames();
-            if(classifyNameMap.isEmpty()){
-                return;
-            }
-            Enumeration enu = classifyNameMap.keys();
-            //while(enu.hasMoreElements()) {
-            //    System.out.println(enu.nextElement());
-            //}
-
-            //Enumeration enuvalue = classifyNameMap.elements();
-            //while(enuvalue.hasMoreElements()) {
-            //    System.out.println(enuvalue.nextElement());
-            //}
-
-            final Dialog dialog = new Dialog(StockDetailsActivity.this);
-            LayoutInflater inflater = LayoutInflater.from(StockDetailsActivity.this);
-            View view12 =  inflater.inflate(R.layout.stock_classify_dialog,null);
-
-            ListView testview = view12.findViewById(R.id.classifydialog_listview);
-            AddClassifyDialogAdapter adapter = new AddClassifyDialogAdapter(StockDetailsActivity.this);
-            testview.setAdapter(adapter);
-            testview.setOnItemClickListener(addClassifyNameListener);
-            ArrayList<String> classifyNameList = new ArrayList<String>();
-            while(enu.hasMoreElements()) {
-                //System.out.println(enu.nextElement());
-                classifyNameList.add(enu.nextElement().toString());
-            }
-            adapter.setClassifyNameList(classifyNameList);
-
-            //dialog.getWindow().setContentView(R.layout.stock_classify_dialog);
-            dialog.getWindow().setContentView(view12);
-
-            dialog.setCanceledOnTouchOutside(false);
-
             WindowManager windowManager = StockDetailsActivity.this.getWindowManager();
-            Display display = windowManager.getDefaultDisplay();
-            System.out.println(display.getWidth());
-
-            //dialog.getWindow().getDecorView().setPadding(0,0,0,0);
-            dialog.getWindow().setBackgroundDrawableResource(android.R.color.white);
-
-            // 设置宽度为屏宽, 靠近屏幕底部
-            final WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
-            lp.gravity = Gravity.BOTTOM; // 紧贴底部
-            //lp.width = WindowManager.LayoutParams.FILL_PARENT;
-            lp.width = display.getWidth();
-            lp.height = display.getHeight() / 2;
-            dialog.getWindow().setAttributes(lp);
-
+            AddClassifyDialog dialog = new AddClassifyDialog(StockDetailsActivity.this,dataHandler,
+                    windowManager,stockName);
             dialog.show();
-
-        }
-    };
-
-    private AdapterView.OnItemClickListener addClassifyNameListener = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            CheckBox box = (CheckBox)view;
-            if(box.isChecked()){
-                box.setChecked(false);
-            }else{
-                box.setChecked(true);
-            }
         }
     };
 

@@ -128,4 +128,12 @@ public class StockDetailsDataHandle {
     }
 
 
+    public void setStockClassify(int index,String stockName){
+        ContentValues values = new ContentValues();
+        values.put("classify",index);
+
+        db.update("totalstock",values,"name=?",new String[] { stockName });
+    }
+
+
 }
