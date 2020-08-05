@@ -1,6 +1,7 @@
 package com.example.stock.eink.pioneer.stocklookup;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -24,11 +25,13 @@ public class ClassifyNameAdapter extends BaseAdapter {
             nameBut.setFocusable(false);
             nameBut.setClickable(false);
             nameBut.setText(classifyNameMap.get(position));
+            nameBut.setBackgroundColor(Color.parseColor("#DCDCDC"));
 
             view = nameBut;
         }else{
             Button nameBut = (Button)view;
             nameBut.setText(classifyNameMap.get(position));
+            nameBut.setBackgroundColor(Color.parseColor("#DCDCDC"));
         }
         return view;
     }

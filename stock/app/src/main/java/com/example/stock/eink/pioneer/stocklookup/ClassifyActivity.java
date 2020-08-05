@@ -3,6 +3,7 @@ package com.example.stock.eink.pioneer.stocklookup;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -28,6 +29,8 @@ public class ClassifyActivity extends AppCompatActivity {
     private ImageView quitImageView;
 
     private EditText classifynameedit;
+
+    private Button lastClassifyBut;
 
     @Override
     protected void onPause() {
@@ -102,6 +105,14 @@ public class ClassifyActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Button tmpbut = (Button)view;
+            if(lastClassifyBut == null){
+                lastClassifyBut = tmpbut;
+            }else{
+                lastClassifyBut.setBackgroundColor(Color.parseColor("#DCDCDC"));
+                lastClassifyBut = tmpbut;
+            }
+
+            tmpbut.setBackgroundColor(Color.parseColor("#FFFACD"));
             //System.out.println("ClassifyActivity nameListener is 22222222222222"+tmpbut.getText().toString());
             dataHandlePt.searchClassifyStock(tmpbut.getText().toString());
         }
