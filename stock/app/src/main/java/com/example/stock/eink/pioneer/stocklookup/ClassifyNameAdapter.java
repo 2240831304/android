@@ -26,6 +26,9 @@ public class ClassifyNameAdapter extends BaseAdapter {
             nameBut.setText(classifyNameMap.get(position));
 
             view = nameBut;
+        }else{
+            Button nameBut = (Button)view;
+            nameBut.setText(classifyNameMap.get(position));
         }
         return view;
     }

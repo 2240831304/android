@@ -138,6 +138,7 @@ public class StockLookupDataHandle {
             // 将光标移动到下一行，从而判断该结果集是否还有下一条数据，如果有则返回true，没有则返回false
             while (cursor.moveToNext()) {
                 nametmp = cursor.getString(cursor.getColumnIndex("classify"));
+                System.out.println("StockLookupDataHandle board name ======="+nametmp);
                 nameMap.put(idtmp,nametmp);
                 idtmp += 1;
             }
