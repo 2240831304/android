@@ -31,7 +31,10 @@ public class AddClassifyDialogAdapter extends BaseAdapter {
             box.setClickable(false);
             view = box;
         }else{
-
+            CheckBox box = (CheckBox)view;
+            box.setText(dataList.get(position));
+            box.setFocusable(false);
+            box.setClickable(false);
         }
 
         return view;
