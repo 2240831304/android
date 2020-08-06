@@ -49,7 +49,7 @@ public class StockDetailsDataHandle {
 
     public void ObatinStockInfo(String stockName){
         Cursor cursor = db.query("totalstock", new String[] {"name", "code","means","curprice","grap",
-                        "minprice","maxprice","calprice" },"name=?", new String[] { stockName },
+                        "minprice","maxprice","calprice","classify" },"name=?", new String[] { stockName },
                 null, null, null);
 
         StockData data = new StockData();
@@ -64,6 +64,7 @@ public class StockDetailsDataHandle {
             data.yearMinPrice = cursor.getString(cursor.getColumnIndex("minprice"));
             data.yearMaxPrice = cursor.getString(cursor.getColumnIndex("maxprice"));
             data.calPrice = cursor.getString(cursor.getColumnIndex("calprice"));
+            data.classify = cursor.getString(cursor.getColumnIndex("classify"));
         }
 
         StockDetailsPt.InitData(data);

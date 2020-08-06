@@ -9,5 +9,6 @@ public class StockData {
     public String yearMinPrice = "";
     public String yearMaxPrice = "";
     public String calPrice = "";
+    public String classify = "";
 }
 

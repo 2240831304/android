@@ -44,6 +44,7 @@ public class StockDetailsActivity extends AppCompatActivity {
     private TextView yearMinpriceTextview;
     private TextView yearMaxpriceTextview;
     private TextView calpriceTextview;
+    private Button addClassifyBut;
 
     @Override
     protected void onPause() {
@@ -89,8 +90,8 @@ public class StockDetailsActivity extends AppCompatActivity {
         saveCalpriceBut.setOnClickListener(saveCalPriceListner);
 
         //添加分类
-        Button addClassify = (Button)findViewById(R.id.add_classify_but);
-        addClassify.setOnClickListener(addClassifyListner);
+        addClassifyBut = (Button)findViewById(R.id.add_classify_but);
+        addClassifyBut.setOnClickListener(addClassifyListner);
 
         dataHandler = new StockDetailsDataHandle(this);
         dataHandler.ObatinStockInfo(stockName);
@@ -106,6 +107,10 @@ public class StockDetailsActivity extends AppCompatActivity {
         yearMinpriceTextview.setText(data.yearMinPrice);
         yearMaxpriceTextview.setText(data.yearMaxPrice);
         calpriceTextview.setText(data.calPrice);
+        if(data.classify != null){
+            addClassifyBut.setText("已添加分类");
+        }
+
     }
 
 
@@ -143,6 +148,7 @@ public class StockDetailsActivity extends AppCompatActivity {
             AddClassifyDialog dialog = new AddClassifyDialog(StockDetailsActivity.this,dataHandler,
                     windowManager,stockName);
             dialog.show();
+
         }
     };
 

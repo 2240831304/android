@@ -27,6 +27,7 @@ public class AddClassifyDialog extends Dialog {
     WindowManager windowManager;
     String classifyName;
     String stockNamept;
+    private boolean addclassifyState = false;
 
     public AddClassifyDialog(Context context,StockDetailsDataHandle databaseHandler,
                              WindowManager pt,String stockName){
@@ -125,11 +126,17 @@ public class AddClassifyDialog extends Dialog {
     private View.OnClickListener okListen = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            int classifyIndex = classifyNameMap.get(classifyName);
-            dataHandler.setStockClassify(classifyIndex,stockNamept);
+            if(classifyName != null){
+                int classifyIndex = classifyNameMap.get(classifyName);
+                dataHandler.setStockClassify(classifyIndex,stockNamept);
+                addclassifyState = true;
+            }
             AddClassifyDialog.this.dismiss();
         }
     };
 
+    public boolean getAddClassifyState(){
+        return addclassifyState;
+    }
 
 }
