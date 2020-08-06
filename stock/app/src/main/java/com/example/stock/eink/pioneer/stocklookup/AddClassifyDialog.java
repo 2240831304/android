@@ -130,6 +130,8 @@ public class AddClassifyDialog extends Dialog {
                 int classifyIndex = classifyNameMap.get(classifyName);
                 dataHandler.setStockClassify(classifyIndex,stockNamept);
                 addclassifyState = true;
+                StockDetailsActivity StockDetailsAcPt = (StockDetailsActivity)contextPt;
+                StockDetailsAcPt.setAddClassifyButState();
             }
             AddClassifyDialog.this.dismiss();
         }

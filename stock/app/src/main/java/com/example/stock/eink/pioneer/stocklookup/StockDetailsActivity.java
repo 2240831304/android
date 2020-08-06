@@ -3,6 +3,7 @@ package com.example.stock.eink.pioneer.stocklookup;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.Gravity;
@@ -148,9 +149,20 @@ public class StockDetailsActivity extends AppCompatActivity {
             AddClassifyDialog dialog = new AddClassifyDialog(StockDetailsActivity.this,dataHandler,
                     windowManager,stockName);
             dialog.show();
-
+            //dialog.setOnDismissListener(dialogListener);
         }
     };
 
+    //添加分类窗口关闭监听
+    private DialogInterface.OnDismissListener dialogListener = new DialogInterface.OnDismissListener(){
+        @Override
+        public void onDismiss(DialogInterface dialogInterface) {
+            System.out.println("55555555566666666666666666666");
+        }
+    };
+
+    public void setAddClassifyButState(){
+        addClassifyBut.setText("已添加分类");
+    }
 
 }
