@@ -138,7 +138,7 @@ public class StockLookupDataHandle {
             // 将光标移动到下一行，从而判断该结果集是否还有下一条数据，如果有则返回true，没有则返回false
             while (cursor.moveToNext()) {
                 nametmp = cursor.getString(cursor.getColumnIndex("classify"));
-                System.out.println("StockLookupDataHandle board name ======="+nametmp);
+                //System.out.println("StockLookupDataHandle board name ======="+nametmp);
                 nameMap.put(idtmp,nametmp);
                 idtmp += 1;
             }
@@ -161,10 +161,12 @@ public class StockLookupDataHandle {
         while (cursor.moveToNext()) {
             classifyID = cursor.getString(cursor.getColumnIndex("id"));
         }
-        System.out.println("StockLookupDataHandle 222222222="+classifyID);
+        String mulclassifyIDs = "%#" +  classifyID + "#%";
+        //System.out.println("StockLookupDataHandle 222222222="+classifyID);
+        //System.out.println("StockLookupDataHandle 222222222="+mulclassifyIDs);
 
-        cursor = db.query("totalstock", new String[] {"name", "code","means","curprice",
-                        "minprice","maxprice"},"classify=?", new String[] { classifyID },
+        cursor = db.query("totalstock", new String[] {"name", "code","means","curprice","minprice","maxprice"},
+                "classify like(?) or classify like(?)", new String[] { classifyID,mulclassifyIDs },
                 null, null, null);
 
         final ArrayList<StockData> dataList =  new ArrayList<>();

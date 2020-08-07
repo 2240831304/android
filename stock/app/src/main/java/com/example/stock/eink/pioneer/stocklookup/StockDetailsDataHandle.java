@@ -149,12 +149,15 @@ public class StockDetailsDataHandle {
         String classifyList = "";
         if(classifyID != null){
             String[] IDs = classifyID.split("#");
-            cursor = db.query("board", new String[] {"classify" },"id in(?)", IDs,
-                    null, null, null);
+            for(String value : IDs){
+                //System.out.println(value);
+                cursor = db.query("board", new String[] {"classify" },"id=?", new String[] {value},
+                        null, null, null);
 
-            while (cursor.moveToNext()) {
-                String tmp = cursor.getString(cursor.getColumnIndex("classify"));
-                classifyList = classifyList + tmp + "#";
+                while (cursor.moveToNext()) {
+                    String tmp = cursor.getString(cursor.getColumnIndex("classify"));
+                    classifyList = classifyList + tmp + "#";
+                }
             }
 
         }
