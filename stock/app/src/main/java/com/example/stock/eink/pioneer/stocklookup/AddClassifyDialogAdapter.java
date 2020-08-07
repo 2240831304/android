@@ -18,8 +18,14 @@ public class AddClassifyDialogAdapter extends BaseAdapter {
     ArrayList<String> dataList;
     private Context contextPt;
 
+    private String classifyList;
+
     public  AddClassifyDialogAdapter(Context context){
         contextPt = context;
+    }
+
+    public void setStockClassify(String classifyPt){
+        classifyList = classifyPt;
     }
 
     @Override
@@ -29,12 +35,23 @@ public class AddClassifyDialogAdapter extends BaseAdapter {
             box.setText(dataList.get(position));
             box.setFocusable(false);
             box.setClickable(false);
+            if(classifyList.contains(dataList.get(position))){
+                box.setChecked(true);
+            }else {
+                box.setChecked(false);
+            }
+
             view = box;
         }else{
             CheckBox box = (CheckBox)view;
             box.setText(dataList.get(position));
             box.setFocusable(false);
             box.setClickable(false);
+            if(classifyList.contains(dataList.get(position))){
+                box.setChecked(true);
+            }else {
+                box.setChecked(false);
+            }
         }
 
         return view;

@@ -73,6 +73,9 @@ public class AddClassifyDialog extends Dialog {
         AddClassifyDialogAdapter adapter = new AddClassifyDialogAdapter(contextPt);
         classifylistview.setAdapter(adapter);
         classifylistview.setOnItemClickListener(addClassifyNameListener);
+
+        adapter.setStockClassify(dataHandler.getStockClassify(stockNamept));
+
         ArrayList<String> classifyNameList = new ArrayList<String>();
         while(enu.hasMoreElements()) {
             //System.out.println(enu.nextElement());

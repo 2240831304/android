@@ -136,5 +136,32 @@ public class StockDetailsDataHandle {
         db.update("totalstock",values,"name=?",new String[] { stockName });
     }
 
+    public String getStockClassify(String stockName){
+        Cursor cursor = db.query("totalstock", new String[] {"classify"},"name=?", new String[] { stockName },
+                null, null, null);
+
+        String classifyID = "";
+        // 将光标移动到下一行，从而判断该结果集是否还有下一条数据，如果有则返回true，没有则返回false
+        while (cursor.moveToNext()) {
+            classifyID = cursor.getString(cursor.getColumnIndex("classify"));
+        }
+
+        String classifyList = "";
+        if(classifyID != null){
+            String[] IDs = classifyID.split("#");
+            cursor = db.query("board", new String[] {"classify" },"id in(?)", IDs,
+                    null, null, null);
+
+            while (cursor.moveToNext()) {
+                String tmp = cursor.getString(cursor.getColumnIndex("classify"));
+                classifyList = classifyList + tmp + "#";
+            }
+
+        }
+
+        System.out.println("StockDetailsDataHandle getStockClassify ==="+classifyList);
+        return classifyList;
+    }
+
 
 }
