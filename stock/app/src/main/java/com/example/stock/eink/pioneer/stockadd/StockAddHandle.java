@@ -31,7 +31,10 @@ public class StockAddHandle  {
             intent.putExtra("newestprice",stockTypeName);
             context.startActivity(intent);
         }else if (stockTypeName.equals("基本资料")){
-            System.out.println("55555555555555555555555555555555555555555555");
+            Intent intent = new Intent(context,BusinessAnalysisActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("name",stockTypeName);
+            context.startActivity(intent);
         }
 
 
