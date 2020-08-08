@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.stock.R;
+//import Ths.JDIBridge;
+
 
 public class BusinessAnalysisActivity extends AppCompatActivity {
 
@@ -74,6 +76,17 @@ public class BusinessAnalysisActivity extends AppCompatActivity {
     private View.OnClickListener obtainButListner = new View.OnClickListener(){
         @Override
         public void onClick(View view) {
+
+//            String strResultDataSerious = JDIBridge.THS_DateSerial("002233.SZ","ths_open_price_stock;ths_high_price_stock;ths_low_stock;ths_close_price_stock;" +
+//                    "ths_avg_price_stock;ths_vol_stock;ths_trans_num_stock;ths_amt_stock;ths_macd_stock;ths_kdj_stock;" +
+//                    "ths_vstd_stock;ths_boll_stock;ths_rsi_stock;ths_ma_stock;ths_sar_stock;ths_wr_stock;ths_cci_stock;" +
+//                    "ths_obv_stock;ths_vol_w_stock;ths_vol_m_stock","100;100;100;100;100;100;;;" +
+//                    "26,12,9,100,100,100;9,3,3,100,100,100;10,100;26,2,100,100,100;6,100,100;" +
+//                    "10,100,100;4,100,100;14,100,100;14,100,100;100,100,100;;",
+//                    "Days:Tradedays,Fill:Previous,Interval:D","2018-05-31","2018-06-15");
+//            System.out.println("THS_iFinDhis ==> " + strResultDataSerious );
+
+
             if(ReqState){
                 ReqState = false;
                 obtainBut.setText("开始请求");
