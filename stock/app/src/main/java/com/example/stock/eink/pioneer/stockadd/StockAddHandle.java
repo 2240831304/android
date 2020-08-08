@@ -25,9 +25,15 @@ public class StockAddHandle  {
 
 
     public void createCurpriceUI(Context context){
-        Intent intent = new Intent(context,StockNewestDataActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("newestprice",stockTypeName);
-        context.startActivity(intent);
+        if(stockTypeName.equals("最新股价")){
+            Intent intent = new Intent(context,StockNewestDataActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("newestprice",stockTypeName);
+            context.startActivity(intent);
+        }else if (stockTypeName.equals("基本资料")){
+            System.out.println("55555555555555555555555555555555555555555555");
+        }
+
+
     }
 }

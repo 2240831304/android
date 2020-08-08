@@ -27,7 +27,7 @@
 
     <string-array name="stock_current_price">
         <item>最新股价</item>
-        <item>full</item>
+        <item>基本资料</item>
         <item>full</item>
         <item>full</item>
         <item>full</item>
