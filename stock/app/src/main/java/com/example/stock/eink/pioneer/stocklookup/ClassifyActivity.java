@@ -113,7 +113,8 @@ public class ClassifyActivity extends AppCompatActivity {
             }
 
             tmpbut.setBackgroundColor(Color.parseColor("#FFFACD"));
-            //System.out.println("ClassifyActivity nameListener is 22222222222222"+tmpbut.getText().toString());
+            nameAdapter.setSelectedIndex(i);
+            //System.out.println("ClassifyActivity nameListener index ===="+String.valueOf(i));
             dataHandlePt.searchClassifyStock(tmpbut.getText().toString());
         }
     };

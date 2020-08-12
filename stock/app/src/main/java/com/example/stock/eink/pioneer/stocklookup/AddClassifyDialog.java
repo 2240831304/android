@@ -24,10 +24,12 @@ public class AddClassifyDialog extends Dialog {
     private Context contextPt;
     private StockDetailsDataHandle dataHandler;
     Hashtable<String,Integer> classifyNameMap;
+    String  stockClassifyList;
     WindowManager windowManager;
     String classifyName;
     String stockNamept;
     private boolean addclassifyState = false;
+    private AddClassifyDialogAdapter adapter;
 
     public AddClassifyDialog(Context context,StockDetailsDataHandle databaseHandler,
                              WindowManager pt,String stockName){
@@ -70,11 +72,12 @@ public class AddClassifyDialog extends Dialog {
         okBut.setOnClickListener(okListen);
 
         ListView classifylistview = dialogView.findViewById(R.id.classifydialog_listview);
-        AddClassifyDialogAdapter adapter = new AddClassifyDialogAdapter(contextPt);
+        adapter = new AddClassifyDialogAdapter(contextPt);
         classifylistview.setAdapter(adapter);
         classifylistview.setOnItemClickListener(addClassifyNameListener);
 
-        adapter.setStockClassify(dataHandler.getStockClassify(stockNamept));
+        stockClassifyList = dataHandler.getStockClassify(stockNamept);
+        adapter.setStockClassify(stockClassifyList);
 
         ArrayList<String> classifyNameList = new ArrayList<String>();
         while(enu.hasMoreElements()) {
@@ -108,12 +111,17 @@ public class AddClassifyDialog extends Dialog {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             CheckBox box = (CheckBox)view;
+            classifyName = box.getText().toString();
+            String strtmp = classifyName + "#";
             if(box.isChecked()){
                 box.setChecked(false);
+                stockClassifyList = stockClassifyList.replace(strtmp,"");
             }else{
                 box.setChecked(true);
-                classifyName = box.getText().toString();
+                stockClassifyList = stockClassifyList + strtmp;
             }
+            adapter.setStockClassify(stockClassifyList);
+            System.out.println("addClassifyNameListener @@@@@@@@@@@@@@@@@@="+stockClassifyList);
         }
     };
 
@@ -129,9 +137,21 @@ public class AddClassifyDialog extends Dialog {
     private View.OnClickListener okListen = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if(classifyName != null){
-                int classifyIndex = classifyNameMap.get(classifyName);
-                dataHandler.setStockClassify(classifyIndex,stockNamept);
+            if( stockClassifyList != null ){
+                if(stockClassifyList.isEmpty() == false){
+                    String classifyIndexIds = "#";
+                    String [] stmList = stockClassifyList.split("#");
+                    for (String value : stmList){
+                        int classifyIndex = classifyNameMap.get(value);
+                        classifyIndexIds = classifyIndexIds  + String.valueOf(classifyIndex) + "#";
+                    }
+
+                    System.out.println(classifyIndexIds);
+                    dataHandler.setStockClassify(classifyIndexIds,stockNamept);
+                }else {
+                    dataHandler.setStockClassify("",stockNamept);
+                }
+
                 addclassifyState = true;
                 StockDetailsActivity StockDetailsAcPt = (StockDetailsActivity)contextPt;
                 StockDetailsAcPt.setAddClassifyButState();

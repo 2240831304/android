@@ -108,7 +108,7 @@ public class StockDetailsActivity extends AppCompatActivity {
         yearMinpriceTextview.setText(data.yearMinPrice);
         yearMaxpriceTextview.setText(data.yearMaxPrice);
         calpriceTextview.setText(data.calPrice);
-        if(data.classify != null){
+        if((data.classify != null) && (data.classify.isEmpty() == false)){
             addClassifyBut.setText("已添加分类");
         }
 

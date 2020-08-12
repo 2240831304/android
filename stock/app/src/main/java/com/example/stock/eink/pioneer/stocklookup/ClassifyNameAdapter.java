@@ -13,9 +13,14 @@ public class ClassifyNameAdapter extends BaseAdapter {
 
     private Hashtable<Integer,String> classifyNameMap;
     private Context contextpt;
+    private int selectIndex = -1;
 
     public ClassifyNameAdapter(Context context){
         contextpt = context;
+    }
+
+    public void setSelectedIndex(int index){
+        selectIndex = index;
     }
 
     @Override
@@ -31,7 +36,12 @@ public class ClassifyNameAdapter extends BaseAdapter {
         }else{
             Button nameBut = (Button)view;
             nameBut.setText(classifyNameMap.get(position));
-            nameBut.setBackgroundColor(Color.parseColor("#DCDCDC"));
+            if(selectIndex == position){
+                nameBut.setBackgroundColor(Color.parseColor("#FFFACD"));
+            }else {
+                nameBut.setBackgroundColor(Color.parseColor("#DCDCDC"));
+            }
+
         }
         return view;
     }

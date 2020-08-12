@@ -129,9 +129,9 @@ public class StockDetailsDataHandle {
     }
 
 
-    public void setStockClassify(int index,String stockName){
+    public void setStockClassify(String indexs,String stockName){
         ContentValues values = new ContentValues();
-        values.put("classify",index);
+        values.put("classify",indexs);
 
         db.update("totalstock",values,"name=?",new String[] { stockName });
     }
