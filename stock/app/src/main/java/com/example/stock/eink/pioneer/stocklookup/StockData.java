@@ -10,5 +10,6 @@ public class StockData {
     public String yearMaxPrice = "";
     public String calPrice = "";
     public String classify = "";
+    public String state = "";
 }
 

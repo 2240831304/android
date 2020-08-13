@@ -111,6 +111,7 @@ public class StockDetailsActivity extends AppCompatActivity {
         if((data.classify != null) && (data.classify.isEmpty() == false)){
             addClassifyBut.setText("已添加分类");
         }
+        gradeEdittext.setText(data.state);
 
     }
 
