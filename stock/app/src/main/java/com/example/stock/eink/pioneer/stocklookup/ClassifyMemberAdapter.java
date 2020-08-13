@@ -38,6 +38,9 @@ public class ClassifyMemberAdapter extends BaseAdapter {
             textview = (TextView)view.findViewById(R.id.stock_cur_price);
             textview.setText(data.curprice);
 
+            textview = (TextView)view.findViewById(R.id.stock_grap_price);
+            textview.setText(data.grap);
+
             textview = (TextView)view.findViewById(R.id.stock_minprice);
             textview.setText(data.yearMinPrice);
 
@@ -57,6 +60,9 @@ public class ClassifyMemberAdapter extends BaseAdapter {
             //@price
             textview = (TextView)view.findViewById(R.id.stock_cur_price);
             textview.setText(data.curprice);
+
+            textview = (TextView)view.findViewById(R.id.stock_grap_price);
+            textview.setText(data.grap);
 
             textview = (TextView)view.findViewById(R.id.stock_minprice);
             textview.setText(data.yearMinPrice);

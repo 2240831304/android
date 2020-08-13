@@ -39,6 +39,14 @@
                 android:gravity="center"
                 android:text="12.03" />
             <TextView
+                android:id="@+id/stock_grap_price"
+                android:layout_width="0.0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:textColor="#FF00FF"
+                android:text="0.0" />
+            <TextView
                 android:id="@+id/stock_minprice"
                 android:layout_width="0.0px"
                 android:layout_height="match_parent"

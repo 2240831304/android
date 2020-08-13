@@ -165,7 +165,7 @@ public class StockLookupDataHandle {
         //System.out.println("StockLookupDataHandle 222222222="+classifyID);
         //System.out.println("StockLookupDataHandle 222222222="+mulclassifyIDs);
 
-        cursor = db.query("totalstock", new String[] {"name", "code","means","curprice","minprice","maxprice"},
+        cursor = db.query("totalstock", new String[] {"name", "code","means","curprice","grap","minprice","maxprice"},
                 "classify like(?) or classify like(?)", new String[] { classifyID,mulclassifyIDs },
                 null, null, null);
 
@@ -180,6 +180,7 @@ public class StockLookupDataHandle {
             data.curprice = cursor.getString(cursor.getColumnIndex("curprice"));
             data.yearMinPrice = cursor.getString(cursor.getColumnIndex("minprice"));
             data.yearMaxPrice = cursor.getString(cursor.getColumnIndex("maxprice"));
+            data.grap = cursor.getString(cursor.getColumnIndex("grap"));
 
             //System.out.println("333333333333333333="+data.name);
             dataList.add(data);
