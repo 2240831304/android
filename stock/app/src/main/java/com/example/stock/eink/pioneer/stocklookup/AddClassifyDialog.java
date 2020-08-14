@@ -74,6 +74,7 @@ public class AddClassifyDialog extends Dialog {
         ListView classifylistview = dialogView.findViewById(R.id.classifydialog_listview);
         adapter = new AddClassifyDialogAdapter(contextPt);
         classifylistview.setAdapter(adapter);
+
         classifylistview.setOnItemClickListener(addClassifyNameListener);
 
         stockClassifyList = dataHandler.getStockClassify(stockNamept);

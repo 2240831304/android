@@ -35,6 +35,8 @@ public class AddClassifyDialogAdapter extends BaseAdapter {
             box.setText(dataList.get(position));
             box.setFocusable(false);
             box.setClickable(false);
+            box.setTextSize(28);
+            //box.setHeight(200);
             if(classifyList.contains(dataList.get(position))){
                 box.setChecked(true);
             }else {
@@ -52,8 +54,11 @@ public class AddClassifyDialogAdapter extends BaseAdapter {
             }else {
                 box.setChecked(false);
             }
+            box.setTextSize(28);
+            //box.setHeight(200);
         }
 
+        //view.setMinimumHeight(50);
         return view;
     }
 
