@@ -36,7 +36,7 @@ public class StockLookupAdapter extends BaseAdapter {
             if( (data.classify == null) || (data.classify.isEmpty()) ){
                 textview.setTextColor(Color.parseColor("#0000EE"));
             }else {
-                textview.setTextColor(Color.parseColor("#000000"));
+                textview.setTextColor(Color.parseColor("#808080"));
             }
 
             textview = (TextView)view.findViewById(R.id.stock_code);
@@ -70,7 +70,7 @@ public class StockLookupAdapter extends BaseAdapter {
             if( (data.classify == null) || (data.classify.isEmpty()) ){
                 textview.setTextColor(Color.parseColor("#0000EE"));
             }else {
-                textview.setTextColor(Color.parseColor("#000000"));
+                textview.setTextColor(Color.parseColor("#808080"));
             }
 
             textview = (TextView)view.findViewById(R.id.stock_code);
