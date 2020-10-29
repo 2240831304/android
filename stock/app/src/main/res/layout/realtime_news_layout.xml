@@ -6,9 +6,11 @@
     tools:context=".ui.realtimenews.RealtimeNewsFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:id="@+id/realtimenews_imageview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="200dp"
+        android:src="@"
+        />
 
 </LinearLayout>
