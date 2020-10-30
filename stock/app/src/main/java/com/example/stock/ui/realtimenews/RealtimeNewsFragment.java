@@ -1,13 +1,18 @@
 package com.example.stock.ui.realtimenews;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TabWidget;
 
 import com.example.stock.R;
 
@@ -28,6 +33,12 @@ public class RealtimeNewsFragment extends Fragment {
     private int index = 1;
     private Timer timer;
 
+    private String[] tabtitle = { "first", "second", "觉得基督","third","four","five","server","解决的角度" };
+    private TabWidget mTabWidget;
+    private ViewPager mViewPager;
+
+    private MyPagerAdapter mPagerAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -39,9 +50,59 @@ public class RealtimeNewsFragment extends Fragment {
         //timer = new Timer();
         //timer.scheduleAtFixedRate(task, delay, intevalPeriod);
 
+        mTabWidget = (TabWidget) root.findViewById(R.id.newstabWidget);
+        mTabWidget.setStripEnabled(false);
+        for (int i = 0;i < tabtitle.length;i++){
+            Button mBtnTabs = new Button(getActivity().getApplicationContext());
+            mBtnTabs.setFocusable(true);
+            mBtnTabs.setText(tabtitle[i]);
+            mBtnTabs.setOnClickListener(mTabClickListener);
+            mTabWidget.addView(mBtnTabs);
+        }
+
+        mViewPager = (ViewPager) root.findViewById(R.id.newsviewpager);
+        mPagerAdapter = new MyPagerAdapter(getFragmentManager(),tabtitle.length);
+        mViewPager.setAdapter(mPagerAdapter);
+        mViewPager.setOnPageChangeListener(mPageChangeListener);
+
+        mTabWidget.setCurrentTab(0);
+
         return root;
 
     }
+
+
+    private View.OnClickListener mTabClickListener = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v)
+        {
+            Button mBtnTabs = (Button) v;
+            mBtnTabs.setBackgroundColor(Color.parseColor("#FFFACD"));
+            mViewPager.setCurrentItem(1);
+        }
+    };
+
+    private ViewPager.OnPageChangeListener mPageChangeListener = new ViewPager.OnPageChangeListener() {
+
+        @Override
+        public void onPageSelected(int arg0)
+        {
+            mTabWidget.setCurrentTab(arg0);
+        }
+
+        @Override
+        public void onPageScrolled(int arg0, float arg1, int arg2)
+        {
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int arg0)
+        {
+
+        }
+    };
 
     private TimerTask task = new TimerTask() {
         @Override
