@@ -28,11 +28,6 @@
 
     </LinearLayout>
 
-    <TabWidget
-        android:id="@+id/newstabWidget"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right|center_vertical" />
     
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/newsviewpager"
