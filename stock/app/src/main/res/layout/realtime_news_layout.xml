@@ -29,6 +29,7 @@
     </LinearLayout>
 
     
+    
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/newsviewpager"
         android:layout_width="match_parent"
