@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
@@ -27,11 +29,19 @@ public class RealtimeNewsFragment extends Fragment {
     private ViewPager mViewPager;
     private MyPagerAdapter mPagerAdapter;
 
+    private RecyclerView RecyclerViewTab;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.realtime_news_layout, container, false);
+
+        RecyclerViewTab = root.findViewById(R.id.newsrecyclerview_tab);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
+        linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
+        RecyclerViewTab.setLayoutManager(linearLayoutManager);
+        RecyclerViewTab.setAdapter();
 
         mViewPager = root.findViewById(R.id.newsviewpager);
         mPagerAdapter = new MyPagerAdapter(getFragmentManager(),tabtitle.length);
