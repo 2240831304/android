@@ -17,7 +17,8 @@ public class HotspotFrame extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         Button mBtnTabs = new Button(getActivity().getApplicationContext());
-        mBtnTabs.setFocusable(true);
+        mBtnTabs.setFocusable(false);
+        mBtnTabs.setClickable(false);
         mBtnTabs.setText("hhhhhhhhhhhhh");
         View v = (View)mBtnTabs;
         return v;
