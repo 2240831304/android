@@ -41,7 +41,7 @@ public class RealtimeNewsFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         RecyclerViewTab.setLayoutManager(linearLayoutManager);
-        RecyclerViewTab.setAdapter();
+        RecyclerViewTab.setAdapter(new RecyclerViewAdapter());
 
         mViewPager = root.findViewById(R.id.newsviewpager);
         mPagerAdapter = new MyPagerAdapter(getFragmentManager(),tabtitle.length);
