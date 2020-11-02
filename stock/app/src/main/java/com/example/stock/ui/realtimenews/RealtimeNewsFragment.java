@@ -23,13 +23,12 @@ import java.util.TimerTask;
 
 
 public class RealtimeNewsFragment extends Fragment {
-
-    private String[] tabtitle = { "first", "second", "觉得基督","third","four","five","server","解决的角度" };
-
     private ViewPager mViewPager;
     private MyPagerAdapter mPagerAdapter;
 
     private RecyclerView RecyclerViewTab;
+
+    private int tabsLenth = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,12 +40,18 @@ public class RealtimeNewsFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         RecyclerViewTab.setLayoutManager(linearLayoutManager);
-        RecyclerViewTab.setAdapter(new RecyclerViewAdapter());
+        RecyclerViewAdapter RecyclerViewAdapterPt = new RecyclerViewAdapter();
+        RecyclerViewTab.setAdapter(RecyclerViewAdapterPt);
 
         mViewPager = root.findViewById(R.id.newsviewpager);
-        mPagerAdapter = new MyPagerAdapter(getFragmentManager(),tabtitle.length);
+        tabsLenth = RecyclerViewAdapterPt.getItemCount();
+        mPagerAdapter = new MyPagerAdapter(getFragmentManager(),tabsLenth);
+        mPagerAdapter.setTabs(RecyclerViewAdapterPt.getTabs());
+
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.addOnPageChangeListener(mPageChangeListener);
+
+        RecyclerViewAdapterPt.setTabOnItemClickListener(tabListener);
 
         return root;
 
@@ -74,6 +79,24 @@ public class RealtimeNewsFragment extends Fragment {
         }
 
     };
+
+    private RecyclerViewAdapter.TabOnItemClickListener tabListener = new RecyclerViewAdapter.TabOnItemClickListener(){
+        @Override
+        public void onItemClick(String tabName, int position,int tabIndex) {
+            System.out.println("onItemClick 55555555555555555555555");
+            mPagerAdapter.setTabName(tabName);
+            mViewPager.setCurrentItem(tabIndex);
+        }
+
+        @Override
+        public void onItemLongClick(String tabName, int position,int tabIndex) {
+            System.out.println("onItemLongClick 55555555555555555555555555");
+            mPagerAdapter.setTabName(tabName);
+            mViewPager.setCurrentItem(tabIndex);
+
+        }
+    };
+
 
 
 }

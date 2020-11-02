@@ -4,10 +4,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import java.lang.ref.SoftReference;
+import java.util.List;
+
 public class MyPagerAdapter extends FragmentStatePagerAdapter
 {
 
     private int nums = 0;
+    private String tabName = "";
+    private List<String> tabs ;
 
     public MyPagerAdapter(FragmentManager fm,int num)
     {
@@ -15,10 +20,28 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter
         nums = num;
     }
 
+    public void setTabName(String name)
+    {
+        tabName = name;
+    }
+
+    public void setTabs(List<String> tabList)
+    {
+        tabs = tabList;
+    }
+
+
     @Override
     public Fragment getItem(int position)
     {
-        return new HotspotFrame();
+        if(tabs.get(position) == "热点"){
+            return new HotspotFrame();
+        }else if(tabs.get(position) == "视频"){
+            return new VedioFrame();
+        }else {
+            return new HotspotFrame();
+        }
+
     }
 
     @Override

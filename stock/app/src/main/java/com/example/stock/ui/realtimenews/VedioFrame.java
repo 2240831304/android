@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class HotspotFrame extends Fragment {
+public class VedioFrame extends Fragment {
 
     @Nullable
     @Override
@@ -19,9 +19,10 @@ public class HotspotFrame extends Fragment {
         Button mBtnTabs = new Button(getActivity().getApplicationContext());
         mBtnTabs.setFocusable(false);
         mBtnTabs.setClickable(false);
-        mBtnTabs.setText("热点专区");
+        mBtnTabs.setText("视频专区");
         View v = (View)mBtnTabs;
         return v;
     }
+
 
 }
