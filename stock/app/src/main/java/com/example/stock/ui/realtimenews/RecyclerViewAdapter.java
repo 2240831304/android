@@ -68,6 +68,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             lastCliackedTabView = holder.tabNameView;
             holder.tabNameView.setTextColor(Color.parseColor("#ffff0000"));
         }
+
 //        if (tabClickListener != null)
 //        {
 //            holder.tabNameView.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +130,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return tabs;
     }
 
+    public void setTabs(List<String> tabList)
+    {
+        tabs = tabList;
+    }
 
 
 }
