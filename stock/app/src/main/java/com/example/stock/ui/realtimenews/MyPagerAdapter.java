@@ -38,7 +38,10 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter
             return new HotspotFrame();
         }else if(tabs.get(position) == "视频"){
             return new VedioFrame();
-        }else {
+        }else if(tabs.get(position) == "财经"){
+            return new MoneyFrame();
+        }
+        else {
             return new HotspotFrame();
         }
 

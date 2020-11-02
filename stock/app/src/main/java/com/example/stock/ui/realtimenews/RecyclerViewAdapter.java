@@ -16,10 +16,11 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
-    private List<String> tabs = Arrays.asList("热点","视频","奇思妙想","科技","财经","娱乐","汽车","影视","生活","历史");
+    private List<String> tabs = Arrays.asList("热点","视频","奇思","科技","财经","娱乐","汽车","影视","生活",
+            "历史","杂谈","篮球","足球");
     private TabOnItemClickListener tabClickListener;
 
-    private TextView lastCliackedTabView;
+    private int globleIndex = 0;
 
     //内部类，绑定控件
     class MyViewHolder extends RecyclerView.ViewHolder{
@@ -64,9 +65,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(final MyViewHolder holder,final int position) {
         holder.tabNameView.setText(tabs.get(position));
         holder.index = position;
-        if(position == 0){
-            lastCliackedTabView = holder.tabNameView;
+        if(globleIndex == position){
             holder.tabNameView.setTextColor(Color.parseColor("#ffff0000"));
+        }else {
+            holder.tabNameView.setTextColor(Color.parseColor("#ff000000"));
         }
 
 //        if (tabClickListener != null)
@@ -97,13 +99,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private View.OnClickListener tabOnClickListener = new View.OnClickListener(){
         @Override
         public void onClick(View view) {
-
-            lastCliackedTabView.setTextColor(Color.parseColor("#ff000000"));
-
             MyViewHolder holderpt = (MyViewHolder)view.getTag();
-            lastCliackedTabView = holderpt.tabNameView;
-
-            holderpt.tabNameView.setTextColor(Color.parseColor("#ffff0000"));
+            globleIndex = holderpt.index;
             tabClickListener.onItemClick(view,holderpt.getLayoutPosition(),holderpt.index);
         }
     };
@@ -113,7 +110,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         @Override
         public boolean onLongClick(View view) {
             MyViewHolder holderpt = (MyViewHolder)view.getTag();
-            holderpt.tabNameView.setTextColor(Color.parseColor("#ffff0000"));
+            globleIndex = holderpt.index;
             tabClickListener.onItemLongClick(view,holderpt.getLayoutPosition(),holderpt.index);
             return false;
         }
@@ -134,6 +131,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     {
         tabs = tabList;
     }
+
+    public void setGlobleIndex(int index)
+    {
+        globleIndex = index;
+    }
+
 
 
 }

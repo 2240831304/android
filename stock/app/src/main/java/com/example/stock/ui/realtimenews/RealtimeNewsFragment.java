@@ -30,6 +30,8 @@ public class RealtimeNewsFragment extends Fragment {
 
     private int tabsLenth = 0;
 
+    private CenterLayoutManager linearLayoutManager;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -37,11 +39,13 @@ public class RealtimeNewsFragment extends Fragment {
         View root = inflater.inflate(R.layout.realtime_news_layout, container, false);
 
         RecyclerViewTab = root.findViewById(R.id.newsrecyclerview_tab);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
+        //LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
+        linearLayoutManager = new CenterLayoutManager(this.getContext());
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         RecyclerViewTab.setLayoutManager(linearLayoutManager);
         RecyclerViewAdapter RecyclerViewAdapterPt = new RecyclerViewAdapter();
         RecyclerViewTab.setAdapter(RecyclerViewAdapterPt);
+
 
         mViewPager = root.findViewById(R.id.newsviewpager);
         tabsLenth = RecyclerViewAdapterPt.getItemCount();
@@ -63,7 +67,11 @@ public class RealtimeNewsFragment extends Fragment {
         @Override
         public void onPageSelected(int arg0)
         {
-            System.out.println("onPageSelected 44444444444444444444444444444444444");
+            //System.out.println("onPageSelected 44444444444444444444444444444444444");
+            //RecyclerViewTab.smoothScrollToPosition(arg0);
+            ((RecyclerViewAdapter) RecyclerViewTab.getAdapter() ).setGlobleIndex(arg0);
+            linearLayoutManager.smoothScrollToPosition(RecyclerViewTab, new RecyclerView.State(), arg0);
+            RecyclerViewTab.getAdapter().notifyDataSetChanged();
         }
 
         @Override
@@ -74,7 +82,7 @@ public class RealtimeNewsFragment extends Fragment {
         @Override
         public void onPageScrollStateChanged(int arg0)
         {
-            System.out.println("onPageScrollStateChanged 44444444444444444444444444444444444");
+            //System.out.println("onPageScrollStateChanged 44444444444444444444444444444444444");
         }
 
     };
