@@ -69,7 +69,6 @@ public class RealtimeNewsFragment extends Fragment {
         @Override
         public void onPageScrolled(int arg0, float arg1, int arg2)
         {
-            System.out.println("onPageScrolled 44444444444444444444444444444444444");
         }
 
         @Override
@@ -82,16 +81,12 @@ public class RealtimeNewsFragment extends Fragment {
 
     private RecyclerViewAdapter.TabOnItemClickListener tabListener = new RecyclerViewAdapter.TabOnItemClickListener(){
         @Override
-        public void onItemClick(String tabName, int position,int tabIndex) {
-            System.out.println("onItemClick 55555555555555555555555");
-            mPagerAdapter.setTabName(tabName);
+        public void onItemClick(View view, int position,int tabIndex) {
             mViewPager.setCurrentItem(tabIndex);
         }
 
         @Override
-        public void onItemLongClick(String tabName, int position,int tabIndex) {
-            System.out.println("onItemLongClick 55555555555555555555555555");
-            mPagerAdapter.setTabName(tabName);
+        public void onItemLongClick(View view, int position,int tabIndex) {
             mViewPager.setCurrentItem(tabIndex);
 
         }
