@@ -35,7 +35,8 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter
     public Fragment getItem(int position)
     {
         if(tabs.get(position) == "热点"){
-            return new HotspotFrame();
+            HotspotFrame view = new HotspotFrame();
+            return view;
         }else if(tabs.get(position) == "视频"){
             return new VedioFrame();
         }else if(tabs.get(position) == "财经"){
