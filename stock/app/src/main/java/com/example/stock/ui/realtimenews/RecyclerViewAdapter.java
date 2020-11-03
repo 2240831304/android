@@ -16,8 +16,8 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
-    private List<String> tabs = Arrays.asList("热点","视频","奇思","科技","财经","娱乐","汽车","影视","生活",
-            "历史","杂谈","篮球","足球");
+    private List<String> tabs = Arrays.asList("热点","视频","奇思妙想","科技","财经","娱乐会","汽车","影视","生活",
+            "历史","杂谈","篮球明星","足球");
     private TabOnItemClickListener tabClickListener;
 
     private int globleIndex = 0;
