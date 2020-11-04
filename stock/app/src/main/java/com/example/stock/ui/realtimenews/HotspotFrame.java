@@ -1,5 +1,6 @@
 package com.example.stock.ui.realtimenews;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ public class HotspotFrame extends Fragment {
         mBtnTabs.setFocusable(false);
         mBtnTabs.setClickable(false);
         mBtnTabs.setText("热点专区");
+        mBtnTabs.setBackgroundColor(Color.GREEN);
         View v = (View)mBtnTabs;
         return v;
     }

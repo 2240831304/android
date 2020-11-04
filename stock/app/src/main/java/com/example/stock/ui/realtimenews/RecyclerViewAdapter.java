@@ -39,6 +39,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
+
+    @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.newstabsitem,parent,false);
         MyViewHolder holder = new MyViewHolder(view);
@@ -70,29 +75,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }else {
             holder.tabNameView.setTextColor(Color.parseColor("#ff000000"));
         }
-
-//        if (tabClickListener != null)
-//        {
-//            holder.tabNameView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view)
-//                {
-//                    //返回对应view的信息
-//                    int pos = holder.getLayoutPosition();
-//                    holder.tabNameView.setTextColor(Color.parseColor("#ffff0000"));
-//                    tabClickListener.onItemClick(view,pos,position);
-//                }
-//            });
-//
-//            holder.tabNameView.setOnLongClickListener(new View.OnLongClickListener() {
-//                @Override
-//                public boolean onLongClick(View view) {
-//                    int pos = holder.getLayoutPosition();
-//                    tabClickListener.onItemLongClick(view,pos,position);
-//                    return false;
-//                }
-//            });
-//        }
 
     }
 
