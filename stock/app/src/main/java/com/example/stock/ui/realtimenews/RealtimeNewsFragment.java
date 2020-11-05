@@ -1,8 +1,11 @@
 package com.example.stock.ui.realtimenews;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -57,6 +60,7 @@ public class RealtimeNewsFragment extends Fragment {
 
         RecyclerViewAdapterPt.setTabOnItemClickListener(tabListener);
 
+        System.out.println("RealtimeNewsFragment  onCreateView 33333333333333333");
         return root;
 
     }
@@ -100,6 +104,79 @@ public class RealtimeNewsFragment extends Fragment {
         }
     };
 
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        System.out.println("RealtimeNewsFragment  onCreate 33333333333333333");
+
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        System.out.println("RealtimeNewsFragment  onAttach 33333333333333333");
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        System.out.println("RealtimeNewsFragment  onViewCreated 33333333333333333");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        System.out.println("RealtimeNewsFragment  onStart 33333333333333333");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        System.out.println("RealtimeNewsFragment  onResume 33333333333333333");
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        System.out.println("RealtimeNewsFragment  onActivityCreated 33333333333333333");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        System.out.println("RealtimeNewsFragment  onPause 33333333333333333");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        System.out.println("RealtimeNewsFragment  onStop 33333333333333333");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        System.out.println("RealtimeNewsFragment  onDestroy 33333333333333333");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        System.out.println("RealtimeNewsFragment  onDetach 33333333333333333");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        System.out.println("RealtimeNewsFragment  onDestroyView 33333333333333333");
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        System.out.println("RealtimeNewsFragment  onSaveInstanceState 33333333333333333");
+    }
 
 
 }

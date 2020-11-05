@@ -1,10 +1,12 @@
 package com.example.stock.eink.pioneer.stocklookup;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -41,6 +43,8 @@ public class ClassifyActivity extends AppCompatActivity {
             InputMethodManager imm = (InputMethodManager) getSystemService(this.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
+
+        System.out.println("ClassifyActivity onPause 333333333333");
     }
 
     @Override
@@ -76,6 +80,7 @@ public class ClassifyActivity extends AppCompatActivity {
 
         dataHandlePt.InitClassifyName();
 
+        System.out.println("ClassifyActivity onCreate 333333333333");
     }
 
 
@@ -144,5 +149,39 @@ public class ClassifyActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        System.out.println("ClassifyActivity onRestart 333333333333");
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        System.out.println("ClassifyActivity onStart 333333333333");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.out.println("ClassifyActivity onResume 333333333333");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        System.out.println("ClassifyActivity onStop 333333333333");
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        System.out.println("ClassifyActivity onSaveInstanceState 333333333333");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.out.println("ClassifyActivity onDestroy 333333333333");
+    }
 }

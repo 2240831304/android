@@ -37,11 +37,7 @@ public class HotspotFrame extends Fragment {
     List<Integer> imageUrlData;
     List<String> contentData;
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-    }
 
     @Nullable
     @Override
@@ -81,6 +77,7 @@ public class HotspotFrame extends Fragment {
         listadapter = new HostpotListviewAdapter(this.getContext());
         hostpotListview.setAdapter(listadapter);
 
+        System.out.println("HotspotFrame  onCreateView 33333333333333333");
         return root;
     }
 
@@ -92,7 +89,78 @@ public class HotspotFrame extends Fragment {
         }
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        System.out.println("HotspotFrame  onCreate 33333333333333333");
 
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        System.out.println("HotspotFrame  onAttach 33333333333333333");
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        System.out.println("HotspotFrame  onViewCreated 33333333333333333");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        System.out.println("HotspotFrame  onStart 33333333333333333");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        System.out.println("HotspotFrame  onResume 33333333333333333");
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        System.out.println("HotspotFrame  onActivityCreated 33333333333333333");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        System.out.println("HotspotFrame  onPause 33333333333333333");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        System.out.println("HotspotFrame  onStop 33333333333333333");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        System.out.println("HotspotFrame  onDestroy 33333333333333333");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        System.out.println("HotspotFrame  onDetach 33333333333333333");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        System.out.println("HotspotFrame  onDestroyView 33333333333333333");
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        System.out.println("HotspotFrame  onSaveInstanceState 33333333333333333");
+    }
 }
 
 

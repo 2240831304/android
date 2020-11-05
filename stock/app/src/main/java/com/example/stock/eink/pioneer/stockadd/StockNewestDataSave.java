@@ -58,12 +58,13 @@ public class StockNewestDataSave {
             }
 
             if( (state > 0) && (state < 6) && (minprice > 0)){
-                float grapPrice = (maxprice - minprice) / 5;
+                float grapPrice = (maxprice - minprice) / 6;
                 float curPriceTemp = Float.parseFloat(list[3]);
                 float oneGrade = minprice + grapPrice;
                 float towGrade = oneGrade + grapPrice;
                 float threeGrap = towGrade + grapPrice;
                 float foreGrap = threeGrap + grapPrice;
+                float fiveGrap = foreGrap + grapPrice;
 
                 if(curPriceTemp <= oneGrade){
                     state = 1;
@@ -73,8 +74,10 @@ public class StockNewestDataSave {
                     state = 3;
                 }else if (curPriceTemp <= foreGrap){
                     state = 4;
-                }else if(curPriceTemp > foreGrap){
+                }else if(curPriceTemp <= fiveGrap){
                     state = 5;
+                }else if(curPriceTemp > fiveGrap){
+                    state = 6;
                 }
             }
 
