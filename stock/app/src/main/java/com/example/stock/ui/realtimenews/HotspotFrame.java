@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.example.stock.R;
+import com.example.stock.eink.lib.customcontrol.CustomListview;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -29,7 +30,7 @@ import java.util.List;
 
 public class HotspotFrame extends Fragment {
 
-    private ListView hostpotListview;
+    private CustomListview hostpotListview;
     private HostpotListviewAdapter listadapter;
 
     private Banner Rotationbanner;

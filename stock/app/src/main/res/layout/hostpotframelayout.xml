@@ -4,14 +4,27 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.youth.banner.Banner
-        android:id="@+id/hostpotframebanner"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/hostpotframelistview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.youth.banner.Banner
+                android:id="@+id/hostpotframebanner"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <com.example.stock.eink.lib.customcontrol.CustomListview
+                android:id="@+id/hostpotframelistview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
