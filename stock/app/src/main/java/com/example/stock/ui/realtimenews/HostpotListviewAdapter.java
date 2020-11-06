@@ -26,9 +26,9 @@ public class HostpotListviewAdapter extends BaseAdapter {
 
     private Context context;
 
+    private final int TYPE_0 = 0;
     private final int TYPE_1 = 1;
     private final int TYPE_2 = 2;
-    private final int TYPE_3 = 3;
 
     private Banner Rotationbanner;
 
@@ -54,13 +54,11 @@ public class HostpotListviewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-
         int type = getItemViewType(i);
-
+        System.out.println("i="+i+" type="+type);
         if(view == null){
-
             switch (type){
-                case TYPE_1:
+                case TYPE_0:
                     view = LayoutInflater.from(this.context).inflate(R.layout.rotationbanner,
                             viewGroup,false);
                     Rotationbanner = view.findViewById(R.id.hostpotframebanner);
@@ -80,34 +78,32 @@ public class HostpotListviewAdapter extends BaseAdapter {
                     Rotationbanner.start();
                     break;
 
-                case TYPE_2:
+                case TYPE_1:
                     TextView v = new TextView(context);
-                    v.setText(items.get(i));
-                    v.setTextSize(28);
                     view = v;
                     break;
 
-                case TYPE_3:
+                case TYPE_2:
                     TextView v1 = new TextView(context);
-                    v1.setText(items.get(i));
-                    v1.setTextSize(38);
                     view = v1;
                     break;
             }
 
-        }else {
-            switch (type){
-                case TYPE_1:
-                    TextView v = (TextView)view;
-                    v.setText(items.get(i));
-                    v.setTextSize(28);
-                    break;
-                case TYPE_2:
-                    TextView v1 =  (TextView)view;
-                    v1.setText(items.get(i));
-                    v1.setTextSize(38);
-                    break;
-            }
+        }
+
+        switch (type){
+            case TYPE_0:
+                break;
+            case TYPE_1:
+                TextView v = (TextView)view;
+                v.setText(items.get(i));
+                v.setTextSize(28);
+                break;
+            case TYPE_2:
+                TextView v1 =  (TextView)view;
+                v1.setText(items.get(i));
+                v1.setTextSize(38);
+                break;
         }
 
         return view;
@@ -132,20 +128,19 @@ public class HostpotListviewAdapter extends BaseAdapter {
     public int getItemViewType(int position) {
 
         if(position == 0){
-            return TYPE_1;
+            return TYPE_0;
         } else if((position % 2) == 0){
-            return TYPE_2;
+            return TYPE_1;
         }else {
-            return  TYPE_3;
+            return TYPE_2;
         }
 
     }
 
     @Override
     public int getViewTypeCount() {
-        return super.getViewTypeCount();
+        return 3;
     }
-
 
     private class MyLoader extends ImageLoader {
         @Override
