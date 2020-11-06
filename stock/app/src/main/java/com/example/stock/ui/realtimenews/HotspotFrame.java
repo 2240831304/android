@@ -19,6 +19,8 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.example.stock.R;
 import com.example.stock.eink.lib.customcontrol.CustomListview;
+import com.scwang.smart.refresh.header.ClassicsHeader;
+import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -30,7 +32,7 @@ import java.util.List;
 
 public class HotspotFrame extends Fragment {
 
-    private CustomListview hostpotListview;
+    private ListView hostpotListview;
     private HostpotListviewAdapter listadapter;
 
     private Banner Rotationbanner;
@@ -73,6 +75,8 @@ public class HotspotFrame extends Fragment {
         //开始运行
         Rotationbanner.start();
 
+        RefreshLayout refreshLayout = (RefreshLayout)root.findViewById(R.id.refreshLayout);
+        refreshLayout.setRefreshHeader(new ClassicsHeader(this.getContext()));
 
         hostpotListview = root.findViewById(R.id.hostpotframelistview);
         listadapter = new HostpotListviewAdapter(this.getContext());
