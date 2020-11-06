@@ -19,8 +19,10 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.example.stock.R;
 import com.example.stock.eink.lib.customcontrol.CustomListview;
+import com.scwang.smart.refresh.footer.BallPulseFooter;
 import com.scwang.smart.refresh.header.ClassicsHeader;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
+import com.scwang.smart.refresh.layout.constant.SpinnerStyle;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -35,48 +37,15 @@ public class HotspotFrame extends Fragment {
     private ListView hostpotListview;
     private HostpotListviewAdapter listadapter;
 
-    private Banner Rotationbanner;
-
-    List<Integer> imageUrlData;
-    List<String> contentData;
-
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.hostpotframelayout, container, false);
 
-        Rotationbanner = root.findViewById(R.id.hostpotframebanner);
-
-        imageUrlData = new ArrayList<>();
-        contentData = new ArrayList<>();
-
-        imageUrlData.add(R.mipmap.first);
-        imageUrlData.add(R.mipmap.second);
-        imageUrlData.add(R.mipmap.thrid);
-
-        contentData.add("我是雷神");
-        contentData.add("我是小美");
-        contentData.add("我是洛基");
-
-        Rotationbanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
-        Rotationbanner.setImageLoader(new MyLoader());
-        Rotationbanner.setImages(imageUrlData);
-        Rotationbanner.setBannerTitles(contentData);
-        Rotationbanner.setBannerAnimation(Transformer.Default);
-        //切换频率
-        Rotationbanner.setDelayTime(2000);
-        //自动启动
-        Rotationbanner.isAutoPlay(true);
-        //位置设置
-        Rotationbanner.setIndicatorGravity(BannerConfig.CENTER);
-        //开始运行
-        Rotationbanner.start();
-
-        RefreshLayout refreshLayout = (RefreshLayout)root.findViewById(R.id.refreshLayout);
-        refreshLayout.setRefreshHeader(new ClassicsHeader(this.getContext()));
+        //RefreshLayout refreshLayout = (RefreshLayout)root.findViewById(R.id.refreshLayout);
+        //refreshLayout.setRefreshHeader(new ClassicsHeader(this.getContext()));
+        //refreshLayout.setRefreshFooter(new BallPulseFooter(this.getContext()).setSpinnerStyle(SpinnerStyle.Scale));
 
         hostpotListview = root.findViewById(R.id.hostpotframelistview);
         listadapter = new HostpotListviewAdapter(this.getContext());
@@ -86,13 +55,6 @@ public class HotspotFrame extends Fragment {
         return root;
     }
 
-
-    private class MyLoader extends ImageLoader {
-        @Override
-        public void displayImage(Context context, Object path, ImageView imageView) {
-            Glide.with(getActivity()).load(path).into(imageView);
-        }
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
