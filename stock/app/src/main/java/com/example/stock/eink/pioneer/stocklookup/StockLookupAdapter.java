@@ -1,6 +1,7 @@
 package com.example.stock.eink.pioneer.stocklookup;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,14 @@ public class StockLookupAdapter extends BaseAdapter {
             textview = (TextView)view.findViewById(R.id.stock_means);
             textview.setText(data.means);
 
+            if((data.classify == null) || (data.classify == "")){
+                System.out.println("==================");
+                textview.setTextColor(Color.parseColor("#0000FF"));
+            }else{
+                System.out.println("===============---------"+data.classify);
+                textview.setTextColor(Color.parseColor("#FF0000"));
+            }
+
         }else{
             TextView textview = (TextView)view.findViewById(R.id.stock_cn_name);
             textview.setText(data.name);
@@ -79,6 +88,14 @@ public class StockLookupAdapter extends BaseAdapter {
 
             textview = (TextView)view.findViewById(R.id.stock_means);
             textview.setText(data.means);
+
+            if((data.classify == null) || (data.classify == "")){
+                System.out.println("-------------------");
+                textview.setTextColor(Color.parseColor("#0000FF"));
+            }else{
+                System.out.println("$$$$$$$$$$$$$$$$$$--------");
+                textview.setTextColor(Color.parseColor("#FF0000"));
+            }
         }
 
         return view;

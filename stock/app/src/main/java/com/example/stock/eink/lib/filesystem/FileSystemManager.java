@@ -19,4 +19,10 @@ public class FileSystemManager {
 
         return path;
     }
+
+    public String getImagePath(){
+        String path = rootPath + "/huibao/image/";
+        return path;
+    }
+
 }

@@ -32,6 +32,9 @@ public class StockAddRequest {
         }else if(stockBoardCnName.equals("中小板") ){
             startStockCodeID = context.getResources().getInteger(R.integer.smallboardstock_get_id);
             requestPt = new SmallBoardStockAddReq(startStockCodeID,handerOb);
+        }else if(stockBoardCnName.equals("创业板") ) {
+            startStockCodeID = 300000;
+            requestPt = new GemStockAddReq(startStockCodeID,handerOb);
         }
 
     }

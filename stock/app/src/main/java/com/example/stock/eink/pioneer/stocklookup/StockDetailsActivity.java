@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.Gravity;
@@ -22,7 +24,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.stock.R;
+import com.example.stock.eink.lib.filesystem.FileSystemManager;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -47,6 +54,8 @@ public class StockDetailsActivity extends AppCompatActivity {
     private TextView calpriceTextview;
     private Button addClassifyBut;
 
+    private  ImageView stock_price_image;
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -66,6 +75,8 @@ public class StockDetailsActivity extends AppCompatActivity {
 
         quitImageView = (ImageView)findViewById(R.id.imageView_title_quit);
         quitImageView.setOnClickListener(listenerQuit);
+
+        stock_price_image = (ImageView)findViewById(R.id.stock_price_imageview);
 
         TextView titleView = (TextView)findViewById(R.id.textview_title_stockname);
         stockName = getIntent().getStringExtra("name");
@@ -113,6 +124,36 @@ public class StockDetailsActivity extends AppCompatActivity {
         }
         gradeEdittext.setText(data.state);
 
+        FileSystemManager fileManeger = new FileSystemManager();
+        String path = fileManeger.getImagePath() + data.code + ".gif";
+        //System.out.println("4444444444============-----------="+path);
+        Bitmap bitmap = BitmapFactory.decodeFile(path);
+        stock_price_image.setImageBitmap(bitmap);
+
+    }
+
+    public void InitWeekImage()
+    {
+        //String bannerpath = "http://image.sinajs.cn/newchart/weekly/n/#.gif";
+        //bannerpath = bannerpath.replace("#",stockCodeTextView.getText());
+        //System.out.println("3333333333666666@@===" + bannerpath);
+        //Bitmap bimage =  getBitmapFromURL(bannerpath);
+        //stock_price_image.setImageBitmap(bimage);
+    }
+
+    public static Bitmap getBitmapFromURL(String src) {
+        try {
+            URL url = new URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            return myBitmap;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 

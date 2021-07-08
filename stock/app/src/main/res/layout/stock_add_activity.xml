@@ -104,7 +104,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="left|center_vertical"
-            android:text="获取股票2018年05月01日后的最大最小价" />
+            android:text="获取股票2019年05月01日后的最大最小价" />
 
         <LinearLayout
             android:layout_width="match_parent"

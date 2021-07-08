@@ -28,6 +28,9 @@ public class YearMaxMinPriceReq {
         }else if(stockBoardCnName.equals("中小板")){
             startStockCodeID = context.getResources().getInteger(R.integer.shenzhen_yearmaxmin_price_id);
             requestPt = new SmallBoardMaxMinReq(startStockCodeID,startDate);
+        }else if(stockBoardCnName.equals("创业板")){
+            startStockCodeID = 300000;
+            requestPt = new GemYearMaxMinReq(startStockCodeID,startDate);
         }
     }
 

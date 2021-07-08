@@ -4,5 +4,5 @@
     <integer name="smallboardstock_get_id">0</integer>
     <integer name="shanghai_yearmaxmin_price_id">600000</integer>
     <integer name="shenzhen_yearmaxmin_price_id">0</integer>
-    <string name="yearmaxminprice_startdate">20180501</string>
+    <string name="yearmaxminprice_startdate">20190501</string>
 </resources>

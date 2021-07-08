@@ -69,6 +69,7 @@ public class StockDetailsDataHandle {
         }
 
         StockDetailsPt.InitData(data);
+        //StockDetailsPt.InitWeekImage();
 
     }
 

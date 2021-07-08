@@ -66,10 +66,12 @@ public class StockLookupDataHandle {
             boardName = "shanghai";
         }else if(stockBoard.equals("中小板") ){
             boardName = "smallboard";
+        }else if(stockBoard.equals("创业板") ){
+            boardName = "chinext";
         }
 
         Cursor cursor = db.query("totalstock", new String[] {"name", "code","means","curprice","grap",
-                "minprice","maxprice","calprice" },"board=? AND state=?", new String[] { boardName,stockGrade },
+                "minprice","maxprice","calprice","classify" },"board=? AND state=?", new String[] { boardName,stockGrade },
                 null, null, null);
 
         // 将光标移动到下一行，从而判断该结果集是否还有下一条数据，如果有则返回true，没有则返回false
@@ -84,6 +86,7 @@ public class StockLookupDataHandle {
             data.yearMinPrice = cursor.getString(cursor.getColumnIndex("minprice"));
             data.yearMaxPrice = cursor.getString(cursor.getColumnIndex("maxprice"));
             data.calPrice = cursor.getString(cursor.getColumnIndex("calprice"));
+            data.classify = cursor.getString(cursor.getColumnIndex("classify"));
 
             //System.out.println("333333333333333333="+data.name);
             dataList.add(data);
