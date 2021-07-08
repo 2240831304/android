@@ -33,8 +33,17 @@ public class StockLookupAdapter extends BaseAdapter {
             TextView textview = (TextView)view.findViewById(R.id.stock_cn_name);
             textview.setText(data.name);
 
+            if( (data.classify == null) || (data.classify.isEmpty()) ){
+                textview.setTextColor(Color.parseColor("#0000EE"));
+            }else {
+                textview.setTextColor(Color.parseColor("#808080"));
+            }
+
             textview = (TextView)view.findViewById(R.id.stock_code);
             textview.setText(data.code);
+            //int intColor = textview.getCurrentTextColor();
+            //String hexColor = String.format("#%06X", (0xFFFFFF & intColor));
+            //System.out.println(hexColor);
 
             //@price
             textview = (TextView)view.findViewById(R.id.stock_cur_price);
@@ -66,6 +75,11 @@ public class StockLookupAdapter extends BaseAdapter {
         }else{
             TextView textview = (TextView)view.findViewById(R.id.stock_cn_name);
             textview.setText(data.name);
+            if( (data.classify == null) || (data.classify.isEmpty()) ){
+                textview.setTextColor(Color.parseColor("#0000EE"));
+            }else {
+                textview.setTextColor(Color.parseColor("#808080"));
+            }
 
             textview = (TextView)view.findViewById(R.id.stock_code);
             textview.setText(data.code);

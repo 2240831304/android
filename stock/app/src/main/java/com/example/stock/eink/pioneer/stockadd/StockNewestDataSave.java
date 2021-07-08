@@ -57,6 +57,7 @@ public class StockNewestDataSave {
                 state = 0;
             }
 
+
             if( (state > 0)  && (minprice > 0)){
                 float grapPrice = (maxprice - minprice) / 6;
                 float curPriceTemp = Float.parseFloat(list[3]);
